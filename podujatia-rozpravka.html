@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rozprávkový svet | Trnavský jarmok 2026</title>
+  <meta name="description" content="Červík Ervín, Víla Amálka, princezné a rytieri v Ružovom parku – rozprávkový program pre deti.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <style>
+    :root { --cat-color: #ED028D; }
+    .page-hero--rozpravka { background: linear-gradient(135deg, #4a0030 0%, #9e0055 40%, #ED028D 100%); position: relative; overflow: hidden; }
+    .page-hero--rozpravka::before { content: ''; position: absolute; inset: 0; background: url('https://picsum.photos/1600/600?random=23') center/cover no-repeat; opacity: 0.15; }
+    .page-hero { padding: var(--sp-16) 0 var(--sp-14); color: var(--white); position: relative; }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero__cat-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: var(--white); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: var(--radius-full); margin-bottom: var(--sp-4); }
+    .page-hero__title { font-family: var(--font-display); font-size: clamp(2.2rem,6vw,4rem); font-weight: 900; margin-bottom: var(--sp-4); line-height: 1.1; }
+    .page-hero__subtitle { font-size: var(--text-lg); opacity: 0.85; max-width: 640px; line-height: 1.6; margin-bottom: var(--sp-6); }
+    .page-hero__meta { display: flex; gap: var(--sp-6); flex-wrap: wrap; }
+    .page-hero__meta-item { display: flex; align-items: center; gap: var(--sp-2); font-size: var(--text-sm); opacity: 0.8; }
+    .breadcrumb { background: var(--surface-alt); border-bottom: 1px solid var(--border); padding: var(--sp-3) 0; }
+    .breadcrumb__list { display: flex; align-items: center; gap: var(--sp-2); list-style: none; font-size: var(--text-sm); }
+    .breadcrumb__list li:not(:last-child)::after { content: '›'; margin-left: var(--sp-2); opacity: 0.4; }
+    .breadcrumb__list a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb__list a:hover { color: var(--blue); }
+    .breadcrumb__list li:last-child { color: var(--cat-color); font-weight: 600; }
+
+    /* Characters grid */
+    .characters-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--sp-4); margin-bottom: var(--sp-10); }
+    .character-card { background: #fff0f8; border: 2px solid #f9b8de; border-radius: var(--radius-xl); padding: var(--sp-5); text-align: center; }
+    .character-card__emoji { font-size: 2.5rem; display: block; margin-bottom: var(--sp-2); }
+    .character-card__name { font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; color: var(--cat-color); }
+    .character-card__sub { font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--sp-1); }
+
+    /* Program list */
+    .program-list { list-style: none; }
+    .program-list li {
+      display: flex; align-items: flex-start; gap: var(--sp-4);
+      padding: var(--sp-4) 0; border-bottom: 1px solid var(--border);
+      font-size: var(--text-base);
+    }
+    .program-list li:last-child { border-bottom: none; }
+    .program-list__time { font-weight: 700; color: var(--cat-color); min-width: 60px; flex-shrink: 0; font-size: var(--text-sm); }
+    .program-list__title { font-weight: 600; }
+    .program-list__desc { font-size: var(--text-sm); color: var(--text-muted); margin-top: 2px; }
+
+    /* Toddler zone */
+    .toddler-zone {
+      background: #fff0f8; border: 2px solid #f9b8de; border-radius: var(--radius-xl);
+      padding: var(--sp-8); margin: var(--sp-10) 0;
+    }
+    .toddler-zone__title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; color: var(--cat-color); margin-bottom: var(--sp-4); }
+    .toddler-features { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--sp-4); }
+    .toddler-feature { display: flex; align-items: flex-start; gap: var(--sp-3); font-size: var(--text-sm); color: var(--text-muted); }
+    .toddler-feature__icon { font-size: 1.4rem; flex-shrink: 0; }
+
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6); }
+    @media (max-width: 640px) { .related-grid { grid-template-columns: 1fr; } }
+    .related-card { display: flex; gap: var(--sp-4); align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--sp-4); text-decoration: none; color: inherit; transition: all var(--transition); }
+    .related-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .related-card__img { width: 80px; height: 80px; border-radius: var(--radius); object-fit: cover; flex-shrink: 0; }
+    .related-card__title { font-weight: 600; font-size: var(--text-base); margin-bottom: var(--sp-1); }
+    .related-card__sub { font-size: var(--text-sm); color: var(--text-muted); }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Preskočiť na obsah</a>
+<div class="alert-bar" id="alert-bar" hidden data-alert-active="false" data-alert-text="">
+  <div class="container"><span class="alert-bar__text"></span><button class="alert-bar__close" id="alert-bar-close" aria-label="Zatvoriť upozornenie">✕</button></div>
+</div>
+<main id="main-content">
+  <nav class="breadcrumb" aria-label="Navigácia">
+    <div class="container">
+      <ol class="breadcrumb__list">
+        <li><a href="index.html">Domov</a></li>
+        <li><a href="podujatia.html">Podujatia</a></li>
+        <li>Rozprávkový svet</li>
+      </ol>
+    </div>
+  </nav>
+  <div class="page-hero page-hero--rozpravka">
+    <div class="container">
+      <span class="page-hero__cat-badge">🧚 Rozprávky</span>
+      <h1 class="page-hero__title">Rozprávkový svet</h1>
+      <p class="page-hero__subtitle">Kde rozprávka ožíva. V Ružovom parku na deti čakajú ich obľúbení hrdinovia, divadelné predstavenia a tvorivé dielničky. Vstup voľný, zábava zaručená.</p>
+      <div class="page-hero__meta">
+        <span class="page-hero__meta-item">📍 Ružový park</span>
+        <span class="page-hero__meta-item">📅 Denne 11.–14.9.</span>
+        <span class="page-hero__meta-item">🕙 10:00 – 18:00</span>
+        <span class="page-hero__meta-item">🎟️ Vstup voľný</span>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <p class="fade-in" style="font-size:var(--text-lg);color:var(--text-muted);line-height:1.8;max-width:720px;margin-bottom:var(--sp-10);">Ružový park sa počas jarmoku premení na kráľovstvo fantázie. Rozprávkové postavy voľne prechádzajú parkom, vítajú deti a ich rodičov, pozývajú na foto a rozhovory. Každý deň prebieha niekoľko mini-predstavení a interaktívnych dielničiek.</p>
+
+      <h2 class="section__title fade-in">Postavy, ktoré stretnete</h2>
+      <div class="characters-grid fade-in">
+        <div class="character-card">
+          <span class="character-card__emoji">🐛</span>
+          <div class="character-card__name">Červík Ervín</div>
+          <div class="character-card__sub">Detský obľúbenec</div>
+        </div>
+        <div class="character-card">
+          <span class="character-card__emoji">🧚</span>
+          <div class="character-card__name">Víla Amálka</div>
+          <div class="character-card__sub">Z televíznej rozprávky</div>
+        </div>
+        <div class="character-card">
+          <span class="character-card__emoji">👸</span>
+          <div class="character-card__name">Princezné</div>
+          <div class="character-card__sub">Zlatovláska, Popoluška...</div>
+        </div>
+        <div class="character-card">
+          <span class="character-card__emoji">🤺</span>
+          <div class="character-card__name">Rytieri</div>
+          <div class="character-card__sub">Strážcovia kráľovstva</div>
+        </div>
+        <div class="character-card">
+          <span class="character-card__emoji">🏹</span>
+          <div class="character-card__name">Indiáni</div>
+          <div class="character-card__sub">Z Divokého západu</div>
+        </div>
+        <div class="character-card">
+          <span class="character-card__emoji">🌙</span>
+          <div class="character-card__name">Pani Noc</div>
+          <div class="character-card__sub">Záhadná, ale priateľská</div>
+        </div>
+        <div class="character-card">
+          <span class="character-card__emoji">🦄</span>
+          <div class="character-card__name">Jednorožec Azúr</div>
+          <div class="character-card__sub">Tohtoročná novinka!</div>
+        </div>
+        <div class="character-card">
+          <span class="character-card__emoji">🐉</span>
+          <div class="character-card__name">Drak Štefan</div>
+          <div class="character-card__sub">Priateľský jarmočný drak</div>
+        </div>
+      </div>
+
+      <h2 class="section__title fade-in">Denný program</h2>
+      <p style="color:var(--text-muted);margin-bottom:var(--sp-6);">Program sa opakuje každý deň s malými obmenami</p>
+      <ul class="program-list fade-in">
+        <li>
+          <span class="program-list__time">10:00</span>
+          <div>
+            <div class="program-list__title">Otvorenie Rozprávkového sveta</div>
+            <div class="program-list__desc">Príchod rozprávkových postáv a uvítanie návštevníkov</div>
+          </div>
+        </li>
+        <li>
+          <span class="program-list__time">10:30</span>
+          <div>
+            <div class="program-list__title">Dielňa: Koruna pre princeznú / štít pre rytiera</div>
+            <div class="program-list__desc">Deti si vyrobia vlastnú korunku alebo rytiersky štít z kartónu a farieb. Zadarmo, materiál zabezpečený.</div>
+          </div>
+        </li>
+        <li>
+          <span class="program-list__time">11:30</span>
+          <div>
+            <div class="program-list__title">Divadelné mini-predstavenie</div>
+            <div class="program-list__desc">20-minútové divadielko s rozprávkovými postavami, iné každý deň</div>
+          </div>
+        </li>
+        <li>
+          <span class="program-list__time">13:00</span>
+          <div>
+            <div class="program-list__title">Foto s postavami – organizovaná sekcia</div>
+            <div class="program-list__desc">Každá postava má vyhradený čas na fotenie – žiadne čakanie v dlhom rade</div>
+          </div>
+        </li>
+        <li>
+          <span class="program-list__time">14:00</span>
+          <div>
+            <div class="program-list__title">Rozprávkový kvíz pre deti</div>
+            <div class="program-list__desc">Súťaž v poznávaní rozprávok – ceny pre víťazov, účasť pre všetkých</div>
+          </div>
+        </li>
+        <li>
+          <span class="program-list__time">15:00</span>
+          <div>
+            <div class="program-list__title">Jednorožec Azúr v Ružovom parku</div>
+            <div class="program-list__desc">Tohtoročná špeciálna atrakcia – foto, maľovanie, rozhovory</div>
+          </div>
+        </li>
+        <li>
+          <span class="program-list__time">16:30</span>
+          <div>
+            <div class="program-list__title">Záverečný sprievod postáv</div>
+            <div class="program-list__desc">Všetky postavy sa objavia naraz a pochodujú parkom – ideálny moment pre spoločnú fotografiu</div>
+          </div>
+        </li>
+        <li>
+          <span class="program-list__time">18:00</span>
+          <div>
+            <div class="program-list__title">Zatvorenie Rozprávkového sveta</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Toddler zone -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="toddler-zone fade-in">
+        <h2 class="toddler-zone__title">🧸 Zóna pre najmenších (0–4 roky)</h2>
+        <p style="color:var(--text-muted);margin-bottom:var(--sp-6);">Rozprávkový svet myslí aj na tie úplne najmenšie návštevníky. Špeciálna zóna v tieni stromov ponúka:</p>
+        <div class="toddler-features">
+          <div class="toddler-feature"><span class="toddler-feature__icon">🛝</span><span>Mäkké hranie pre batoľatá – pena, loptičky, preliezačky</span></div>
+          <div class="toddler-feature"><span class="toddler-feature__icon">🎨</span><span>Prstové farby a veľkoformátové maľovanie</span></div>
+          <div class="toddler-feature"><span class="toddler-feature__icon">🪑</span><span>Lavičky a tieň pre unavených rodičov</span></div>
+          <div class="toddler-feature"><span class="toddler-feature__icon">🚼</span><span>Prebaľovací pult v blízkosti</span></div>
+          <div class="toddler-feature"><span class="toddler-feature__icon">🧹</span><span>Personál dozerá na čistotu a bezpečnosť</span></div>
+          <div class="toddler-feature"><span class="toddler-feature__icon">💧</span><span>Pitná voda zadarmo v celej zóne</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="container" style="text-align:center;">
+      <h2 class="section__title" style="color:var(--white);">Prineste celú rodinu</h2>
+      <p style="color:rgba(255,255,255,0.7);margin-bottom:var(--sp-6);">Vstup do Rozprávkového sveta je úplne zadarmo. Jarmok je bezbariérový – dostupný pre kočíky aj invalidné vozíčky.</p>
+      <a href="prakticke-info.html" class="btn btn--yellow">Praktické informácie</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">Navštívte aj</h2>
+      <div class="related-grid fade-in">
+        <a href="podujatia-kolotoc.html" class="related-card">
+          <img src="https://picsum.photos/200/200?random=56" alt="" class="related-card__img">
+          <div><div class="related-card__title">Kolotoče a atrakcie</div><div class="related-card__sub">Zábava pre deti aj dospelých</div></div>
+        </a>
+        <a href="podujatia-remesla.html" class="related-card">
+          <img src="https://picsum.photos/200/200?random=57" alt="" class="related-card__img">
+          <div><div class="related-card__title">Zaži remeslá</div><div class="related-card__sub">Dielničky pre celú rodinu</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="assets/js/header-footer.js"></script>
+<script src="assets/js/core.js"></script>
+</body>
+</html>

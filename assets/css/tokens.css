@@ -1,0 +1,138 @@
+/* ============================================================
+   TRNAVSKÝ JARMOK 2026 – Design Tokens
+   ============================================================ */
+
+:root {
+  /* --- Primary palette --- */
+  --blue:        #0083B7;
+  --blue-hover:  #006a96;
+  --blue-light:  #5EB5D7;
+  --blue-pale:   #9DCEE7;
+  --blue-faint:  #AEB8DD;
+  --yellow:      #FFD306;
+  --yellow-hover:#e6be00;
+
+  /* --- Category colours --- */
+  --cat-stredovek:     #99248F;
+  --cat-stredovek-bg:  #f7eaf6;
+  --cat-veselica:      #243E8F;
+  --cat-veselica-bg:   #eaecf7;
+  --cat-trojicka:      #02AFEF;
+  --cat-trojicka-bg:   #e6f7fd;
+  --cat-rozpravka:     #ED028D;
+  --cat-rozpravka-bg:  #fde6f4;
+  --cat-remesla:       #0083B7;
+  --cat-remesla-bg:    #e6f4fb;
+  --cat-kolotoc:       #5EB5D7;
+  --cat-kolotoc-bg:    #edf8fd;
+  --cat-ostatne:       #8393CB;
+  --cat-ostatne-bg:    #eef0f9;
+
+  /* --- Supplementary palette --- */
+  --pink:        #ED028D;
+  --pink-mid:    #F599C2;
+  --pink-light:  #F6C1D9;
+  --purple:      #99248F;
+  --purple-mid:  #C28DBF;
+  --purple-light:#D7B7D7;
+  --navy:        #243E8F;
+  --navy-mid:    #8393CB;
+  --sky:         #02AFEF;
+
+  /* --- Neutrals --- */
+  --white:       #FFFFFF;
+  --off-white:   #f8fafc;
+  --gray-50:     #f5f7fa;
+  --gray-100:    #eef0f4;
+  --gray-200:    #dde2ea;
+  --gray-400:    #9aa5b4;
+  --gray-600:    #4a5568;
+  --gray-800:    #2d3748;
+  --dark:        #1a1a2e;
+
+  /* --- Alert --- */
+  --alert-red:   #c0392b;
+  --alert-amber: #e67e22;
+
+  /* --- Semantic --- */
+  --bg-page:       var(--white);
+  --bg-alt:        var(--gray-50);
+  --bg-header:     var(--dark);
+  --bg-submenu:    var(--navy);
+  --bg-footer:     var(--dark);
+  --text-primary:  var(--dark);
+  --text-muted:    var(--gray-600);
+  --text-inverse:  var(--white);
+  --border:        var(--gray-200);
+  --border-accent: var(--blue);
+
+  /* --- Typography --- */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-md:   1.125rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  2rem;
+  --text-3xl:  2.75rem;
+  --text-hero: clamp(2.2rem, 5vw, 4rem);
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semi:   600;
+  --weight-bold:   700;
+
+  --leading-tight: 1.2;
+  --leading-body:  1.65;
+  --tracking-wide: 0.06em;
+  --tracking-wider:0.12em;
+
+  /* --- Spacing --- */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.25rem;
+  --sp-6:  1.5rem;
+  --sp-8:  2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --sp-24: 6rem;
+
+  /* --- Radii --- */
+  --radius-sm: 4px;
+  --radius:    8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow:    0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.14);
+  --shadow-blue: 0 4px 16px rgba(0,131,183,.25);
+
+  /* --- Transitions --- */
+  --transition: 0.2s ease;
+  --transition-slow: 0.35s ease;
+
+  /* --- Layout --- */
+  --container: 1200px;
+  --header-h1: 48px;
+  --header-h2: 48px;
+  --header-h3: 40px;
+  --header-total: 136px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-h1: 52px;
+    --header-h2: 0px;
+    --header-h3: 0px;
+    --header-total: 52px;
+  }
+}

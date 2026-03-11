@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trnavský jarmok 2026 – 11.–14. septembra, Trnava</title>
+  <meta name="description" content="Tradičný trnavský jarmok – štyri dni remeselníkov, koncertov, stredovekých rytierov a ľudovej zábavy v srdci Trnavy. 11.–14. septembra 2026.">
+  <meta property="og:title" content="Trnavský jarmok 2026">
+  <meta property="og:description" content="11.–14. septembra 2026, Trnava. Štyri dni remeselníkov, koncertov a stredovekých rytierov.">
+  <meta property="og:image" content="https://picsum.photos/1200/630?random=99">
+  <meta property="og:type" content="website">
+  <!-- GTM: Replace GTM-XXXXXXX with real container ID -->
+  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+</head>
+<body>
+<!-- GTM noscript: <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+
+<a href="#main-content" class="skip-link">Preskočiť na obsah</a>
+
+<!-- ALERT BAR -->
+<div id="alert-bar" class="alert-bar"
+     data-alert-active=""
+     data-alert-text="⚠ Upozornenie: V dôsledku búrky je program na Trojičnom námestí dočasne prerušený. Sledujte flešky."
+     hidden
+     role="alert">
+  <span class="alert-bar__text" id="alert-text"></span>
+  <button class="alert-bar__close" id="alert-close" aria-label="Zatvoriť upozornenie">✕</button>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <!-- Row 1: Identity -->
+  <div class="header-row1">
+    <div class="container">
+      <a href="index.html" class="site-logo" aria-label="Trnavský jarmok – domov">
+        <div class="site-logo__mark" aria-hidden="true">TJ</div>
+        <div class="site-logo__text">
+          <span class="site-logo__name">Trnavský jarmok</span>
+          <span class="site-logo__sub">Tradičný mestský jarmok</span>
+        </div>
+      </a>
+      <div class="header-date" aria-label="Dátum konania">
+        <span aria-hidden="true">📅</span> 11.–14. septembra 2026
+      </div>
+      <div class="header-right">
+        <div class="lang-switcher" role="navigation" aria-label="Jazyk">
+          <a href="index.html" lang="sk" aria-current="page">SK</a>
+          <span aria-hidden="true">|</span>
+          <a href="index-en.html" lang="en">EN</a>
+        </div>
+        <div class="header-social" aria-label="Sociálne siete">
+          <a href="#" aria-label="Facebook">&#xfb;</a>
+          <a href="#" aria-label="Instagram">&#x1f4f8;</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Main nav -->
+  <nav class="header-row2" aria-label="Hlavná navigácia">
+    <div class="container">
+      <ul class="main-nav" role="list">
+        <li class="main-nav__item">
+          <a href="flesky.html" class="main-nav__link">Flešky</a>
+        </li>
+        <li class="main-nav__item">
+          <a href="program.html" class="main-nav__link main-nav__link--btn">Program</a>
+        </li>
+        <li class="main-nav__item" data-submenu="sub-podujatia">
+          <a href="podujatia.html" class="main-nav__link" aria-haspopup="true" aria-expanded="false">
+            Podujatia <span class="main-nav__chevron" aria-hidden="true">▾</span>
+          </a>
+        </li>
+        <li class="main-nav__item">
+          <a href="mapa.html" class="main-nav__link">Mapa</a>
+        </li>
+        <li class="main-nav__item" data-submenu="sub-info">
+          <a href="prakticke-info.html" class="main-nav__link" aria-haspopup="true" aria-expanded="false">
+            Praktické info <span class="main-nav__chevron" aria-hidden="true">▾</span>
+          </a>
+        </li>
+        <li class="main-nav__item">
+          <a href="partneri.html" class="main-nav__link">Partneri</a>
+        </li>
+        <li class="main-nav__item">
+          <a href="predajcovia.html" class="main-nav__link">Zóna predajcov</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Row 3: Submenu bar -->
+  <div class="header-row3" id="header-row3" aria-label="Podmenu">
+    <div class="container">
+      <ul id="sub-podujatia" class="submenu-bar" role="list" hidden>
+        <li class="submenu-bar__item"><a href="podujatia-stredovek.html" class="submenu-bar__link">🏰 Stredovek pod hradbami</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="podujatia-veselica.html" class="submenu-bar__link">🎻 Ľudová veselica</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="podujatia-kolotoc.html" class="submenu-bar__link">🎡 Kolotoče</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="podujatia-rozpravka.html" class="submenu-bar__link">🧚 Rozprávkový svet</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="podujatia-trojicka.html" class="submenu-bar__link">🎤 Koncerty na Trojičke</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="podujatia-remesla.html" class="submenu-bar__link">🔨 Zaži remeslá</a></li>
+      </ul>
+      <ul id="sub-info" class="submenu-bar" role="list" hidden>
+        <li class="submenu-bar__item"><a href="prakticke-info.html#parkovanie" class="submenu-bar__link">🅿️ Parkovanie</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="prakticke-info.html#vjazdy" class="submenu-bar__link">🚗 Vjazdy</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="prakticke-info.html#faq" class="submenu-bar__link">❓ FAQ</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="prakticke-info.html#gastro" class="submenu-bar__link">🍷 Gastro</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobilná navigácia" aria-modal="true" role="dialog">
+  <div class="mobile-nav__header">
+    <a href="index.html" class="site-logo" aria-label="Trnavský jarmok">
+      <div class="site-logo__mark" aria-hidden="true">TJ</div>
+      <div class="site-logo__text">
+        <span class="site-logo__name" style="color:white">Trnavský jarmok</span>
+      </div>
+    </a>
+    <button class="mobile-nav__close" id="mobile-nav-close" aria-label="Zatvoriť menu">✕</button>
+  </div>
+  <ul class="mobile-nav__menu" role="list">
+    <li class="mobile-nav__item">
+      <a href="flesky.html" class="mobile-nav__link">Flešky</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a href="program.html" class="mobile-nav__link mobile-nav__link--btn">Program</a>
+    </li>
+    <li class="mobile-nav__item">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <a href="podujatia.html" class="mobile-nav__link" style="flex:1">Podujatia</a>
+        <button class="mobile-nav__toggle" aria-label="Rozbaliť podujatia">▾</button>
+      </div>
+      <ul class="mobile-nav__sub" role="list">
+        <li><a href="podujatia-stredovek.html" class="mobile-nav__sub-link">🏰 Stredovek pod hradbami</a></li>
+        <li><a href="podujatia-veselica.html" class="mobile-nav__sub-link">🎻 Ľudová veselica</a></li>
+        <li><a href="podujatia-kolotoc.html" class="mobile-nav__sub-link">🎡 Kolotoče</a></li>
+        <li><a href="podujatia-rozpravka.html" class="mobile-nav__sub-link">🧚 Rozprávkový svet</a></li>
+        <li><a href="podujatia-trojicka.html" class="mobile-nav__sub-link">🎤 Koncerty na Trojičke</a></li>
+        <li><a href="podujatia-remesla.html" class="mobile-nav__sub-link">🔨 Zaži remeslá</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav__item">
+      <a href="mapa.html" class="mobile-nav__link">Mapa</a>
+    </li>
+    <li class="mobile-nav__item">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <a href="prakticke-info.html" class="mobile-nav__link" style="flex:1">Praktické info</a>
+        <button class="mobile-nav__toggle" aria-label="Rozbaliť info">▾</button>
+      </div>
+      <ul class="mobile-nav__sub" role="list">
+        <li><a href="prakticke-info.html#parkovanie" class="mobile-nav__sub-link">🅿️ Parkovanie</a></li>
+        <li><a href="prakticke-info.html#vjazdy" class="mobile-nav__sub-link">🚗 Vjazdy</a></li>
+        <li><a href="prakticke-info.html#faq" class="mobile-nav__sub-link">❓ FAQ</a></li>
+        <li><a href="prakticke-info.html#gastro" class="mobile-nav__sub-link">🍷 Gastro</a></li>
+      </ul>
+    </li>
+    <li class="mobile-nav__item">
+      <a href="partneri.html" class="mobile-nav__link">Partneri</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a href="predajcovia.html" class="mobile-nav__link">Zóna predajcov</a>
+    </li>
+  </ul>
+  <div class="mobile-nav__footer">
+    <div class="mobile-nav__date">📅 11.–14. septembra 2026, Trnava</div>
+    <div class="mobile-nav__lang">
+      <a href="index.html" lang="sk" aria-current="page">SK</a>
+      <a href="index-en.html" lang="en">EN</a>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
+
+  <!-- === HERO === -->
+  <section class="hero" aria-label="Úvodná sekcia">
+    <div class="hero__bg" style="background-image: url('https://picsum.photos/1600/900?random=1');" role="img" aria-label="Atmosféra trnavského jarmoku"></div>
+    <div class="hero__overlay"></div>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__eyebrow">Tradičný mestský jarmok · Trnava</span>
+        <h1 class="hero__title">Trnavský<br>jarmok 2026</h1>
+        <p class="hero__subtitle">Štyri dni remeselníkov, rytierov, hudby a jarmočnej zábavy</p>
+        <div class="hero__date">
+          <span aria-hidden="true">📅</span>
+          11. – 14. septembra 2026 · Trnava
+        </div>
+        <div class="hero__actions">
+          <a href="program.html" class="btn btn--yellow btn--lg">Program →</a>
+          <a href="mapa.html" class="btn btn--ghost-white btn--lg">Mapa jarmoku</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- === FLEŠKY STRIP === -->
+  <section class="section section--sm" aria-labelledby="flesky-heading">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <span class="section-label">Aktuálne</span>
+          <h2 class="section__title" id="flesky-heading">Novinky a flešky</h2>
+        </div>
+        <a href="flesky.html" class="section__link">Všetky novinky →</a>
+      </div>
+      <div class="grid grid--3 fade-in">
+        <!-- Flash 1 -->
+        <article class="flash-card flash-card--alert" data-ts="1757548800">
+          <div class="flash-card__content">
+            <span class="flash-card__badge badge--alert">UPOZORNENIE</span>
+            <h3 class="flash-card__title">Richard Müller a Korben Dallas – posledné lístky</h3>
+            <p class="flash-card__text">Piatkový dvojkoncert v amfiteátri je takmer vypredaný. Zostatok lístkov v TIC Mestská veža alebo online cez Maxiticket.</p>
+            <time class="flash-card__time">Dnes · 09:30</time>
+          </div>
+          <div class="flash-card__img">
+            <img src="https://picsum.photos/200/200?random=41" alt="Konzert">
+          </div>
+        </article>
+        <!-- Flash 2 -->
+        <article class="flash-card flash-card--tip" data-ts="1757462400">
+          <div class="flash-card__content">
+            <span class="flash-card__badge badge--tip">TIP</span>
+            <h3 class="flash-card__title">5 vecí, ktoré musíte ochutnať na jarmoku</h3>
+            <p class="flash-card__text">Burčák od Malých Karpát, domáce niťovky, ručne robené korbáče, trnavské rožky a pečená kukurica. Nezabudnite na plátené tašky!</p>
+            <time class="flash-card__time">Včera · 14:00</time>
+          </div>
+          <div class="flash-card__img">
+            <img src="https://picsum.photos/200/200?random=42" alt="Jarmočné špeciality">
+          </div>
+        </article>
+        <!-- Flash 3 -->
+        <article class="flash-card flash-card--info" data-ts="1757376000">
+          <div class="flash-card__content">
+            <span class="flash-card__badge badge--info">INFO</span>
+            <h3 class="flash-card__title">Kráľovský fakľový sprievod – Sobota 19:30</h3>
+            <p class="flash-card__text">Stretnutie Jána Luxemburského a Karola Róberta z Anjou! Sprievod vyrazí zo Sadu Bernolaka k Severnej veži a zakončí ho výstrel z trebuchetu.</p>
+            <time class="flash-card__time">11. 9. · 10:00</time>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- === DNES NA JARMOKU === -->
+  <section class="section section--alt" id="today-highlights" aria-labelledby="today-heading">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <span class="section-label">Živý program</span>
+          <h2 class="section__title" id="today-heading">Dnes na jarmoku</h2>
+        </div>
+        <a href="program.html" class="section__link">Celý program →</a>
+      </div>
+
+      <!-- Fallback: outside fair dates -->
+      <div id="today-fallback" hidden>
+        <p style="color:var(--text-muted);font-size:var(--text-md)">
+          Jarmok sa koná <strong>11.–14. septembra 2026</strong>.
+          Pozrite si kompletný program a naplánujte si návštevu.
+        </p>
+        <a href="program.html" class="btn btn--primary" style="margin-top:var(--sp-4)">Zobraziť program →</a>
+      </div>
+
+      <!-- Piatok highlights -->
+      <div class="today-highlight-set" data-day="piatok">
+        <div class="today-strip" role="list" aria-label="Dnešné highlights">
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">15:00</span>
+            <div><div class="today-pill__name">DFS Drienka</div><div class="today-pill__venue">Ľudová veselica · Nám. SNP</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">17:30</span>
+            <div><div class="today-pill__name">Cup Of Tea</div><div class="today-pill__venue">Trojičné námestie</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">19:00</span>
+            <div><div class="today-pill__name">Gypsy Elegance</div><div class="today-pill__venue">Ľudová veselica · Nám. SNP</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">19:30</span>
+            <div><div class="today-pill__name">Korben Dallas</div><div class="today-pill__venue">Mestský amfiteáter 🎟</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">19:30</span>
+            <div><div class="today-pill__name">Slniečko</div><div class="today-pill__venue">Trojičné námestie</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">21:00</span>
+            <div><div class="today-pill__name">Richard Müller</div><div class="today-pill__venue">Mestský amfiteáter 🎟</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">21:15</span>
+            <div><div class="today-pill__name">Bystrik</div><div class="today-pill__venue">Trojičné námestie</div></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Sobota highlights -->
+      <div class="today-highlight-set" data-day="sobota">
+        <div class="today-strip" role="list" aria-label="Dnešné highlights">
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">10:00</span>
+            <div><div class="today-pill__name">Stredovek – Otvorenie promenády</div><div class="today-pill__venue">Sad A. Bernolaka</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">13:00</span>
+            <div><div class="today-pill__name">Lovecký turnaj na koňoch</div><div class="today-pill__venue">Sad A. Bernolaka</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">15:30</span>
+            <div><div class="today-pill__name">Historická bitka – Obkľúčenie Tyrny</div><div class="today-pill__venue">Sad A. Bernolaka</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">17:30</span>
+            <div><div class="today-pill__name">Peter Leto</div><div class="today-pill__venue">Trojičné námestie</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">18:00</span>
+            <div><div class="today-pill__name">Slávnostný ceremoniál + Rytiersky turnaj</div><div class="today-pill__venue">Sad A. Bernolaka</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">19:30</span>
+            <div><div class="today-pill__name">Hex</div><div class="today-pill__venue">Trojičné námestie</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">19:30</span>
+            <div><div class="today-pill__name">Kráľovský fakľový sprievod</div><div class="today-pill__venue">Sad A. Bernolaka → Severná veža</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">21:15</span>
+            <div><div class="today-pill__name">Bukasový Masív</div><div class="today-pill__venue">Trojičné námestie</div></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Nedeľa highlights -->
+      <div class="today-highlight-set" data-day="nedela">
+        <div class="today-strip" role="list" aria-label="Dnešné highlights">
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">11:00</span>
+            <div><div class="today-pill__name">Lovecký turnaj na koňoch</div><div class="today-pill__venue">Sad A. Bernolaka</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">15:00</span>
+            <div><div class="today-pill__name">Rytiersky turnaj na koňoch – záverečný</div><div class="today-pill__venue">Sad A. Bernolaka</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">16:30</span>
+            <div><div class="today-pill__name">BeatRoot</div><div class="today-pill__venue">Trojičné námestie</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">18:00</span>
+            <div><div class="today-pill__name">Allan Mikušek</div><div class="today-pill__venue">Trojičné námestie</div></div>
+          </a>
+          <a href="program.html" class="today-pill" role="listitem">
+            <span class="today-pill__time">20:00</span>
+            <div><div class="today-pill__name">Zuzana Smatanová</div><div class="today-pill__venue">Trojičné námestie</div></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Štvrtok highlights -->
+      <div class="today-highlight-set" data-day="stvrtok">
+        <div class="today-strip" role="list">
+          <div class="today-pill">
+            <span class="today-pill__time">09:00</span>
+            <div><div class="today-pill__name">Otvorenie remeselného trhu</div><div class="today-pill__venue">Pešia zóna</div></div>
+          </div>
+          <div class="today-pill">
+            <span class="today-pill__time">13:00</span>
+            <div><div class="today-pill__name">Ľudová veselica – otvorenie</div><div class="today-pill__venue">Námestie SNP</div></div>
+          </div>
+          <div class="today-pill">
+            <span class="today-pill__time">10:00</span>
+            <div><div class="today-pill__name">Mestská veža – špeciálne hodiny</div><div class="today-pill__venue">10:00 – 23:00</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- === JARMOČNÉ PODUJATIA === -->
+  <section class="section" aria-labelledby="podujatia-heading">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <span class="section-label">Zóny a podujatia</span>
+          <h2 class="section__title" id="podujatia-heading">Jarmočné podujatia</h2>
+        </div>
+        <a href="podujatia.html" class="section__link">Všetky podujatia →</a>
+      </div>
+      <div class="grid grid--3">
+
+        <article class="event-card fade-in" aria-labelledby="card-stredovek">
+          <div class="event-card__img">
+            <img src="https://picsum.photos/600/338?random=10" alt="Stredovek pod hradbami – šermiarska skuping Gladius">
+            <div class="event-card__badge" aria-hidden="true">🏰</div>
+          </div>
+          <div class="event-card__body">
+            <div class="event-card__meta">
+              <span class="cat-badge cat-badge--stredovek">Stredovek</span>
+              <span>📍 Sad A. Bernolaka</span>
+            </div>
+            <h3 class="event-card__title" id="card-stredovek">Stredovek pod hradbami</h3>
+            <p class="event-card__desc">Šermiarski rytieri, lovecký turnaj na koňoch, historická módna prehliadka a kráľovský fakľový sprievod. Ján Luxemburský a Karol Róbert z Anjou v Trnave.</p>
+            <a href="podujatia-stredovek.html" class="event-card__link">Zistiť viac →</a>
+          </div>
+        </article>
+
+        <article class="event-card fade-in" aria-labelledby="card-veselica">
+          <div class="event-card__img">
+            <img src="https://picsum.photos/600/338?random=11" alt="Ľudová veselica na Námestí SNP">
+            <div class="event-card__badge" aria-hidden="true">🎻</div>
+          </div>
+          <div class="event-card__body">
+            <div class="event-card__meta">
+              <span class="cat-badge cat-badge--veselica">Veselica</span>
+              <span>📍 Námestie SNP</span>
+            </div>
+            <h3 class="event-card__title" id="card-veselica">Ľudová veselica</h3>
+            <p class="event-card__desc">Cimbaly, husle, ľudová hudba a vína Malých Karpát. Štvrtok až nedeľa od 13:00. DFS Drienka, Gypsy Elegance, Heskovci a ďalší.</p>
+            <a href="podujatia-veselica.html" class="event-card__link">Zistiť viac →</a>
+          </div>
+        </article>
+
+        <article class="event-card fade-in" aria-labelledby="card-kolotoc">
+          <div class="event-card__img">
+            <img src="https://picsum.photos/600/338?random=12" alt="Jarmočné kolotoče v centre mesta">
+            <div class="event-card__badge" aria-hidden="true">🎡</div>
+          </div>
+          <div class="event-card__body">
+            <div class="event-card__meta">
+              <span class="cat-badge cat-badge--kolotoc">Kolotoče</span>
+              <span>📍 Centrum mesta</span>
+            </div>
+            <h3 class="event-card__title" id="card-kolotoc">Kolotoče</h3>
+            <p class="event-card__desc">Tradičné jarmočné kolotoče, atrakcie a obri na chodúľoch. Zábava pre celú rodinu počas všetkých štyroch dní od 10:00 do 22:00.</p>
+            <a href="podujatia-kolotoc.html" class="event-card__link">Zistiť viac →</a>
+          </div>
+        </article>
+
+        <article class="event-card fade-in" aria-labelledby="card-rozpravka">
+          <div class="event-card__img">
+            <img src="https://picsum.photos/600/338?random=13" alt="Rozprávkový svet medzi ružami v Ružovom parku">
+            <div class="event-card__badge" aria-hidden="true">🧚</div>
+          </div>
+          <div class="event-card__body">
+            <div class="event-card__meta">
+              <span class="cat-badge cat-badge--rozpravka">Rozprávka</span>
+              <span>📍 Ružový park</span>
+            </div>
+            <h3 class="event-card__title" id="card-rozpravka">Rozprávkový svet medzi ružami</h3>
+            <p class="event-card__desc">Červík Ervín, Víla Amálka, Pani Noc a rozprávkové bytosti. Zóna pre bábätká s prebaľovacími pultami, hojdacími sieťami a tienidlami.</p>
+            <a href="podujatia-rozpravka.html" class="event-card__link">Zistiť viac →</a>
+          </div>
+        </article>
+
+        <article class="event-card fade-in" aria-labelledby="card-trojicka">
+          <div class="event-card__img">
+            <img src="https://picsum.photos/600/338?random=14" alt="Koncerty na Trojičnom námestí">
+            <div class="event-card__badge" aria-hidden="true">🎤</div>
+          </div>
+          <div class="event-card__body">
+            <div class="event-card__meta">
+              <span class="cat-badge cat-badge--trojicka">Trojičné nám.</span>
+              <span>📍 Trojičné nám.</span>
+            </div>
+            <h3 class="event-card__title" id="card-trojicka">Koncerty na Trojičke</h3>
+            <p class="event-card__desc">Bystrik, Hex, Peter Leto, BeatRoot, Bukasový Masív, Zuzana Smatanová a ďalší. Piatok – nedeľa, vstup voľný.</p>
+            <a href="podujatia-trojicka.html" class="event-card__link">Zistiť viac →</a>
+          </div>
+        </article>
+
+        <article class="event-card fade-in" aria-labelledby="card-remesla">
+          <div class="event-card__img">
+            <img src="https://picsum.photos/600/338?random=15" alt="Remeselníci v uliciach">
+            <div class="event-card__badge" aria-hidden="true">🔨</div>
+          </div>
+          <div class="event-card__body">
+            <div class="event-card__meta">
+              <span class="cat-badge cat-badge--remesla">Remeslá</span>
+              <span>📍 Pešia zóna</span>
+            </div>
+            <h3 class="event-card__title" id="card-remesla">Zaži remeslá v uliciach</h3>
+            <p class="event-card__desc">Remeselníci z celého Slovenska ponúkajú koše, dosky, kožené výrobky, šperky, oleje a zaváraniny. Tvorivý trh v Kreatívnom centre So–Ne.</p>
+            <a href="podujatia-remesla.html" class="event-card__link">Zistiť viac →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- === PARTNERI === -->
+  <section class="section section--alt" aria-labelledby="partneri-heading">
+    <div class="container">
+      <div class="section__header">
+        <div>
+          <span class="section-label">Ďakujeme</span>
+          <h2 class="section__title" id="partneri-heading">Partneri jarmoku</h2>
+        </div>
+        <a href="partneri.html" class="section__link">Všetci partneri →</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--sp-4);justify-content:center;align-items:center">
+        <img src="https://via.placeholder.com/180x60/0083B7/ffffff?text=Trnava+Region" alt="Trnava Region" style="border-radius:var(--radius);border:1px solid var(--border);padding:8px 16px;background:white;height:60px;object-fit:contain">
+        <img src="https://via.placeholder.com/160x60/243E8F/ffffff?text=Trnavska+voda" alt="Trnavská voda" style="border-radius:var(--radius);border:1px solid var(--border);padding:8px 16px;background:white;height:60px;object-fit:contain">
+        <img src="https://via.placeholder.com/140x60/99248F/ffffff?text=Nadacia+SPP" alt="Nadácia SPP" style="border-radius:var(--radius);border:1px solid var(--border);padding:8px 16px;background:white;height:60px;object-fit:contain">
+        <img src="https://via.placeholder.com/140x60/02AFEF/ffffff?text=Radio+EXPRES" alt="Rádio EXPRES" style="border-radius:var(--radius);border:1px solid var(--border);padding:8px 16px;background:white;height:60px;object-fit:contain">
+        <img src="https://via.placeholder.com/160x60/0083B7/ffffff?text=Mesto+Trnava" alt="Mesto Trnava" style="border-radius:var(--radius);border:1px solid var(--border);padding:8px 16px;background:white;height:60px;object-fit:contain">
+        <img src="https://via.placeholder.com/120x60/1a1a2e/ffffff?text=SME" alt="SME" style="border-radius:var(--radius);border:1px solid var(--border);padding:8px 16px;background:white;height:60px;object-fit:contain">
+      </div>
+      <p style="text-align:center;margin-top:var(--sp-6)">
+        <a href="partneri.html" class="btn btn--ghost">Staňte sa partnerom jarmoku →</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo" aria-label="Trnavský jarmok">
+          <div class="footer-logo__mark" aria-hidden="true">TJ</div>
+          <span class="footer-logo__name">Trnavský jarmok</span>
+        </a>
+        <p class="footer-tagline">Tradičný mestský jarmok v Trnave.<br>11. – 14. septembra 2026.</p>
+        <p class="footer-org">Organizátor: Mesto Trnava<br>Hlavná 1, 917 01 Trnava</p>
+        <div class="footer-social" aria-label="Sociálne siete">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-col__title">Navigácia</h3>
+        <nav class="footer-nav" aria-label="Navigácia v päte">
+          <a href="flesky.html">Flešky a novinky</a>
+          <a href="program.html">Program</a>
+          <a href="podujatia.html">Jarmočné podujatia</a>
+          <a href="mapa.html">Mapa</a>
+          <a href="prakticke-info.html">Praktické info</a>
+          <a href="partneri.html">Partneri</a>
+          <a href="predajcovia.html">Zóna predajcov</a>
+          <a href="press.html">Pre médiá</a>
+        </nav>
+      </div>
+      <div>
+        <h3 class="footer-col__title">Kontakt</h3>
+        <address class="footer-contact" style="font-style:normal">
+          <div class="footer-contact__item">
+            <span class="footer-contact__icon">📧</span>
+            <a href="mailto:jarmok@trnava.sk">jarmok@trnava.sk</a>
+          </div>
+          <div class="footer-contact__item">
+            <span class="footer-contact__icon">📞</span>
+            <a href="tel:+421336001111">+421 33 600 1111</a>
+          </div>
+          <div class="footer-contact__item">
+            <span class="footer-contact__icon">📍</span>
+            <span>Hlavná 1, 917 01 Trnava</span>
+          </div>
+        </address>
+      </div>
+      <div>
+        <h3 class="footer-col__title">Generálny partner</h3>
+        <div class="footer-partners-strip">
+          <span class="footer-partner-logo">Trnava Region</span>
+          <span class="footer-partner-logo">Trnavská voda</span>
+          <span class="footer-partner-logo">Nadácia SPP</span>
+        </div>
+        <h3 class="footer-col__title" style="margin-top:var(--sp-5)">Mediálni partneri</h3>
+        <div class="footer-partners-strip">
+          <span class="footer-partner-logo">Rádio EXPRES</span>
+          <span class="footer-partner-logo">SME</span>
+          <span class="footer-partner-logo">RTVS</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-bottom__copy">© 2026 Mesto Trnava. Všetky práva vyhradené.</span>
+      <div class="footer-bottom__links">
+        <a href="#">Ochrana súkromia</a>
+        <a href="#">Cookies</a>
+        <a href="press.html">Pre médiá</a>
+        <a href="maintenance.html">Maintenance</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-label="Nastavenia cookies" aria-live="polite">
+  <p class="cookie-banner__text">
+    Táto stránka používa cookies na zlepšenie vášho zážitku.
+    <a href="#">Zistiť viac</a>
+  </p>
+  <div class="cookie-banner__actions">
+    <button id="cookie-accept-all" class="btn btn--yellow btn--sm">Prijať všetky</button>
+    <button id="cookie-settings" class="btn btn--ghost-white btn--sm">Nastavenia</button>
+    <button id="cookie-close" class="btn btn--ghost-white btn--sm" aria-label="Zatvoriť">✕</button>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-label="Fotografia">
+  <img id="lightbox-img" class="lightbox__img" src="" alt="">
+  <button id="lightbox-close" class="lightbox__close" aria-label="Zatvoriť">✕</button>
+</div>
+
+<script src="assets/js/core.js"></script>
+</body>
+</html>

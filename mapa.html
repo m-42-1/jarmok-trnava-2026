@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa jarmoku | Trnavský jarmok 2026</title>
+  <meta name="description" content="Mapa Trnavského jarmoku 2026 – nájdite všetky zóny, pódiá a atrakcie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <style>
+    .map-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, #1a2a6e 100%);
+      padding: var(--sp-16) 0 var(--sp-10);
+      text-align: center;
+      color: var(--white);
+    }
+    .map-hero__title { font-family: var(--font-display); font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; margin-bottom: var(--sp-3); }
+    .map-hero__sub { font-size: var(--text-lg); opacity: 0.8; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+    /* Map placeholder */
+    .map-frame {
+      position: relative;
+      background: #e8f4f8;
+      border-radius: var(--radius-xl);
+      border: 3px solid var(--yellow);
+      overflow: hidden;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+    .map-frame__img {
+      width: 100%; flex: 1;
+      object-fit: cover;
+      display: block;
+      min-height: 500px;
+    }
+    .map-frame__overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,131,183,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-placeholder-badge {
+      background: rgba(255,255,255,0.95);
+      border: 2px solid var(--blue);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-4) var(--sp-6);
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .map-placeholder-badge__icon { font-size: 2.5rem; display: block; margin-bottom: var(--sp-2); }
+    .map-placeholder-badge__text { font-weight: 700; color: var(--blue); font-family: var(--font-display); }
+    .map-placeholder-badge__sub { font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--sp-1); }
+
+    /* Legend */
+    .map-legend {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--sp-4);
+      margin-top: var(--sp-8);
+    }
+    .legend-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-4);
+      padding: var(--sp-4);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      border-left: 4px solid var(--item-color, var(--blue));
+    }
+    .legend-item__dot {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--item-color, var(--blue));
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1rem;
+    }
+    .legend-item__title { font-weight: 700; color: var(--text); font-size: var(--text-sm); margin-bottom: 2px; }
+    .legend-item__loc { font-size: var(--text-xs); color: var(--text-muted); }
+    .legend-item__hours { font-size: var(--text-xs); color: var(--text-muted); margin-top: 2px; }
+
+    /* Zones info */
+    .zones-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); margin-top: var(--sp-8); }
+    @media (max-width: 768px) { .zones-grid { grid-template-columns: 1fr; } }
+    .zone-card { padding: var(--sp-6); border-radius: var(--radius-xl); border-left: 5px solid var(--zone-color, var(--blue)); background: var(--white); box-shadow: var(--shadow-sm); }
+    .zone-card__title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; color: var(--text); margin-bottom: var(--sp-2); }
+    .zone-card__address { font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--sp-3); display: flex; align-items: center; gap: var(--sp-2); }
+    .zone-card__desc { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.6; }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Preskočiť na obsah</a>
+<div class="alert-bar" id="alert-bar" hidden data-alert-active="false" data-alert-text="">
+  <div class="container"><span class="alert-bar__text"></span><button class="alert-bar__close" id="alert-bar-close" aria-label="Zatvoriť upozornenie">✕</button></div>
+</div>
+<main id="main-content">
+  <section class="map-hero">
+    <div class="container">
+      <p class="section-label" style="color:rgba(255,255,255,0.7);margin-bottom:var(--sp-3);">Trnavský jarmok 2026</p>
+      <h1 class="map-hero__title">Nájdite sa na jarmoku</h1>
+      <p class="map-hero__sub">Mapa jarmoku vám uľahčí pohyb po meste. V Sade Antona Bernolaka ožije stredovek, na Trojičnom námestí zaznie hudba a v celom centre uvidíte históriu aj modernú zábavu.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-- Map -->
+      <div class="map-frame fade-in">
+        <img src="https://picsum.photos/1200/600?random=70" alt="Mapa Trnavského jarmoku" class="map-frame__img">
+        <div class="map-frame__overlay">
+          <div class="map-placeholder-badge">
+            <span class="map-placeholder-badge__icon">🗺️</span>
+            <div class="map-placeholder-badge__text">Mapa Trnavského jarmoku</div>
+            <div class="map-placeholder-badge__sub">Detailná mapa bude dostupná pred otvorením</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <h2 class="section__title" style="margin-top:var(--sp-10);">Legenda</h2>
+      <div class="map-legend fade-in">
+        <div class="legend-item" style="--item-color: #99248F;">
+          <div class="legend-item__dot">🏰</div>
+          <div>
+            <div class="legend-item__title">Stredoveká zóna</div>
+            <div class="legend-item__loc">Sad Antona Bernolaka</div>
+            <div class="legend-item__hours">Sob–Ned 10:00–20:00</div>
+          </div>
+        </div>
+        <div class="legend-item" style="--item-color: #02AFEF;">
+          <div class="legend-item__dot">🎵</div>
+          <div>
+            <div class="legend-item__title">Hlavné pódium</div>
+            <div class="legend-item__loc">Trojičné námestie</div>
+            <div class="legend-item__hours">Denne 14:30–22:00</div>
+          </div>
+        </div>
+        <div class="legend-item" style="--item-color: #243E8F;">
+          <div class="legend-item__dot">🎻</div>
+          <div>
+            <div class="legend-item__title">Ľudová veselica</div>
+            <div class="legend-item__loc">Námestie SNP</div>
+            <div class="legend-item__hours">Pia–Ned 14:00–22:00</div>
+          </div>
+        </div>
+        <div class="legend-item" style="--item-color: #ED028D;">
+          <div class="legend-item__dot">🧚</div>
+          <div>
+            <div class="legend-item__title">Rozprávkový svet</div>
+            <div class="legend-item__loc">Ružový park</div>
+            <div class="legend-item__hours">Denne 10:00–18:00</div>
+          </div>
+        </div>
+        <div class="legend-item" style="--item-color: #0083B7;">
+          <div class="legend-item__dot">🏺</div>
+          <div>
+            <div class="legend-item__title">Remeselný trh</div>
+            <div class="legend-item__loc">Pešia zóna, Hviezdoslavova</div>
+            <div class="legend-item__hours">Štv–Ned 9:00–20:00</div>
+          </div>
+        </div>
+        <div class="legend-item" style="--item-color: #5EB5D7;">
+          <div class="legend-item__dot">🎡</div>
+          <div>
+            <div class="legend-item__title">Kolotoče</div>
+            <div class="legend-item__loc">Centrum mesta</div>
+            <div class="legend-item__hours">Denne 10:00–22:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zone descriptions -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Zóny jarmoku</h2>
+      </div>
+      <div class="zones-grid fade-in">
+        <div class="zone-card" style="--zone-color: #99248F;">
+          <h3 class="zone-card__title">🏰 Stredoveká promenáda</h3>
+          <div class="zone-card__address"><span>📍</span> Sad Antona Bernolaka</div>
+          <p class="zone-card__desc">Historický park vedľa Divadla Jána Palárika sa premení na stredoveký tábor. Vstup cez Bernolákovu bránu alebo z Kapitulskej ulice. Dve stovky akteárov v dobových kostýmoch oživia históriu mesta.</p>
+        </div>
+        <div class="zone-card" style="--zone-color: #02AFEF;">
+          <h3 class="zone-card__title">🎵 Trojičné námestie</h3>
+          <div class="zone-card__address"><span>📍</span> Trojičné nám., Trnava</div>
+          <p class="zone-card__desc">Najväčšia a najživšia časť jarmoku. Dominantou je Stĺp Najsvätejšej Trojice – kultúrna pamiatka UNESCO. Veľké pódium, gastrozóna, výstava a promenáda.</p>
+        </div>
+        <div class="zone-card" style="--zone-color: #243E8F;">
+          <h3 class="zone-card__title">🎻 Ľudová veselica</h3>
+          <div class="zone-card__address"><span>📍</span> Námestie SNP</div>
+          <p class="zone-card__desc">Námestie SNP – tradičné centrum trnavského obchodu – sa pri jarmoku stáva pódiom folklórnych súborov a ľudových kapiel. Tancovačky do noci, autentická atmosféra.</p>
+        </div>
+        <div class="zone-card" style="--zone-color: #ED028D;">
+          <h3 class="zone-card__title">🧚 Rozprávkový svet</h3>
+          <div class="zone-card__address"><span>📍</span> Ružový park</div>
+          <p class="zone-card__desc">Prekrásny park pri renesančnej fontáne sa premení na kráľovstvo rozprávok. Bezpečná zóna pre rodiny s deťmi, tvorivé dielničky, rozprávkové postavy a zázemie pre najmenších.</p>
+        </div>
+        <div class="zone-card" style="--zone-color: #0083B7;">
+          <h3 class="zone-card__title">🏺 Remeselná ulica</h3>
+          <div class="zone-card__address"><span>📍</span> Hviezdoslavova ul. + Kreatívne centrum</div>
+          <p class="zone-card__desc">Hlavná pešia ulica Trnavy sa stáva výkladnou skriňou tradičných remesiel. Remeselníci predávajú i predvádzajú svoju prácu priamo pred vami. Nájdete tu aj moderný Tvorivý trh.</p>
+        </div>
+        <div class="zone-card" style="--zone-color: #5EB5D7;">
+          <h3 class="zone-card__title">🎡 Zábavná zóna</h3>
+          <div class="zone-card__address"><span>📍</span> Centrum mesta, okolie Radnice</div>
+          <p class="zone-card__desc">Kolotoče, atrakcie a strelnice sú rozmiestnené po celom centre. Veľké koleso pri Radnici ponúka najkrajší výhľad na mesto a okolie. Otvorené denne do 22:00.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practical info strip -->
+  <section class="section">
+    <div class="container">
+      <div style="background:linear-gradient(135deg,var(--blue),#162040);color:var(--white);border-radius:var(--radius-xl);padding:var(--sp-8) var(--sp-10);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-6);" class="fade-in">
+        <div>
+          <h3 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--sp-2);">Príďte bez auta</h3>
+          <p style="opacity:0.8;font-size:var(--text-sm);">Centrum je uzavreté. Odporúčame MHD alebo parkoviská pri okraji centra.</p>
+        </div>
+        <a href="prakticke-info.html" class="btn btn--yellow">Praktické info & parkovanie</a>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="assets/js/header-footer.js"></script>
+<script src="assets/js/core.js"></script>
+</body>
+</html>

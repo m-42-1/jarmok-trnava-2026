@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press | Trnavský jarmok 2026</title>
+  <meta name="description" content="Tlačová sekcia Trnavského jarmoku 2026 – logá, tlačové fotografie, kontakt pre médiá.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <style>
+    .press-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, #2d3748 100%);
+      padding: var(--sp-14) 0 var(--sp-10);
+      text-align: center;
+      color: var(--white);
+    }
+    .press-hero__title { font-family: var(--font-display); font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; margin-bottom: var(--sp-3); }
+    .press-hero__sub { font-size: var(--text-lg); opacity: 0.8; }
+
+    /* Logo downloads */
+    .logo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--sp-5); }
+    .logo-download-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      text-align: center;
+    }
+    .logo-download-card__preview {
+      background: var(--surface-alt);
+      padding: var(--sp-8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+    }
+    .logo-download-card__preview--dark { background: var(--dark); }
+    .logo-preview-text {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .logo-preview-text--light { color: var(--dark); }
+    .logo-preview-text--dark { color: var(--white); }
+    .logo-preview-text__accent { color: var(--yellow); }
+    .logo-download-card__info { padding: var(--sp-4); }
+    .logo-download-card__name { font-weight: 700; font-size: var(--text-sm); margin-bottom: var(--sp-1); }
+    .logo-download-card__meta { font-size: var(--text-xs); color: var(--text-muted); margin-bottom: var(--sp-3); }
+    .logo-download-card__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-1);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      padding: var(--sp-2) var(--sp-4);
+      border: 1px solid var(--blue);
+      border-radius: var(--radius-full);
+      transition: all var(--transition);
+    }
+    .logo-download-card__btn:hover { background: var(--blue); color: var(--white); }
+
+    /* Photo grid */
+    .photo-filter { display: flex; gap: var(--sp-3); flex-wrap: wrap; margin-bottom: var(--sp-6); }
+    .photo-filter-btn {
+      padding: var(--sp-2) var(--sp-4);
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      color: var(--text-muted);
+    }
+    .photo-filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .photo-filter-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--sp-4); }
+    .press-photo-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .press-photo-card__img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+    .press-photo-card__body { padding: var(--sp-3) var(--sp-4); display: flex; align-items: center; justify-content: space-between; }
+    .press-photo-card__title { font-size: var(--text-sm); font-weight: 600; color: var(--text); }
+    .press-photo-card__dl { font-size: var(--text-xs); color: var(--blue); font-weight: 600; text-decoration: none; }
+
+    /* Contact */
+    .press-contact {
+      background: linear-gradient(135deg, var(--blue), #162040);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-10);
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--sp-8);
+      align-items: center;
+    }
+    @media (max-width: 640px) { .press-contact { grid-template-columns: 1fr; } }
+    .press-contact__title { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; margin-bottom: var(--sp-2); }
+    .press-contact__person { font-size: var(--text-base); opacity: 0.9; margin-bottom: var(--sp-1); }
+    .press-contact__email { font-size: var(--text-base); opacity: 0.9; }
+    .press-contact__phone { font-size: var(--text-base); opacity: 0.9; margin-top: var(--sp-1); }
+    .press-contact__accred { font-size: var(--text-sm); opacity: 0.7; margin-top: var(--sp-4); }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Preskočiť na obsah</a>
+<div class="alert-bar" id="alert-bar" hidden data-alert-active="false" data-alert-text="">
+  <div class="container"><span class="alert-bar__text"></span><button class="alert-bar__close" id="alert-bar-close" aria-label="Zatvoriť upozornenie">✕</button></div>
+</div>
+<main id="main-content">
+  <section class="press-hero">
+    <div class="container">
+      <p class="section-label" style="color:rgba(255,255,255,0.7);margin-bottom:var(--sp-3);">Pre médiá</p>
+      <h1 class="press-hero__title">Tlačová sekcia</h1>
+      <p class="press-hero__sub">Logá, vizuály a tlačové fotografie na stiahnutie</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Logo downloads -->
+      <div class="section__header">
+        <h2 class="section__title">Logá na stiahnutie</h2>
+      </div>
+      <p style="color:var(--text-muted);margin-bottom:var(--sp-6);">Prosíme používajte logá výlučne v súlade s grafickým manuálom. Logá nesmú byť upravované, deformované ani farebne zmenené.</p>
+      <div class="logo-grid fade-in">
+        <div class="logo-download-card">
+          <div class="logo-download-card__preview">
+            <div class="logo-preview-text logo-preview-text--light">
+              <span style="color:var(--blue);">T</span>rnavský<br>
+              <span class="logo-preview-text__accent">Jarmok</span> 2026
+            </div>
+          </div>
+          <div class="logo-download-card__info">
+            <div class="logo-download-card__name">Logo – farebné (svetlé pozadie)</div>
+            <div class="logo-download-card__meta">SVG + PNG 2× · RGB</div>
+            <a href="#" class="logo-download-card__btn" onclick="return false;">⬇ Stiahnuť</a>
+          </div>
+        </div>
+        <div class="logo-download-card">
+          <div class="logo-download-card__preview logo-download-card__preview--dark">
+            <div class="logo-preview-text logo-preview-text--dark">
+              <span style="color:var(--yellow);">T</span>rnavský<br>
+              <span style="color:var(--yellow);">Jarmok</span> 2026
+            </div>
+          </div>
+          <div class="logo-download-card__info">
+            <div class="logo-download-card__name">Logo – biele (tmavé pozadie)</div>
+            <div class="logo-download-card__meta">SVG + PNG 2× · RGB</div>
+            <a href="#" class="logo-download-card__btn" onclick="return false;">⬇ Stiahnuť</a>
+          </div>
+        </div>
+        <div class="logo-download-card">
+          <div class="logo-download-card__preview">
+            <div style="font-family:var(--font-display);font-weight:900;color:var(--dark);font-size:1.4rem;">TJ26</div>
+          </div>
+          <div class="logo-download-card__info">
+            <div class="logo-download-card__name">Monogram / skratka</div>
+            <div class="logo-download-card__meta">SVG + PNG · pre malé formáty</div>
+            <a href="#" class="logo-download-card__btn" onclick="return false;">⬇ Stiahnuť</a>
+          </div>
+        </div>
+        <div class="logo-download-card">
+          <div class="logo-download-card__preview" style="background:#ccc;">
+            <div style="font-family:var(--font-display);font-weight:900;color:#333;font-size:1rem;">TJ 2026</div>
+          </div>
+          <div class="logo-download-card__info">
+            <div class="logo-download-card__name">Logo – čiernobiele</div>
+            <div class="logo-download-card__meta">SVG + EPS · pre tlač</div>
+            <a href="#" class="logo-download-card__btn" onclick="return false;">⬇ Stiahnuť</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo grid -->
+      <div class="section__header" style="margin-top:var(--sp-12);">
+        <h2 class="section__title">Tlačové fotografie</h2>
+      </div>
+      <p style="color:var(--text-muted);margin-bottom:var(--sp-6);">Fotografie sú k dispozícii na edičné a mediálne použitie s povinným uvedením © Trnavský jarmok 2026. Komerčné použitie vyžaduje samostatný súhlas.</p>
+      <div class="photo-filter fade-in">
+        <button class="photo-filter-btn active" data-cat="all">Všetky</button>
+        <button class="photo-filter-btn" data-cat="stredovek">Stredovek</button>
+        <button class="photo-filter-btn" data-cat="trojicka">Trojičné</button>
+        <button class="photo-filter-btn" data-cat="veselica">Veselica</button>
+        <button class="photo-filter-btn" data-cat="mesto">Mesto</button>
+      </div>
+      <div class="photo-grid fade-in" id="photo-grid">
+        <div class="press-photo-card" data-cat="stredovek">
+          <img src="https://picsum.photos/600/400?random=80" alt="Šermiari Gladius" class="press-photo-card__img" loading="lazy">
+          <div class="press-photo-card__body">
+            <span class="press-photo-card__title">Šermiari Gladius – vystúpenie</span>
+            <a href="#" class="press-photo-card__dl" onclick="return false;">⬇ 4K</a>
+          </div>
+        </div>
+        <div class="press-photo-card" data-cat="stredovek">
+          <img src="https://picsum.photos/600/400?random=81" alt="Fakľový sprievod" class="press-photo-card__img" loading="lazy">
+          <div class="press-photo-card__body">
+            <span class="press-photo-card__title">Fakľový sprievod k Severnej veži</span>
+            <a href="#" class="press-photo-card__dl" onclick="return false;">⬇ 4K</a>
+          </div>
+        </div>
+        <div class="press-photo-card" data-cat="trojicka">
+          <img src="https://picsum.photos/600/400?random=82" alt="Hlavné pódium" class="press-photo-card__img" loading="lazy">
+          <div class="press-photo-card__body">
+            <span class="press-photo-card__title">Hlavné pódium – Trojičné námestie</span>
+            <a href="#" class="press-photo-card__dl" onclick="return false;">⬇ 4K</a>
+          </div>
+        </div>
+        <div class="press-photo-card" data-cat="veselica">
+          <img src="https://picsum.photos/600/400?random=83" alt="Ľudová veselica" class="press-photo-card__img" loading="lazy">
+          <div class="press-photo-card__body">
+            <span class="press-photo-card__title">Ľudová veselica – tanec a hudba</span>
+            <a href="#" class="press-photo-card__dl" onclick="return false;">⬇ 4K</a>
+          </div>
+        </div>
+        <div class="press-photo-card" data-cat="mesto">
+          <img src="https://picsum.photos/600/400?random=84" alt="Centrum Trnava" class="press-photo-card__img" loading="lazy">
+          <div class="press-photo-card__body">
+            <span class="press-photo-card__title">Centrum Trnavy počas jarmoku</span>
+            <a href="#" class="press-photo-card__dl" onclick="return false;">⬇ 4K</a>
+          </div>
+        </div>
+        <div class="press-photo-card" data-cat="stredovek">
+          <img src="https://picsum.photos/600/400?random=85" alt="Rytiersky turnaj" class="press-photo-card__img" loading="lazy">
+          <div class="press-photo-card__body">
+            <span class="press-photo-card__title">Rytiersky turnaj na koňoch</span>
+            <a href="#" class="press-photo-card__dl" onclick="return false;">⬇ 4K</a>
+          </div>
+        </div>
+        <div class="press-photo-card" data-cat="mesto">
+          <img src="https://picsum.photos/600/400?random=86" alt="Remeselný trh" class="press-photo-card__img" loading="lazy">
+          <div class="press-photo-card__body">
+            <span class="press-photo-card__title">Remeselný trh – Hviezdoslavova</span>
+            <a href="#" class="press-photo-card__dl" onclick="return false;">⬇ 4K</a>
+          </div>
+        </div>
+        <div class="press-photo-card" data-cat="trojicka">
+          <img src="https://picsum.photos/600/400?random=87" alt="Dav na jarmoku" class="press-photo-card__img" loading="lazy">
+          <div class="press-photo-card__body">
+            <span class="press-photo-card__title">Dav návštevníkov – Trojičné nám.</span>
+            <a href="#" class="press-photo-card__dl" onclick="return false;">⬇ 4K</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Media contact -->
+      <div class="section__header" style="margin-top:var(--sp-12);">
+        <h2 class="section__title">Kontakt pre médiá</h2>
+      </div>
+      <div class="press-contact fade-in">
+        <div>
+          <div class="press-contact__title">Tlačový hovorca</div>
+          <div class="press-contact__person">Mgr. Jana Nováková – PR & komunikácia</div>
+          <div class="press-contact__email">📧 press@jarmok.trnava.sk</div>
+          <div class="press-contact__phone">📞 +421 33 000 0001 (pracovné dni 9:00–17:00)</div>
+          <div class="press-contact__accred">Akreditácia pre fotografov a televízne štáby: vyplňte formulár a zašlite na press@jarmok.trnava.sk najneskôr 7 dní pred podujatím. Akreditačné karty vydávame osobne pri vstupe.</div>
+        </div>
+        <div>
+          <a href="mailto:press@jarmok.trnava.sk" class="btn btn--yellow btn--lg">Kontaktovať</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="assets/js/header-footer.js"></script>
+<script src="assets/js/core.js"></script>
+<script>
+  // Photo filter
+  (function() {
+    const btns = document.querySelectorAll('.photo-filter-btn');
+    const cards = document.querySelectorAll('.press-photo-card');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.dataset.cat;
+        cards.forEach(card => {
+          card.hidden = cat !== 'all' && card.dataset.cat !== cat;
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>

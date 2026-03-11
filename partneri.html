@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partneri | Trnavský jarmok 2026</title>
+  <meta name="description" content="Partneri a sponzori Trnavského jarmoku 2026. Staňte sa partnerom podujatia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <style>
+    .partners-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 100%);
+      padding: var(--sp-14) 0 var(--sp-10);
+      text-align: center;
+      color: var(--white);
+    }
+    .partners-hero__title { font-family: var(--font-display); font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; margin-bottom: var(--sp-3); }
+    .partners-hero__sub { font-size: var(--text-lg); opacity: 0.8; }
+
+    /* Pending state */
+    .become-partner {
+      background: linear-gradient(135deg, #162040 0%, var(--blue) 100%);
+      border-radius: var(--radius-2xl);
+      padding: var(--sp-16) var(--sp-10);
+      text-align: center;
+      color: var(--white);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .become-partner__icon { font-size: 4rem; margin-bottom: var(--sp-6); }
+    .become-partner__title { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 900; margin-bottom: var(--sp-4); }
+    .become-partner__text { font-size: var(--text-lg); opacity: 0.85; line-height: 1.7; margin-bottom: var(--sp-8); }
+    .partner-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); text-align: left; margin-bottom: var(--sp-8); }
+    @media (max-width: 500px) { .partner-benefits { grid-template-columns: 1fr; } }
+    .benefit-item {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-4);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-3);
+    }
+    .benefit-item__icon { font-size: 1.5rem; flex-shrink: 0; }
+    .benefit-item__text { font-size: var(--text-sm); opacity: 0.9; }
+    .contact-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-6);
+      flex-wrap: wrap;
+      padding: var(--sp-6);
+      background: rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-sm);
+      opacity: 0.85;
+    }
+
+    /* Active state */
+    .partner-section { margin-bottom: var(--sp-12); }
+    .partner-section__title {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--sp-6);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .partner-section__title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .partner-logo-grid { display: flex; flex-wrap: wrap; gap: var(--sp-4); }
+    .partner-logo-btn {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-4) var(--sp-6);
+      cursor: pointer;
+      transition: all var(--transition);
+      min-width: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-2);
+    }
+    .partner-logo-btn:hover { border-color: var(--blue); box-shadow: var(--shadow-md); }
+    .partner-logo-btn.active { border-color: var(--blue); background: #f0f8ff; }
+    .partner-logo-btn img { height: 48px; object-fit: contain; width: auto; max-width: 140px; }
+    .partner-logo-btn__name { font-size: var(--text-xs); color: var(--text-muted); font-weight: 600; }
+    .partner-info-panel {
+      background: #f0f8ff;
+      border: 1px solid var(--blue);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      margin-top: var(--sp-4);
+      display: none;
+      animation: fadeIn 0.2s ease;
+    }
+    .partner-info-panel.visible { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+    .partner-info-panel__title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--sp-2); }
+    .partner-info-panel__text { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.7; }
+    .partner-info-panel__close { float: right; background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 1.2rem; }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Preskočiť na obsah</a>
+<div class="alert-bar" id="alert-bar" hidden data-alert-active="false" data-alert-text="">
+  <div class="container"><span class="alert-bar__text"></span><button class="alert-bar__close" id="alert-bar-close" aria-label="Zatvoriť upozornenie">✕</button></div>
+</div>
+<main id="main-content">
+  <section class="partners-hero">
+    <div class="container">
+      <p class="section-label" style="color:rgba(255,255,255,0.7);margin-bottom:var(--sp-3);">Trnavský jarmok 2026</p>
+      <h1 class="partners-hero__title">Partneri</h1>
+      <p class="partners-hero__sub">Ďakujeme všetkým partnerom, ktorí pomáhajú realizovať tento výnimočný festival</p>
+    </div>
+  </section>
+
+  <!-- ACTIVE STATE: data-state="active" -->
+  <section class="section" id="partners-content" data-state="active">
+    <div class="container">
+
+      <!-- Generálny partner -->
+      <div class="partner-section fade-in">
+        <div class="partner-section__title">Generálny partner</div>
+        <div class="partner-logo-grid">
+          <button class="partner-logo-btn" data-partner="mesto">
+            <img src="https://via.placeholder.com/160x48/0083B7/ffffff?text=Mesto+Trnava" alt="Mesto Trnava">
+            <span class="partner-logo-btn__name">Mesto Trnava</span>
+          </button>
+        </div>
+        <div class="partner-info-panel" id="info-mesto">
+          <button class="partner-info-panel__close" aria-label="Zatvoriť">✕</button>
+          <div class="partner-info-panel__title">Mesto Trnava</div>
+          <p class="partner-info-panel__text">Trnavský jarmok je tradičné podujatie organizované pod záštitou Mesta Trnava. Samospráva zabezpečuje koordináciu s dopravou, bezpečnosť verejného priestoru a infraštruktúru podujatia. Trnava – historické kráľovské mesto s viac ako 760-ročnou tradíciou jarmokov.</p>
+        </div>
+      </div>
+
+      <!-- Hlavní partneri -->
+      <div class="partner-section fade-in">
+        <div class="partner-section__title">Hlavní partneri</div>
+        <div class="partner-logo-grid">
+          <button class="partner-logo-btn" data-partner="ttsk">
+            <img src="https://via.placeholder.com/160x48/243E8F/ffffff?text=TTSK" alt="TTSK">
+            <span class="partner-logo-btn__name">Trnavský samosprávny kraj</span>
+          </button>
+          <button class="partner-logo-btn" data-partner="mincult">
+            <img src="https://via.placeholder.com/160x48/99248F/ffffff?text=MK+SR" alt="Ministerstvo kultúry SR">
+            <span class="partner-logo-btn__name">Ministerstvo kultúry SR</span>
+          </button>
+          <button class="partner-logo-btn" data-partner="vub">
+            <img src="https://via.placeholder.com/160x48/e53e3e/ffffff?text=VÚB+Banka" alt="VÚB Banka">
+            <span class="partner-logo-btn__name">VÚB Banka</span>
+          </button>
+          <button class="partner-logo-btn" data-partner="ssp">
+            <img src="https://via.placeholder.com/160x48/5EB5D7/ffffff?text=SSP" alt="Slovenské sporiteľne">
+            <span class="partner-logo-btn__name">Slovenské sporiteľne</span>
+          </button>
+        </div>
+        <div class="partner-info-panel" id="info-ttsk">
+          <button class="partner-info-panel__close" aria-label="Zatvoriť">✕</button>
+          <div class="partner-info-panel__title">Trnavský samosprávny kraj</div>
+          <p class="partner-info-panel__text">TTSK podporuje kultúrne podujatia v regióne v rámci programu rozvoja kultúry a cestovného ruchu. Spolupráca zahŕňa propagáciu jarmoku na regionálnej úrovni a podporu folklórnych súborov účinkujúcich na jarmoku.</p>
+        </div>
+        <div class="partner-info-panel" id="info-mincult">
+          <button class="partner-info-panel__close" aria-label="Zatvoriť">✕</button>
+          <div class="partner-info-panel__title">Ministerstvo kultúry SR</div>
+          <p class="partner-info-panel__text">Trnavský jarmok je podporený z fondu Ministerstva kultúry SR v rámci programu Kultúra. Podpora umožňuje realizáciu historického programu a vzdelávacích workshopov.</p>
+        </div>
+        <div class="partner-info-panel" id="info-vub">
+          <button class="partner-info-panel__close" aria-label="Zatvoriť">✕</button>
+          <div class="partner-info-panel__title">VÚB Banka</div>
+          <p class="partner-info-panel__text">VÚB Banka je hrdým partnerom kultúrnych podujatí na Slovensku. Na jarmoku nájdete bankomat VÚB priamo v areáli a špeciálne bezplatné platobné terminály na vybraných stánkoch.</p>
+        </div>
+        <div class="partner-info-panel" id="info-ssp">
+          <button class="partner-info-panel__close" aria-label="Zatvoriť">✕</button>
+          <div class="partner-info-panel__title">Slovenské sporiteľne</div>
+          <p class="partner-info-panel__text">Slovenské sporiteľne podporujú lokálnu kultúru a komunitné podujatia. Spolupráca s jarmočnými predajcami zahŕňa bezplatné platobné riešenia pre malých remeselníkov.</p>
+        </div>
+      </div>
+
+      <!-- Mediálni partneri -->
+      <div class="partner-section fade-in">
+        <div class="partner-section__title">Mediálni partneri</div>
+        <div class="partner-logo-grid">
+          <button class="partner-logo-btn" data-partner="rtvs">
+            <img src="https://via.placeholder.com/160x48/38a169/ffffff?text=RTVS" alt="RTVS">
+            <span class="partner-logo-btn__name">RTVS / Rádio Slovensko</span>
+          </button>
+          <button class="partner-logo-btn" data-partner="my">
+            <img src="https://via.placeholder.com/160x48/805ad5/ffffff?text=MY+Trnava" alt="MY Trnava">
+            <span class="partner-logo-btn__name">MY Trnava (MY Noviny)</span>
+          </button>
+          <button class="partner-logo-btn" data-partner="rt">
+            <img src="https://via.placeholder.com/160x48/e53e3e/ffffff?text=RT" alt="Regionálna televízia">
+            <span class="partner-logo-btn__name">Trnavská regionálna TV</span>
+          </button>
+        </div>
+        <div class="partner-info-panel" id="info-rtvs">
+          <button class="partner-info-panel__close" aria-label="Zatvoriť">✕</button>
+          <div class="partner-info-panel__title">RTVS – Rádio Slovensko</div>
+          <p class="partner-info-panel__text">Rádio Slovensko bude priamo vysielať z Trnavského jarmoku. Sobotný a nedeľný program zahŕňa priame prenosy z pódiových vystúpení a rozhovory s účinkujúcimi.</p>
+        </div>
+        <div class="partner-info-panel" id="info-my">
+          <button class="partner-info-panel__close" aria-label="Zatvoriť">✕</button>
+          <div class="partner-info-panel__title">MY Trnava</div>
+          <p class="partner-info-panel__text">Regionálny denník MY Trnava prináša správy z príprav jarmoku a počas podujatia bude denne informovať o programových zmenách a špeciálnych momentoch.</p>
+        </div>
+        <div class="partner-info-panel" id="info-rt">
+          <button class="partner-info-panel__close" aria-label="Zatvoriť">✕</button>
+          <div class="partner-info-panel__title">Trnavská regionálna TV</div>
+          <p class="partner-info-panel__text">Trnavská TV natočí dokumentárny záber z celého jarmoku. Záznam bude dostupný na ich YouTube kanáli a odvysiela sa v regionálnom programe.</p>
+        </div>
+      </div>
+
+      <!-- Staň sa partnerom CTA -->
+      <div style="background:linear-gradient(135deg,var(--blue),#162040);border-radius:var(--radius-xl);padding:var(--sp-10);color:var(--white);text-align:center;margin-top:var(--sp-10);" class="fade-in">
+        <h2 style="font-family:var(--font-display);font-size:var(--text-2xl);margin-bottom:var(--sp-3);">Zaujíma vás partnerstvo?</h2>
+        <p style="opacity:0.85;margin-bottom:var(--sp-6);">Kontaktujte nás a zistite, aké možnosti partnerstva máme k dispozícii pre rok 2026.</p>
+        <a href="mailto:partneri@jarmok.trnava.sk" class="btn btn--yellow">partneri@jarmok.trnava.sk</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PENDING STATE (toggle manually) - hidden by default -->
+  <section class="section" id="pending-state" style="display:none;">
+    <div class="container">
+      <div class="become-partner fade-in">
+        <div class="become-partner__icon">🤝</div>
+        <h2 class="become-partner__title">Staňte sa partnerom jarmoku</h2>
+        <p class="become-partner__text">Trnavský jarmok navštívi viac ako 50 000 návštevníkov počas štyroch dní. Pridajte sa k tým, ktorí stoja za týmto výnimočným podujatím.</p>
+        <div class="partner-benefits">
+          <div class="benefit-item">
+            <span class="benefit-item__icon">🎯</span>
+            <span class="benefit-item__text">Logo na všetkých komunikačných materiáloch</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-item__icon">📺</span>
+            <span class="benefit-item__text">Prezentácia na pódiu a v médiách</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-item__icon">🎟️</span>
+            <span class="benefit-item__text">VIP vstupenky na platené podujatia</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-item__icon">🏷️</span>
+            <span class="benefit-item__text">Vlastný stánok v prémiové zóne</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-item__icon">📱</span>
+            <span class="benefit-item__text">Zmienka v sociálnych sieťach (25 000+ sledovateľov)</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-item__icon">🌐</span>
+            <span class="benefit-item__text">Logo a popis na oficiálnom webe jarmoku</span>
+          </div>
+        </div>
+        <div class="contact-strip">
+          <span>📧 partneri@jarmok.trnava.sk</span>
+          <span>📞 +421 33 000 0000</span>
+        </div>
+        <div style="margin-top:var(--sp-8);">
+          <a href="mailto:partneri@jarmok.trnava.sk" class="btn btn--yellow btn--lg">Mám záujem o partnerstvo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script src="assets/js/header-footer.js"></script>
+<script src="assets/js/core.js"></script>
+<script>
+  // Partner logo accordion
+  (function() {
+    const btns = document.querySelectorAll('.partner-logo-btn');
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const partnerId = btn.dataset.partner;
+        const panel = document.getElementById('info-' + partnerId);
+        if (!panel) return;
+        const isOpen = panel.classList.contains('visible');
+        // Close all
+        document.querySelectorAll('.partner-info-panel').forEach(p => p.classList.remove('visible'));
+        document.querySelectorAll('.partner-logo-btn').forEach(b => b.classList.remove('active'));
+        if (!isOpen) {
+          panel.classList.add('visible');
+          btn.classList.add('active');
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    });
+    // Close buttons
+    document.querySelectorAll('.partner-info-panel__close').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.closest('.partner-info-panel').classList.remove('visible');
+        document.querySelectorAll('.partner-logo-btn').forEach(b => b.classList.remove('active'));
+      });
+    });
+  })();
+</script>
+</body>
+</html>

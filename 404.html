@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stránka nenájdená | Trnavský jarmok 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <style>
+    .error-page {
+      min-height: calc(100vh - var(--header-total) - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--sp-16) var(--sp-6);
+    }
+    .error-page__inner { max-width: 600px; }
+    .error-page__illustration {
+      font-size: 6rem;
+      display: block;
+      margin-bottom: var(--sp-6);
+      animation: wander 3s ease-in-out infinite;
+    }
+    @keyframes wander {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-8px) rotate(-3deg); }
+      75% { transform: translateY(-4px) rotate(3deg); }
+    }
+    .error-page__code {
+      font-family: var(--font-display);
+      font-size: 8rem;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: var(--sp-4);
+      opacity: 0.15;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .error-page__wrap { position: relative; }
+    .error-page__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: var(--sp-4);
+      position: relative;
+      z-index: 1;
+    }
+    .error-page__text {
+      font-size: var(--text-lg);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--sp-8);
+      position: relative;
+      z-index: 1;
+    }
+    .error-page__actions {
+      display: flex;
+      gap: var(--sp-4);
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .error-page__links {
+      margin-top: var(--sp-10);
+      display: flex;
+      gap: var(--sp-6);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .error-page__link { color: var(--text-muted); font-size: var(--text-sm); text-decoration: none; }
+    .error-page__link:hover { color: var(--blue); }
+  </style>
+</head>
+<body>
+<div class="alert-bar" id="alert-bar" hidden data-alert-active="false" data-alert-text="">
+  <div class="container"><span class="alert-bar__text"></span><button class="alert-bar__close" id="alert-bar-close" aria-label="Zatvoriť upozornenie">✕</button></div>
+</div>
+<main>
+  <div class="error-page">
+    <div class="error-page__inner">
+      <span class="error-page__illustration" role="img" aria-label="Pútnik sa stratil">🧭</span>
+      <div class="error-page__wrap">
+        <div class="error-page__code" aria-hidden="true">404</div>
+        <h1 class="error-page__title">Zablúdili ste, pútnik</h1>
+        <p class="error-page__text">
+          Táto stránka neexistuje alebo bola premiestnená.<br>
+          Žiadna panika – ešte sme Trnavu celú neuzavreli.
+        </p>
+        <div class="error-page__actions">
+          <a href="program.html" class="btn btn--primary btn--lg">Späť na program →</a>
+          <a href="index.html" class="btn btn--ghost btn--lg">Domovská stránka</a>
+        </div>
+      </div>
+      <div class="error-page__links">
+        <a href="podujatia.html" class="error-page__link">Podujatia</a>
+        <a href="mapa.html" class="error-page__link">Mapa</a>
+        <a href="prakticke-info.html" class="error-page__link">Praktické info</a>
+        <a href="flesky.html" class="error-page__link">Flešky</a>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="assets/js/header-footer.js"></script>
+<script src="assets/js/core.js"></script>
+</body>
+</html>

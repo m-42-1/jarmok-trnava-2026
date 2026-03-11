@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praktické informácie | Trnavský jarmok 2026</title>
+  <meta name="description" content="Parkovanie, vjazdy, FAQ a gastro informácie pre návštevníkov Trnavského jarmoku 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <style>
+    .info-hero {
+      background: linear-gradient(135deg, var(--blue) 0%, #162040 100%);
+      padding: var(--sp-14) 0 var(--sp-10);
+      text-align: center;
+      color: var(--white);
+    }
+    .info-hero__title { font-family: var(--font-display); font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; margin-bottom: var(--sp-3); }
+    .info-hero__sub { font-size: var(--text-lg); opacity: 0.8; }
+
+    /* Info cards */
+    .info-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: var(--sp-8);
+    }
+    .info-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      padding: var(--sp-6);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-alt);
+    }
+    .info-card__icon { font-size: 2.5rem; flex-shrink: 0; }
+    .info-card__title { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 700; color: var(--text); }
+    .info-card__body { padding: var(--sp-6); }
+
+    /* Parking */
+    .parking-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--sp-4); }
+    .parking-spot {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-4);
+      border-top: 3px solid var(--blue);
+    }
+    .parking-spot__name { font-weight: 700; color: var(--text); margin-bottom: var(--sp-1); }
+    .parking-spot__dist { font-size: var(--text-sm); color: var(--blue); font-weight: 600; margin-bottom: var(--sp-2); }
+    .parking-spot__info { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.5; }
+    .parking-spot__price { display: inline-block; background: #dcfce7; color: #166534; font-size: var(--text-xs); font-weight: 700; padding: 2px 10px; border-radius: var(--radius-full); margin-top: var(--sp-2); }
+
+    /* Road closures */
+    .closure-table { width: 100%; border-collapse: collapse; }
+    .closure-table th { background: var(--blue); color: var(--white); padding: var(--sp-3) var(--sp-4); text-align: left; font-size: var(--text-sm); font-weight: 600; }
+    .closure-table td { padding: var(--sp-3) var(--sp-4); font-size: var(--text-sm); border-bottom: 1px solid var(--border); color: var(--text-muted); }
+    .closure-table tr:nth-child(even) td { background: var(--surface-alt); }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--sp-5) 0;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text);
+      gap: var(--sp-4);
+      font-size: var(--text-base);
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+    .faq-question__icon {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: transform var(--transition);
+    }
+    .faq-question[aria-expanded="true"] .faq-question__icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .faq-answer.open { max-height: 400px; padding-bottom: var(--sp-5); }
+
+    /* Gastro */
+    .gastro-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--sp-4); }
+    .gastro-item {
+      background: var(--surface-alt);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-4);
+      text-align: center;
+    }
+    .gastro-item__emoji { font-size: 2rem; display: block; margin-bottom: var(--sp-2); }
+    .gastro-item__name { font-weight: 600; font-size: var(--text-sm); color: var(--text); margin-bottom: var(--sp-1); }
+    .gastro-item__note { font-size: var(--text-xs); color: var(--text-muted); }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Preskočiť na obsah</a>
+<div class="alert-bar" id="alert-bar" hidden data-alert-active="false" data-alert-text="">
+  <div class="container"><span class="alert-bar__text"></span><button class="alert-bar__close" id="alert-bar-close" aria-label="Zatvoriť upozornenie">✕</button></div>
+</div>
+<main id="main-content">
+  <section class="info-hero">
+    <div class="container">
+      <p class="section-label" style="color:rgba(255,255,255,0.7);margin-bottom:var(--sp-3);">Trnavský jarmok 2026</p>
+      <h1 class="info-hero__title">Praktické informácie</h1>
+      <p class="info-hero__sub">Všetko, čo potrebujete vedieť pred návštevou jarmoku</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- Parkovanie -->
+      <div class="info-card fade-in" id="parkovanie">
+        <div class="info-card__header">
+          <span class="info-card__icon">🅿️</span>
+          <h2 class="info-card__title">Parkovanie</h2>
+        </div>
+        <div class="info-card__body">
+          <p style="color:var(--text-muted);margin-bottom:var(--sp-6);">Centrum Trnavy je počas jarmoku uzavreté pre motorovú dopravu. Odporúčame využiť záchytné parkoviská a do centra prísť pešo alebo MHD.</p>
+          <div class="parking-grid">
+            <div class="parking-spot">
+              <div class="parking-spot__name">Parkovisko Spartakovská</div>
+              <div class="parking-spot__dist">10 min pešo od centra</div>
+              <div class="parking-spot__info">Kapacita 400 miest. Otvorené 24/7. Odporúčame ako prvú voľbu – ľahký prístup z diaľnice R1.</div>
+              <span class="parking-spot__price">Zľavnené pre návštevníkov jarmoku</span>
+            </div>
+            <div class="parking-spot">
+              <div class="parking-spot__name">OC Max – parkovisko</div>
+              <div class="parking-spot__dist">12 min pešo / 2 min MHD</div>
+              <div class="parking-spot__info">Krytá garáž s 600 miestami. Vstup z Cukrárensky ulice. So vstupenkou do OC parkovanie zadarmo 3 hodiny.</div>
+              <span class="parking-spot__price">Prvé 2h zadarmo</span>
+            </div>
+            <div class="parking-spot">
+              <div class="parking-spot__name">Zelený kríž</div>
+              <div class="parking-spot__dist">8 min pešo</div>
+              <div class="parking-spot__info">Parkovisko pri nemocnici. Smer z Nitrianskeho mostu. Ideálne pre návštevníkov z diaľnice D1.</div>
+              <span class="parking-spot__price">Platené, bežné sadzby</span>
+            </div>
+            <div class="parking-spot">
+              <div class="parking-spot__name">Autobus MHD</div>
+              <div class="parking-spot__dist">Priamo do centra</div>
+              <div class="parking-spot__info">Linky č. 11 a 23 zastavujú pri Trojičnom námestí. Víkendové posilnené spoje každých 15 minút. Cestovný poriadok: imhd.sk/tt</div>
+              <span class="parking-spot__price">Ekologická voľba</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vjazdy -->
+      <div class="info-card fade-in" id="vjazdy">
+        <div class="info-card__header">
+          <span class="info-card__icon">🚧</span>
+          <h2 class="info-card__title">Vjazdy a uzávery ulíc</h2>
+        </div>
+        <div class="info-card__body">
+          <p style="color:var(--text-muted);margin-bottom:var(--sp-6);">Nasledovné ulice sú uzavreté počas celého jarmoku (11.–14. 9. 2026, 10:00–22:00). Zásobovanie je povolené od 6:00 do 9:00.</p>
+          <div style="overflow-x:auto;">
+            <table class="closure-table">
+              <thead>
+                <tr>
+                  <th>Ulica</th>
+                  <th>Uzávera</th>
+                  <th>Výnimky</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Hlavná ulica</td><td>Celá dĺžka</td><td>Zásobovanie 6:00–9:00</td></tr>
+                <tr><td>Hviezdoslavova ulica</td><td>Celá dĺžka</td><td>Zásobovanie 6:00–9:00</td></tr>
+                <tr><td>Trojičné námestie</td><td>Celé námestie</td><td>IZS vozidlá</td></tr>
+                <tr><td>Kapitulská ulica</td><td>Čiastočne (Sad Bernolaka)</td><td>Vjazd so špeciálnym povolením</td></tr>
+                <tr><td>Námestie SNP</td><td>Čiastočne – sever</td><td>Zdravotnícke vozidlá</td></tr>
+                <tr><td>Paulínska ulica</td><td>Celá dĺžka od 12:00</td><td>Zásobovanie ráno</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:var(--text-sm);color:var(--text-muted);margin-top:var(--sp-4);">Špeciálne vjazdy pre zásah IZS sú zachované. Pohybový plán v spolupráci s MsÚ Trnava.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="info-card fade-in" id="faq">
+        <div class="info-card__header">
+          <span class="info-card__icon">❓</span>
+          <h2 class="info-card__title">Najčastejšie otázky</h2>
+        </div>
+        <div class="info-card__body">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Je vstup na jarmok zadarmo?
+              <span class="faq-question__icon">+</span>
+            </button>
+            <div class="faq-answer">Áno, vstup na Trnavský jarmok je zadarmo pre všetkých návštevníkov. Vstupné sa vyberá len na vybraných sprievodných podujatiach (napr. platený koncert v Mestskom amfiteátri). Stredoveká promenáda, Ľudová veselica, Rozprávkový svet a všetky pódium Trojičného námestia sú voľne prístupné.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Môžem platiť kartou na stánkoch?
+              <span class="faq-question__icon">+</span>
+            </button>
+            <div class="faq-answer">Väčšina stánkov a predajcov prijíma platbu kartou. Niektorí menší remeselníci uprednostňujú hotovosť. Pre istotu majte pri sebe nejaké hotovostné euro. V okolí jarmočného centra je niekoľko bankomatov.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Kde sú záchody?
+              <span class="faq-question__icon">+</span>
+            </button>
+            <div class="faq-answer">Mobilné WC sú rozmiestnené na strategických miestach celého jarmočného areálu – pri každej hlavnej zóne. Toalety sú označené na orientačných tabuliach. Bezbariérové WC pri Trojičnom námestí a Sade Bernolaka. Prístup je zadarmo.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Je jarmok bezbariérový?
+              <span class="faq-question__icon">+</span>
+            </button>
+            <div class="faq-answer">Hlavné plochy jarmoku – Trojičné námestie, pešia zóna a Ružový park – sú plne prístupné pre invalidné vozíky a kočíky. Sad Bernolaka má mierne nerovný terén (historický park), ale hlavné trasy sú prístupné. Bezbariérové WC sú k dispozícii. Ak potrebujete špeciálnu asistenciu, kontaktujte infostan pri vstupe.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Môžem prísť so psom?
+              <span class="faq-question__icon">+</span>
+            </button>
+            <div class="faq-answer">Psy sú na jarmoku vítané s podmienkou: vodítko (max. 2 m) a náhubok v preplnených oblastiach. Výnimkou je Sad Bernolaka počas šermiarskeho programu – z bezpečnostných dôvodov prosíme, aby psy zostali za zábranou alebo ich vonku dohliada druhá osoba. Voda pre domáce zvieratá je k dispozícii pri infostane.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Môžem ísť s kočíkom?
+              <span class="faq-question__icon">+</span>
+            </button>
+            <div class="faq-answer">Áno, jarmok je vhodný pre kočíky. Pešie zóny sú rovné a prístupné. V Ružovom parku (Rozprávkový svet) je špeciálna zóna pre rodiny s malými deťmi s lavičkami a priestorom na kŕmenie. Prebaľovací pult je k dispozícii pri infostane na Trojičnom námestí.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Je na jarmoku wifi?
+              <span class="faq-question__icon">+</span>
+            </button>
+            <div class="faq-answer">V blízkosti hlavných pódiíí je bezplatné wifi pripojenie "Jarmok2026". Heslo nie je potrebné. Sieť nemusí byť stabilná vo vrcholové hodiny – odporúčame stiahnuť program a mapu pred príchodom.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Kde nájdem informácie a pomoc priamo na jarmoku?
+              <span class="faq-question__icon">+</span>
+            </button>
+            <div class="faq-answer">Hlavný infostan je na Trojičnom námestí (modrý stánok s logom). Ďalšie infobody sú pri Sade Bernolaka a Ružovom parku. Dobrovoľníci v modrých vestách vám radi pomôžu kdekoľvek v areáli. Záchranná zdravotnícka služba má stanovište pri infostane.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gastro -->
+      <div class="info-card fade-in" id="gastro">
+        <div class="info-card__header">
+          <span class="info-card__icon">🍷</span>
+          <h2 class="info-card__title">Gastro a jedlo na jarmoku</h2>
+        </div>
+        <div class="info-card__body">
+          <p style="color:var(--text-muted);margin-bottom:var(--sp-6);">Trnavský jarmok je aj gastro zážitok. Desiatky stánkov a food truckov ponúkajú tradičné jedlá aj moderné kulinárne zážitky. Víno z Malých Karpát je samozrejmosťou.</p>
+          <div class="gastro-grid">
+            <div class="gastro-item">
+              <span class="gastro-item__emoji">🍇</span>
+              <div class="gastro-item__name">Burčák</div>
+              <div class="gastro-item__note">Priamo od vinárov Malých Karpát – ročník 2026</div>
+            </div>
+            <div class="gastro-item">
+              <span class="gastro-item__emoji">🍷</span>
+              <div class="gastro-item__name">Vína Malých Karpát</div>
+              <div class="gastro-item__note">Degustácie a predaj lahvového vína</div>
+            </div>
+            <div class="gastro-item">
+              <span class="gastro-item__emoji">🥩</span>
+              <div class="gastro-item__name">Stredoveká pečienka</div>
+              <div class="gastro-item__note">Z ražňa, dobové recepty, Sad Bernolaka</div>
+            </div>
+            <div class="gastro-item">
+              <span class="gastro-item__emoji">🥞</span>
+              <div class="gastro-item__name">Langoše s bryndzou</div>
+              <div class="gastro-item__note">Tradičný slovenský snack</div>
+            </div>
+            <div class="gastro-item">
+              <span class="gastro-item__emoji">🍩</span>
+              <div class="gastro-item__name">Trdelník s mandľami</div>
+              <div class="gastro-item__note">Pečené na mieste, sladká vôňa...</div>
+            </div>
+            <div class="gastro-item">
+              <span class="gastro-item__emoji">🐗</span>
+              <div class="gastro-item__name">Divočina z kuchyne</div>
+              <div class="gastro-item__note">Ragu z diviaka so šípkovým pretlakom</div>
+            </div>
+            <div class="gastro-item">
+              <span class="gastro-item__emoji">🍺</span>
+              <div class="gastro-item__name">Remeselné pivá</div>
+              <div class="gastro-item__note">Lokálni pivovarníci z regiónu</div>
+            </div>
+            <div class="gastro-item">
+              <span class="gastro-item__emoji">🍭</span>
+              <div class="gastro-item__name">Cukrová vata</div>
+              <div class="gastro-item__note">Klasika, bez ktorej nie je jarmok</div>
+            </div>
+          </div>
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--radius-lg);padding:var(--sp-4);margin-top:var(--sp-6);">
+            <strong style="color:#166534;">🌱 Vegetariánske a vegánske možnosti</strong> sú dostupné vo väčšine gastro zón. Označenie "V" pri stánku znamená vegetariánske menu. Alergény sú na vyžiadanie dostupné u obsluhy každého stánku.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+<script src="assets/js/header-footer.js"></script>
+<script src="assets/js/core.js"></script>
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      const answer = btn.nextElementSibling;
+      answer.classList.toggle('open', !expanded);
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flešky | Trnavský jarmok 2026</title>
+  <meta name="description" content="Novinky, tipy a aktuálne informácie z Trnavského jarmoku 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <style>
+    /* Flesky page-specific styles */
+    .flesky-hero {
+      background: linear-gradient(135deg, var(--blue) 0%, #162040 100%);
+      padding: var(--sp-16) 0 var(--sp-12);
+      text-align: center;
+      color: var(--white);
+    }
+    .flesky-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: var(--sp-3);
+    }
+    .flesky-hero__subtitle {
+      font-size: var(--text-lg);
+      opacity: 0.8;
+      margin-bottom: var(--sp-6);
+    }
+    .push-zone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+    }
+    .push-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      background: var(--yellow);
+      color: var(--dark);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      padding: var(--sp-3) var(--sp-6);
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      position: relative;
+    }
+    .push-btn:hover { background: #e6be00; transform: translateY(-1px); }
+    .push-btn.subscribed { background: rgba(255,255,255,0.15); color: var(--white); cursor: default; }
+    .push-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #e53e3e;
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
+    .push-badge.visible { display: flex; }
+
+    /* Filter bar */
+    .flesky-filters {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: var(--header-total);
+      z-index: 90;
+      padding: var(--sp-3) 0;
+    }
+    .flesky-filters .container {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+    }
+    .flesky-filter-btn {
+      padding: var(--sp-2) var(--sp-4);
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      color: var(--text-muted);
+    }
+    .flesky-filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .flesky-filter-btn.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .flesky-filter-btn[data-type="tip"].active { background: #f6c90e; color: var(--dark); border-color: #f6c90e; }
+    .flesky-filter-btn[data-type="info"].active { background: #3182ce; color: var(--white); border-color: #3182ce; }
+    .flesky-filter-btn[data-type="upozornenie"].active { background: #e53e3e; color: var(--white); border-color: #e53e3e; }
+    .flesky-filter-btn[data-type="novinka"].active { background: #38a169; color: var(--white); border-color: #38a169; }
+    .flesky-filter-btn[data-type="foto"].active { background: #805ad5; color: var(--white); border-color: #805ad5; }
+
+    /* Masonry grid */
+    .flesky-grid {
+      columns: 2;
+      column-gap: var(--sp-6);
+      padding: var(--sp-10) 0;
+    }
+    @media (max-width: 640px) {
+      .flesky-grid { columns: 1; }
+    }
+    .flash-card {
+      break-inside: avoid;
+      margin-bottom: var(--sp-6);
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .flash-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .flash-card__img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+    .flash-card__body { padding: var(--sp-5); }
+    .flash-card__type {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--sp-3);
+    }
+    .flash-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--sp-2);
+      line-height: 1.3;
+    }
+    .flash-card__text {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: var(--sp-3);
+    }
+    .flash-card__meta {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+    /* Type variants */
+    .flash-card[data-type="tip"] .flash-card__type { background: #fef9c3; color: #854d0e; }
+    .flash-card[data-type="info"] .flash-card__type { background: #dbeafe; color: #1e40af; }
+    .flash-card[data-type="upozornenie"] .flash-card__type { background: #fee2e2; color: #991b1b; }
+    .flash-card[data-type="novinka"] .flash-card__type { background: #dcfce7; color: #166534; }
+    .flash-card[data-type="foto"] .flash-card__type { background: #ede9fe; color: #5b21b6; }
+    /* Accent border top */
+    .flash-card[data-type="tip"] { border-top: 4px solid #f6c90e; }
+    .flash-card[data-type="info"] { border-top: 4px solid #3182ce; }
+    .flash-card[data-type="upozornenie"] { border-top: 4px solid #e53e3e; }
+    .flash-card[data-type="novinka"] { border-top: 4px solid #38a169; }
+    .flash-card[data-type="foto"] { border-top: 4px solid #805ad5; }
+
+    .flash-card--new::after {
+      content: 'NOVÉ';
+      position: absolute;
+      top: var(--sp-3);
+      right: var(--sp-3);
+      background: #e53e3e;
+      color: white;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+    .flash-card--new { position: relative; }
+
+    .empty-state {
+      text-align: center;
+      padding: var(--sp-16) 0;
+      display: none;
+    }
+    .empty-state.visible { display: block; }
+    .empty-state__icon { font-size: 3rem; margin-bottom: var(--sp-4); }
+    .empty-state__text { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Preskočiť na obsah</a>
+
+<div class="alert-bar" id="alert-bar" hidden data-alert-active="false" data-alert-text="">
+  <div class="container">
+    <span class="alert-bar__text"></span>
+    <button class="alert-bar__close" id="alert-bar-close" aria-label="Zatvoriť upozornenie">✕</button>
+  </div>
+</div>
+
+<main id="main-content">
+
+  <!-- Hero -->
+  <section class="flesky-hero">
+    <div class="container">
+      <p class="section-label" style="color:rgba(255,255,255,0.7);margin-bottom:var(--sp-3);">Aktuálne zo jarmoku</p>
+      <h1 class="flesky-hero__title">Flešky</h1>
+      <p class="flesky-hero__subtitle">Tipy, novinky a zaujímavosti priamo z jarmočného námestia</p>
+      <div class="push-zone">
+        <button class="push-btn" id="push-btn" aria-label="Prihlásiť sa na notifikácie">
+          🔔 Dostávajte novinky
+          <span class="push-badge" id="push-badge"></span>
+        </button>
+        <span style="color:rgba(255,255,255,0.6);font-size:var(--text-sm);">Notifikácie priamo do telefónu</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky filter bar -->
+  <div class="flesky-filters" id="flesky-filters">
+    <div class="container">
+      <button class="flesky-filter-btn active" data-type="all">Všetky</button>
+      <button class="flesky-filter-btn" data-type="tip">💡 Tip</button>
+      <button class="flesky-filter-btn" data-type="info">ℹ️ Info</button>
+      <button class="flesky-filter-btn" data-type="upozornenie">⚠️ Upozornenie</button>
+      <button class="flesky-filter-btn" data-type="novinka">✨ Novinka</button>
+      <button class="flesky-filter-btn" data-type="foto">📷 Foto</button>
+    </div>
+  </div>
+
+  <!-- Flash cards grid -->
+  <section class="section">
+    <div class="container">
+      <div class="flesky-grid" id="flesky-grid">
+
+        <!-- UPOZORNENIE: Müller – vypredaný -->
+        <article class="flash-card flash-card--new" data-type="upozornenie" data-ts="1757548800">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Upozornenie</span>
+            <h2 class="flash-card__title">Richard Müller – lístky vypredané</h2>
+            <p class="flash-card__text">Koncert Richarda Müllera v Mestskom amfiteátri v piatok 12. septembra je vypredaný. Pár lístkov ešte môžete nájsť na Maxiticket.sk – sledujte stránku, niekedy sa uvoľnia vrátené vstupenky.</p>
+            <p class="flash-card__meta">Piatok 12.9. · Mestský amfiteáter</p>
+          </div>
+        </article>
+
+        <!-- TIP: 5 vecí ochutnať -->
+        <article class="flash-card" data-type="tip" data-ts="1757462400">
+          <img src="https://picsum.photos/600/338?random=30" alt="Jedlo na jarmoku" class="flash-card__img" loading="lazy">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Tip</span>
+            <h2 class="flash-card__title">5 vecí, čo musíte na jarmoku ochutnať</h2>
+            <p class="flash-card__text">Burčák z Malých Karpát priamo od vinára. Langoše s bryndzou. Stredoveká pečienka z ražňa. Trdelník s mandľami. A pre gurmánov: divočina z jarmočnej kuchyne – ragu z diviaka so šípkovým pretlakom.</p>
+            <p class="flash-card__meta">Tip redakcie · Gastro zóna, centrum</p>
+          </div>
+        </article>
+
+        <!-- NOVINKA: Jednorožec v Ružovom parku -->
+        <article class="flash-card flash-card--new" data-type="novinka" data-ts="1757635200">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Novinka</span>
+            <h2 class="flash-card__title">Jednorožec sa objaví v Ružovom parku o 15:00</h2>
+            <p class="flash-card__text">Dnes popoludní príde do Ružového parku špeciálny hosť – jednorožec Azúr, ktorý bude robiť spoločnosť deťom aj ich rodičom. Foto príležitosť zadarmo, žiadne čakanie v rade.</p>
+            <p class="flash-card__meta">Sobota 13.9. · Ružový park (Rozprávkový svet)</p>
+          </div>
+        </article>
+
+        <!-- INFO: Fakľový sprievod -->
+        <article class="flash-card" data-type="info" data-ts="1757548800">
+          <img src="https://picsum.photos/600/338?random=31" alt="Stredoveký sprievod" class="flash-card__img" loading="lazy">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Info</span>
+            <h2 class="flash-card__title">Stredoveký fakľový sprievod o 19:30</h2>
+            <p class="flash-card__text">V sobotu o 19:30 vyrazí z Sadu Antona Bernolaka kráľovský fakľový sprievod smerom k Severnej veži. Sprievod uzavrie výstrel z repliky stredovekého trebuchetu. Odporúčame prísť o 19:15 – miesta pri trase sú limitované.</p>
+            <p class="flash-card__meta">Sobota 13.9. 19:30 · Sad Antona Bernolaka → Severná veža</p>
+          </div>
+        </article>
+
+        <!-- TIP: Burčák ak zaspievate -->
+        <article class="flash-card" data-type="tip" data-ts="1757462400">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Tip</span>
+            <h2 class="flash-card__title">Burčák zadarmo, ak zaspievate ľudovú</h2>
+            <p class="flash-card__text">Stánok Vinárstvo Malé Karpaty pri Nám. SNP má špeciálnu akciu: kto zaspievá akúkoľvek ľudovú pesničku (aspoň jednu slohu), dostane pohár burčáku zadarmo. Funguje skutočne – vyskúšané.</p>
+            <p class="flash-card__meta">Tip od návštevníka · Nám. SNP, stánok č. 14</p>
+          </div>
+        </article>
+
+        <!-- FOTO: Šermiari -->
+        <article class="flash-card" data-type="foto" data-ts="1757635200">
+          <img src="https://picsum.photos/600/338?random=32" alt="Šermiari Gladius" class="flash-card__img" loading="lazy">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Foto</span>
+            <h2 class="flash-card__title">Šermiari Gladius v akcii – fotky zo soboty</h2>
+            <p class="flash-card__text">Skupinová šermiarska bitka "Obkľúčenie Tyrny" pritiahla stovky divákov. Pozrite si fotky z tohto impozantného predstavenia.</p>
+            <p class="flash-card__meta">13.9.2026 · Sad Antona Bernolaka</p>
+          </div>
+        </article>
+
+        <!-- INFO: Parkovanie -->
+        <article class="flash-card" data-type="info" data-ts="1757376000">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Info</span>
+            <h2 class="flash-card__title">Parkovanie: najlepší tip pre víkend</h2>
+            <p class="flash-card__text">Počas jarmoku je centrum pre autá uzavreté. Odporúčame parkovisko Spartakovská (10 min pešo) alebo parkovisko pri OC Max so zľaveným vstupom pre návštevníkov jarmoku. Centrum je dostupné aj autobusom č. 11 a 23.</p>
+            <p class="flash-card__meta">Platné počas celého jarmoku · 11.–14.9.</p>
+          </div>
+        </article>
+
+        <!-- NOVINKA: Trubadúri na balkóne -->
+        <article class="flash-card flash-card--new" data-type="novinka" data-ts="1757635200">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Novinka</span>
+            <h2 class="flash-card__title">Trubadúri z balkóna Radnice každú hodinu</h2>
+            <p class="flash-card__text">Každú celú hodinu od 10:00 do 18:00 zaznejú z balkóna trnavskej Radnice trubadúrske fanfáry. Nasledujú historické oznamenia, básne a heraldické zdravice – ako za čias stredovekého mesta Trnava.</p>
+            <p class="flash-card__meta">Denne 10:00–18:00 · Balkón Radnice, Hlavná ul.</p>
+          </div>
+        </article>
+
+        <!-- TIP: Deti zadarmo na Mestskej veži -->
+        <article class="flash-card" data-type="tip" data-ts="1757462400">
+          <img src="https://picsum.photos/600/338?random=33" alt="Mestská veža Trnava" class="flash-card__img" loading="lazy">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Tip</span>
+            <h2 class="flash-card__title">Mestská veža: deti do 10 rokov zadarmo</h2>
+            <p class="flash-card__text">Počas jarmoku má Mestská veža predĺžené otváracie hodiny (pia+sob do 23:00, ned do 21:00) a zľavnené vstupné. Deti do 10 rokov majú vstup zadarmo. Výhľad na jarmočné námestie z vrchu je nezabudnuteľný.</p>
+            <p class="flash-card__meta">Pia+Sob 10:00–23:00, Ned 10:00–21:00 · Mestská veža</p>
+          </div>
+        </article>
+
+        <!-- UPOZORNENIE: Uzávery ulíc -->
+        <article class="flash-card" data-type="upozornenie" data-ts="1757289600">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Upozornenie</span>
+            <h2 class="flash-card__title">Uzávery ulíc od štvrtka do nedele</h2>
+            <p class="flash-card__text">Hlavná ulica, Hviezdoslavova ulica a Trojičné námestie sú od štvrtka 10:00 do nedele 22:00 uzavreté pre motorové vozidlá. Zásobovanie prebieha výlučne od 6:00 do 9:00. Vjazdy so špeciálnym povolením cez Kapitulskú ul.</p>
+            <p class="flash-card__meta">11.–14.9. · Centrum mesta</p>
+          </div>
+        </article>
+
+        <!-- FOTO: Ohnivá show -->
+        <article class="flash-card" data-type="foto" data-ts="1757721600">
+          <img src="https://picsum.photos/600/338?random=34" alt="Ohnivá show" class="flash-card__img" loading="lazy">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Foto</span>
+            <h2 class="flash-card__title">Ohnivá show – záber, ktorý sa nevidí každý deň</h2>
+            <p class="flash-card__text">Sobotná ohnivá show v Stredovekej zóne zanechala divákov bez dychu. Fotografi zachytili najlepšie momenty.</p>
+            <p class="flash-card__meta">13.9.2026 19:15 · Sad Antona Bernolaka</p>
+          </div>
+        </article>
+
+        <!-- INFO: Vstup zadarmo -->
+        <article class="flash-card" data-type="info" data-ts="1757289600">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Info</span>
+            <h2 class="flash-card__title">Vstup na jarmok je zadarmo</h2>
+            <p class="flash-card__text">Trnavský jarmok je voľne prístupný pre všetkých návštevníkov. Vstupné sa vyberá len na niektorých sprievodných podujatiach (napr. platený koncert v amfiteátri). Všetky podujatia na Trojičnom námestí, Stredovek, Ľudová veselica a Rozprávkový svet sú zadarmo.</p>
+            <p class="flash-card__meta">Platí pre celý jarmok · 11.–14.9.2026</p>
+          </div>
+        </article>
+
+        <!-- TIP: Najlepšie foto miesta -->
+        <article class="flash-card" data-type="tip" data-ts="1757462400">
+          <img src="https://picsum.photos/600/338?random=35" alt="Panoráma Trnava" class="flash-card__img" loading="lazy">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Tip</span>
+            <h2 class="flash-card__title">3 najlepšie miesta pre foto zo jarmoku</h2>
+            <p class="flash-card__text">1. Vrchol Mestskej veže – výhľad na celé námestie plné ľudí. 2. Vstupná brána Sadu Antona Bernolaka – rytieri v plnej zbroji. 3. Balkón nad Hviezdoslavovou ulicou počas prechodu sprievodu rozprávkových postáv.</p>
+            <p class="flash-card__meta">Tip fotografa · Centrum Trnava</p>
+          </div>
+        </article>
+
+        <!-- NOVINKA: Rytiersky turnaj na koňoch -->
+        <article class="flash-card" data-type="novinka" data-ts="1757635200">
+          <img src="https://picsum.photos/600/338?random=36" alt="Rytieri na koňoch" class="flash-card__img" loading="lazy">
+          <div class="flash-card__body">
+            <span class="flash-card__type">Novinka</span>
+            <h2 class="flash-card__title">Slávnostný rytiersky turnaj na koňoch – novinka 2026</h2>
+            <p class="flash-card__text">Tohtoročná novinka: v sobotu o 18:00 sa uskutoční veľkolepý rytiersky turnaj na koňoch, ktorý zobrazí historické stretnutie Jána Luxemburského a Karola Róberta z Anjou z roku 1327 – priamo v Trnave, kde sa toto dejinné setkanie odohralo.</p>
+            <p class="flash-card__meta">Sobota 13.9. o 18:00 · Sad Antona Bernolaka</p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="empty-state" id="empty-state">
+        <div class="empty-state__icon">📭</div>
+        <p class="empty-state__text">Žiadne flešky v tejto kategórii</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/js/header-footer.js"></script>
+<script src="assets/js/core.js"></script>
+<script>
+  // Flesky category filter
+  (function() {
+    const filterBtns = document.querySelectorAll('.flesky-filter-btn');
+    const cards = document.querySelectorAll('.flash-card');
+    const emptyState = document.getElementById('empty-state');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const type = btn.dataset.type;
+        let visible = 0;
+        cards.forEach(card => {
+          const show = type === 'all' || card.dataset.type === type;
+          card.hidden = !show;
+          if (show) visible++;
+        });
+        emptyState.classList.toggle('visible', visible === 0);
+      });
+    });
+  })();
+</script>
+</body>
+</html>
