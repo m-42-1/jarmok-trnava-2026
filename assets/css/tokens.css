@@ -124,10 +124,10 @@
 
   /* --- Layout --- */
   --container: 1200px;
-  --header-h1: 48px;
+  --header-h1: 58px;
   --header-h2: 48px;
   --header-h3: 40px;
-  --header-total: 136px;
+  --header-total: 146px;
 }
 
 @media (max-width: 768px) {

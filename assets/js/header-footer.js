@@ -20,7 +20,7 @@ const HEADER_HTML = `
       <a href="index.html" class="site-logo" aria-label="Trnavský jarmok – domov">
         <img src="assets/img/logo-jarmok-cele.png" alt="Trnavský jarmok" class="site-logo__img" style="height:48px;width:auto;display:block;">
       </a>
-      <div class="header-date"><span aria-hidden="true">📅</span> 11.–14. septembra 2026</div>
+      <div class="header-date">11.–14. septembra 2026</div>
       <div class="header-right">
         <div class="lang-switcher">
           <a href="index.html" lang="sk" aria-current="page">SK</a>
@@ -55,17 +55,17 @@ const HEADER_HTML = `
   <div class="header-row3" id="header-row3" aria-label="Podmenu">
     <div class="container">
       <ul id="sub-podujatia" class="submenu-bar" role="list" hidden>
-        <li class="submenu-bar__item"><a href="podujatia-stredovek.html" class="submenu-bar__link">🏰 Stredovek pod hradbami</a></li>
+        <li class="submenu-bar__item"><a href="podujatia-stredovek.html" class="submenu-bar__link">Stredovek pod hradbami</a></li>
         <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
-        <li class="submenu-bar__item"><a href="podujatia-veselica.html" class="submenu-bar__link">🎻 Ľudová veselica</a></li>
+        <li class="submenu-bar__item"><a href="podujatia-veselica.html" class="submenu-bar__link">Ľudová veselica</a></li>
         <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
-        <li class="submenu-bar__item"><a href="podujatia-kolotoc.html" class="submenu-bar__link">🎡 Kolotoče</a></li>
+        <li class="submenu-bar__item"><a href="podujatia-kolotoc.html" class="submenu-bar__link">Kolotoče</a></li>
         <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
-        <li class="submenu-bar__item"><a href="podujatia-rozpravka.html" class="submenu-bar__link">🧚 Rozprávkový svet</a></li>
+        <li class="submenu-bar__item"><a href="podujatia-rozpravka.html" class="submenu-bar__link">Rozprávkový svet</a></li>
         <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
-        <li class="submenu-bar__item"><a href="podujatia-trojicka.html" class="submenu-bar__link">🎤 Koncerty na Trojičke</a></li>
+        <li class="submenu-bar__item"><a href="podujatia-trojicka.html" class="submenu-bar__link">Koncerty na Trojičke</a></li>
         <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
-        <li class="submenu-bar__item"><a href="podujatia-remesla.html" class="submenu-bar__link">🔨 Zaži remeslá</a></li>
+        <li class="submenu-bar__item"><a href="podujatia-remesla.html" class="submenu-bar__link">Zaži remeslá</a></li>
       </ul>
     </div>
   </div>
@@ -74,7 +74,7 @@ const HEADER_HTML = `
 <nav id="mobile-nav" class="mobile-nav" aria-label="Mobilná navigácia" aria-modal="true" role="dialog">
   <div class="mobile-nav__header">
     <a href="index.html" class="site-logo" aria-label="Trnavský jarmok – domov">
-      <img src="assets/img/logo-jarmok-cele.png" alt="Trnavský jarmok" style="height:44px;width:auto;display:block;filter:brightness(10);">
+      <img src="assets/img/logo-jarmok-cele.png" alt="Trnavský jarmok" style="height:44px;width:auto;display:block;filter:brightness(0) invert(1);">
     </a>
     <button class="mobile-nav__close" id="mobile-nav-close" aria-label="Zatvoriť menu">✕</button>
   </div>
@@ -87,12 +87,12 @@ const HEADER_HTML = `
         <button class="mobile-nav__toggle" aria-label="Rozbaliť">▾</button>
       </div>
       <ul class="mobile-nav__sub" role="list">
-        <li><a href="podujatia-stredovek.html" class="mobile-nav__sub-link">🏰 Stredovek pod hradbami</a></li>
-        <li><a href="podujatia-veselica.html" class="mobile-nav__sub-link">🎻 Ľudová veselica</a></li>
-        <li><a href="podujatia-kolotoc.html" class="mobile-nav__sub-link">🎡 Kolotoče</a></li>
-        <li><a href="podujatia-rozpravka.html" class="mobile-nav__sub-link">🧚 Rozprávkový svet</a></li>
-        <li><a href="podujatia-trojicka.html" class="mobile-nav__sub-link">🎤 Koncerty na Trojičke</a></li>
-        <li><a href="podujatia-remesla.html" class="mobile-nav__sub-link">🔨 Zaži remeslá</a></li>
+        <li><a href="podujatia-stredovek.html" class="mobile-nav__sub-link">Stredovek pod hradbami</a></li>
+        <li><a href="podujatia-veselica.html" class="mobile-nav__sub-link">Ľudová veselica</a></li>
+        <li><a href="podujatia-kolotoc.html" class="mobile-nav__sub-link">Kolotoče</a></li>
+        <li><a href="podujatia-rozpravka.html" class="mobile-nav__sub-link">Rozprávkový svet</a></li>
+        <li><a href="podujatia-trojicka.html" class="mobile-nav__sub-link">Koncerty na Trojičke</a></li>
+        <li><a href="podujatia-remesla.html" class="mobile-nav__sub-link">Zaži remeslá</a></li>
       </ul>
     </li>
     <li class="mobile-nav__item"><a href="mapa.html" class="mobile-nav__link">Mapa</a></li>
@@ -101,7 +101,7 @@ const HEADER_HTML = `
     <li class="mobile-nav__item"><a href="predajcovia.html" class="mobile-nav__link">Zóna predajcov</a></li>
   </ul>
   <div class="mobile-nav__footer">
-    <div class="mobile-nav__date">📅 11.–14. septembra 2026, Trnava</div>
+    <div class="mobile-nav__date">11.–14. septembra 2026, Trnava</div>
     <div class="mobile-nav__lang">
       <a href="index.html" lang="sk" aria-current="page">SK</a>
       <a href="index-en.html" lang="en">EN</a>
@@ -116,13 +116,13 @@ const FOOTER_HTML = `
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="footer-logo" aria-label="Trnavský jarmok – domov">
-          <img src="assets/img/logo-jarmok-cele.png" alt="Trnavský jarmok" style="height:52px;width:auto;display:block;filter:brightness(10);">
+          <img src="assets/img/logo-jarmok-cele.png" alt="Trnavský jarmok" style="height:52px;width:auto;display:block;filter:brightness(0) invert(1);">
         </a>
         <p class="footer-tagline">Tradičný mestský jarmok v Trnave.<br>11. – 14. septembra 2026.</p>
         <p class="footer-org">Organizátor: Mesto Trnava<br>Hlavná 1, 917 01 Trnava</p>
         <div class="footer-social">
           <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="Instagram">IG</a>
           <a href="#" aria-label="YouTube">▶</a>
         </div>
       </div>

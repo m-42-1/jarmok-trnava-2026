@@ -24,11 +24,12 @@
     .program-page-hero h1::after { background: var(--yellow); }
     .program-sticky-filters {
       position: sticky;
-      top: var(--header-total);
+      top: calc(var(--header-total) - 1px);
       z-index: 100;
       background: var(--white);
       box-shadow: 0 2px 12px rgba(0,0,0,.08);
-      padding: var(--sp-4) 0;
+      padding: var(--sp-3) 0;
+      border-top: 1px solid var(--border);
     }
     .program-partners {
       background: var(--gray-50);
@@ -79,19 +80,18 @@
         <div>
           <div style="font-size:var(--text-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--sp-2)">Kategória</div>
           <div class="filter-pills" role="group" aria-label="Filtrovať podľa kategórie">
-            
-            <button class="filter-pill active" data-cat="trojicka">🎤 Trojičné nám.</button>
-            <button class="filter-pill active" data-cat="stredovek">🏰 Stredovek</button>
-            <button class="filter-pill active" data-cat="veselica">🎻 Ľudová veselica</button>
-            <button class="filter-pill active" data-cat="rozpravka">🧚 Rozprávkový svet</button>
-            <button class="filter-pill active" data-cat="amfiteater">🎭 Amfiteáter</button>
-            <button class="filter-pill" data-cat="ostatne">🏛️ Ostatné</button>
+            <button class="filter-pill active" data-cat="trojicka"><span>Trojičné nám.</span><span class="pill-x" aria-hidden="true">×</span></button>
+            <button class="filter-pill active" data-cat="stredovek"><span>Stredovek</span><span class="pill-x" aria-hidden="true">×</span></button>
+            <button class="filter-pill active" data-cat="veselica"><span>Ľudová veselica</span><span class="pill-x" aria-hidden="true">×</span></button>
+            <button class="filter-pill active" data-cat="rozpravka"><span>Rozprávkový svet</span><span class="pill-x" aria-hidden="true">×</span></button>
+            <button class="filter-pill active" data-cat="amfiteater"><span>Amfiteáter</span><span class="pill-x" aria-hidden="true">×</span></button>
+            <button class="filter-pill" data-cat="ostatne"><span>Ostatné</span><span class="pill-x" aria-hidden="true">×</span></button>
           </div>
         </div>
         <!-- Search -->
         <div>
           <div class="search-wrap">
-            <span class="search-wrap__icon" aria-hidden="true">🔍</span>
+            <span class="search-wrap__icon" aria-hidden="true">⌕</span>
             <input type="search" id="program-search" class="search-input"
                    placeholder="Hľadajte v programe... (napr. „Hex", „rytiersky")"
                    aria-label="Vyhľadávanie v programe">
@@ -121,8 +121,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Otvorenie remeselného trhu <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Pešia zóna, centrum mesta</span>
-                <span class="cat-badge cat-badge--ostatne">Remeselný trh</span>
+                <span class="program-item__venue">Pešia zóna, centrum mesta</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Remeselníci z celého Slovenska otvárajú stánky na pešej zóne. Nájdete koše, dosky, kožené výrobky, šperky, oleje, zaváraniny a ďalšie originálne produkty. Vo všetkých stánkoch platba kartou, mobilom aj smart hodinkami.</div>
             </div>
@@ -134,7 +134,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Ľudová veselica – otvorenie <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Námestie SNP</span>
+                <span class="program-item__venue">Námestie SNP</span>
                 <span class="cat-badge cat-badge--veselica">Ľudová veselica</span>
               </div>
               <div class="program-item__desc">Začína štvordenná Ľudová veselica na Námestí SNP. Cimbaly, husle, vinárstva Malých Karpát a chytľavá muzika. Vo štvrtok iba otváracie hodiny stánkov, hudobný program štartuje v piatok.</div>
@@ -147,8 +147,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Mestská veža – špeciálne otváracie hodiny <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Mestská veža, centrum</span>
-                <span class="cat-badge cat-badge--ostatne">Prevádzka</span>
+                <span class="program-item__venue">Mestská veža, centrum</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Mestská veža je počas jarmoku otvorená v špeciálnych hodinách so zľavneným vstupným. Vo štvrtok 10:00–23:00. Vynikajúce výhliadky na jarmočnú atmosféru.</div>
             </div>
@@ -161,8 +161,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Krajská knižnica: Čítanie pre deti – Rozprávky zo stredovekej Tyrny <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Krajská knižnica Trnava</span>
-                <span class="cat-badge cat-badge--ostatne">Kultúra</span>
+                <span class="program-item__venue">Krajská knižnica Trnava</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Krajská knižnica v Trnave organizuje čítanie historických rozprávok zasadených do stredovekej Tyrny pre deti. Vstup voľný.</div>
             </div>
@@ -173,8 +173,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Západoslovenské múzeum: Otvorenie výstavy – Trnava, slobodné kráľovské mesto <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Západoslovenské múzeum</span>
-                <span class="cat-badge cat-badge--ostatne">Múzeum</span>
+                <span class="program-item__venue">Západoslovenské múzeum</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Vernisáž výstavy venovanej histórii Trnavy ako slobodného kráľovského mesta. Komentovaná prehliadka s kurátormi. Vstup voľný počas celého jarmoku.</div>
             </div>
@@ -185,8 +185,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Osvetové stredisko: Vernisáž – Trnava premenlivá <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Osvetové stredisko Trnava</span>
-                <span class="cat-badge cat-badge--ostatne">Výstava</span>
+                <span class="program-item__venue">Osvetové stredisko Trnava</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Vernisáž fotografickej výstavy Trnava premenlivá – historické fotografie mesta v kontraste so súčasnosťou. Výstava potrvá celý jarmok.</div>
             </div>
@@ -207,7 +207,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Súkromné tanečné konzervat. Dušana Nebylu <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Trojičné námestie</span>
+                <span class="program-item__venue">Trojičné námestie</span>
                 <span class="cat-badge cat-badge--trojicka">Trojičné nám.</span>
               </div>
               <div class="program-item__desc">Tanečné vystúpenie žiakov Súkromného tanečného konzervatória Dušana Nebylu. Moderný tanec, hip-hop a súčasný balet.</div>
@@ -220,7 +220,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Štúdio tanca a pohybu Alegria <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Trojičné námestie</span>
+                <span class="program-item__venue">Trojičné námestie</span>
                 <span class="cat-badge cat-badge--trojicka">Trojičné nám.</span>
               </div>
               <div class="program-item__desc">Tanečné štúdio Alegria predvedie kolektívne choreografie svojich tanečných skupín všetkých vekových kategórií.</div>
@@ -233,7 +233,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Tanečné a pohybové štúdio Crazy Family <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Trojičné námestie</span>
+                <span class="program-item__venue">Trojičné námestie</span>
                 <span class="cat-badge cat-badge--trojicka">Trojičné nám.</span>
               </div>
               <div class="program-item__desc">Energická show tanečnej skupiny Crazy Family – zmes moderného tanca, streetdance a akrobatických prvkov.</div>
@@ -246,7 +246,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Cup Of Tea <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Trojičné námestie</span>
+                <span class="program-item__venue">Trojičné námestie</span>
                 <span class="cat-badge cat-badge--trojicka">Trojičné nám.</span>
               </div>
               <div class="program-item__desc">Populárna slovenská kapela Cup Of Tea roztancuje Trojičné námestie. Kombinácia popu, soulu a r&amp;b.</div>
@@ -259,7 +259,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Slniečko <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Trojičné námestie</span>
+                <span class="program-item__venue">Trojičné námestie</span>
                 <span class="cat-badge cat-badge--trojicka">Trojičné nám.</span>
               </div>
               <div class="program-item__desc">Obľúbená kapela Slniečko prinesie svoju typickú energiu a hitové skladby, ktoré poznajú dospelí aj deti.</div>
@@ -272,7 +272,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Bystrik <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Trojičné námestie</span>
+                <span class="program-item__venue">Trojičné námestie</span>
                 <span class="cat-badge cat-badge--trojicka">Trojičné nám.</span>
               </div>
               <div class="program-item__desc">Bystrik uzatvára piatkový program na Trojičnom námestí. Elektronická hudba a pop v podaní jednej z najobľúbenejších slovenských hviezd. Vstup voľný.</div>
@@ -286,7 +286,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">DFS Drienka <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Námestie SNP – Ľudová veselica</span>
+                <span class="program-item__venue">Námestie SNP – Ľudová veselica</span>
                 <span class="cat-badge cat-badge--veselica">Ľudová veselica</span>
               </div>
               <div class="program-item__desc">Detský folklórny súbor Drienka otvorí piatkový program Ľudovej veselice s pestrofarebnými ľudovými tancami a piesňami.</div>
@@ -299,7 +299,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Cimbalofka z Horných Orešán <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Námestie SNP – Ľudová veselica</span>
+                <span class="program-item__venue">Námestie SNP – Ľudová veselica</span>
                 <span class="cat-badge cat-badge--veselica">Ľudová veselica</span>
               </div>
               <div class="program-item__desc">Cimbalová hudba z obce Horné Orešany – autentická ľudová muzika z Trnavského kraja. Tance, spevy a dobrá nálada garantované.</div>
@@ -312,7 +312,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Gypsy Elegance <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Námestie SNP – Ľudová veselica</span>
+                <span class="program-item__venue">Námestie SNP – Ľudová veselica</span>
                 <span class="cat-badge cat-badge--veselica">Ľudová veselica</span>
               </div>
               <div class="program-item__desc">Temperamentná kapela Gypsy Elegance uzatvára piatkový večer na veselici. Rómsky džez, csárdáš a romani gold – záruka výbornej zábavy do neskorých hodín.</div>
@@ -324,12 +324,12 @@
             <div class="program-item__time">19:30</div>
             <div class="program-item__line"></div>
             <div class="program-item__content">
-              <div class="program-item__title" tabindex="0">Korben Dallas – Rozlúčka s letom 🎟 <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
+              <div class="program-item__title" tabindex="0">Korben Dallas – Rozlúčka s letom <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Mestský amfiteáter</span>
+                <span class="program-item__venue">Mestský amfiteáter</span>
                 <span class="cat-badge cat-badge--amfiteater">Amfiteáter · platené</span>
               </div>
-              <div class="program-item__desc">Vynikajúca kapela Korben Dallas otvára piatkový dvojkoncert „Rozlúčka s letom". Ska, reggae a energia, ktorá nedá sedieť. Lístky: Maxiticket.sk alebo TIC Mestská veža. ⚠ Kapacita obmedzená.</div>
+              <div class="program-item__desc">Vynikajúca kapela Korben Dallas otvára piatkový dvojkoncert „Rozlúčka s letom". Ska, reggae a energia, ktorá nedá sedieť. Lístky: Maxiticket.sk alebo TIC Mestská veža.</div>
             </div>
           </div>
 
@@ -337,12 +337,12 @@
             <div class="program-item__time">21:00</div>
             <div class="program-item__line"></div>
             <div class="program-item__content">
-              <div class="program-item__title" tabindex="0">Richard Müller – Rozlúčka s letom 🎟 <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
+              <div class="program-item__title" tabindex="0">Richard Müller – Rozlúčka s letom <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Mestský amfiteáter</span>
+                <span class="program-item__venue">Mestský amfiteáter</span>
                 <span class="cat-badge cat-badge--amfiteater">Amfiteáter · platené</span>
               </div>
-              <div class="program-item__desc">Živá legenda slovenskej hudobnej scény Richard Müller uzatvára piatkový amfiteátrový program. Hitové piesne, vynikajúca interpretácia. Lístky: Maxiticket.sk. ⚠ Posledné lístky!</div>
+              <div class="program-item__desc">Živá legenda slovenskej hudobnej scény Richard Müller uzatvára piatkový amfiteátrový program. Hitové piesne, vynikajúca interpretácia. Lístky: Maxiticket.sk.</div>
             </div>
           </div>
 
@@ -353,8 +353,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Západoslovenské múzeum: Komentovaná prehliadka zbierok – vstup zadarmo <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Západoslovenské múzeum</span>
-                <span class="cat-badge cat-badge--ostatne">Múzeum</span>
+                <span class="program-item__venue">Západoslovenské múzeum</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Komentovaná prehliadka stálych zbierok múzea s dôrazom na stredoveké Trnava. Počas jarmoku vstup zadarmo. Prehliadky v slovenčine aj nemčine.</div>
             </div>
@@ -365,8 +365,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Krajská knižnica: Výstava – Trnava v historických mapách <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Krajská knižnica Trnava</span>
-                <span class="cat-badge cat-badge--ostatne">Kultúra</span>
+                <span class="program-item__venue">Krajská knižnica Trnava</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Otvorenie výstavy historických máp Trnavy od stredoveku po 20. storočie. Zriedkavé kartografické dokumenty z knižničného archívu. Vstup voľný.</div>
             </div>
@@ -377,8 +377,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Osvetové stredisko: Tvorivá dielňa – Jarmočné ľudové motívy <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Osvetové stredisko Trnava</span>
-                <span class="cat-badge cat-badge--ostatne">Dielňa</span>
+                <span class="program-item__venue">Osvetové stredisko Trnava</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Tvorivá dielňa zameraná na tradičné ľudové motívy z trnavského regiónu – maľba, tlač a aplikácia na papier a textil. Pre deti aj dospelých. Vstup voľný.</div>
             </div>
@@ -399,8 +399,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Stredovek – Otvorenie promenády <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka</span>
-                <span class="cat-badge cat-badge--stredovek">Stredovek pod hradbami</span>
+                <span class="program-item__venue">Sad Antona Bernolaka</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Slávnostné otvorenie stredovekej promenády. Bránou mestečka Tyrna vstúpite do sveta šermiarov, rytierov a ich družín. Prevádzka: 10:00–20:00.</div>
             </div>
@@ -412,8 +412,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Workshop: Varenie na stredoveký spôsob <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka – Gazdovský dvor</span>
-                <span class="cat-badge cat-badge--stredovek">Workshop</span>
+                <span class="program-item__venue">Sad Antona Bernolaka – Gazdovský dvor</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Vyskúšajte si varenie v hlinených hrncoch na otvorenom ohni. Pšenová kaša, jednoduché placky a stredoveké recepty. Pre deti aj dospelých, bez rezervácie.</div>
             </div>
@@ -425,8 +425,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Kaukliarsky workshop I. <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka</span>
-                <span class="cat-badge cat-badge--stredovek">Workshop</span>
+                <span class="program-item__venue">Sad Antona Bernolaka</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Naučte sa základy kaukliarstva so žonglovacími loptičkami, kužeľmi a šatkami. Lektor vás prevedie základnými technikami stredovekých šašov.</div>
             </div>
@@ -438,8 +438,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Šermiarska skupina Gladius – vystúpenie I. <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka – hlavná aréna</span>
-                <span class="cat-badge cat-badge--stredovek">Šermiarska show</span>
+                <span class="program-item__venue">Sad Antona Bernolaka – hlavná aréna</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Dynamické šermiarske súboje skupiny Gladius. Mečiare, kopije a štíty v akcii – autentická ukážka stredovekých techník boja v plnom brnení.</div>
             </div>
@@ -451,8 +451,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Tanečný workshop – Dobové dvorské tance <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka</span>
-                <span class="cat-badge cat-badge--stredovek">Workshop</span>
+                <span class="program-item__venue">Sad Antona Bernolaka</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Naučte sa základy stredovekých dvorských tancov – estampie a rondo. Lektorka vás prevedie prvkami, ktoré sa tancovali na kráľovských dvoroch v 14. storočí.</div>
             </div>
@@ -464,8 +464,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Historická módna prehliadka – Odev a šperky 14. stor. <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka – hlavná aréna</span>
-                <span class="cat-badge cat-badge--stredovek">Módna prehliadka</span>
+                <span class="program-item__venue">Sad Antona Bernolaka – hlavná aréna</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Autenticky zrekonštruované odevy z doby vlády Jána Luxemburského. Kráľovské rúcha, rytierske brnenia, ľudový odev. Komentovaná prehliadka s historickým výkladom.</div>
             </div>
@@ -477,8 +477,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Lovecký turnaj na koňoch I. <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka – jazdecká aréna</span>
-                <span class="cat-badge cat-badge--stredovek">Rytiersky turnaj</span>
+                <span class="program-item__venue">Sad Antona Bernolaka – jazdecká aréna</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Rytieri na koňoch súťažia v loveckom turnaji. Kopija na terč, jazda s fakľou a disciplína kolky na koňoch. Oklapy pre divákov, bezpečnostná zóna vyznačená.</div>
             </div>
@@ -490,8 +490,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Šermiarska skupina Gladius – vystúpenie II. <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka – hlavná aréna</span>
-                <span class="cat-badge cat-badge--stredovek">Šermiarska show</span>
+                <span class="program-item__venue">Sad Antona Bernolaka – hlavná aréna</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Druhé šermiarske vystúpenie skupiny Gladius – dlhšia show s príbehom. Duel pred kráľovským stolom, zrada a víťazstvo cti.</div>
             </div>
@@ -503,8 +503,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Workshop: Stredoveká lukostrelba <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka – lukostrelnica</span>
-                <span class="cat-badge cat-badge--stredovek">Workshop</span>
+                <span class="program-item__venue">Sad Antona Bernolaka – lukostrelnica</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Vyskúšajte si stredovekú lukostrelbu pod dohľadom skúseného lektora. Dlhé luky, terče a historicky autentická technika streľby. Od 8 rokov.</div>
             </div>
@@ -516,8 +516,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Detský rytiersky turnaj <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka – hlavná aréna</span>
-                <span class="cat-badge cat-badge--stredovek">Detský program</span>
+                <span class="program-item__venue">Sad Antona Bernolaka – hlavná aréna</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Nechajte deti vyskúšať si rytiersky turnaj v detskom brnení. Bezpečné mäkké zbrane, turnaj v dvoch kategóriách (4–8 r., 9–14 r.). Víťaz dostane titul Rytiera Tyrny!</div>
             </div>
@@ -529,7 +529,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Historická bitka – Obkľúčenie Tyrny <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka – celý areál</span>
+                <span class="program-item__venue">Sad Antona Bernolaka – celý areál</span>
                 <span class="cat-badge cat-badge--stredovek">Skupinové šermiarske divadlo</span>
               </div>
               <div class="program-item__desc">Veľkolepé skupinové šermiarske divadlo – obkľúčenie a obrana mestečka Tyrna. 30+ účinkujúcich v plnom brnení, trebuchet a bojový šum. Nezabudnuteľný zážitok!</div>
@@ -542,8 +542,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Šermiarska skupina Gladius – vystúpenie III. <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka – hlavná aréna</span>
-                <span class="cat-badge cat-badge--stredovek">Šermiarska show</span>
+                <span class="program-item__venue">Sad Antona Bernolaka – hlavná aréna</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Tretie šermiarske vystúpenie – slávnostný duel pred príchodom kráľov. Záverečná show pred večerným ceremoniálom.</div>
             </div>
@@ -555,8 +555,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">⭐ Slávnostný ceremoniál – Rytiersky turnaj na koňoch <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka – jazdecká aréna</span>
-                <span class="cat-badge cat-badge--stredovek">Hlavné podujatie</span>
+                <span class="program-item__venue">Sad Antona Bernolaka – jazdecká aréna</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Vrchol sobotného programu! Príchod Jána Luxemburského a Karola Róberta z Anjou. Slávnostný rytiersky turnaj na koňoch na počesť sobášnej zmluvy z roku 1327. Historicky autentická rekonštrukcia stretnutia dvoch kráľovských rodov.</div>
             </div>
@@ -568,8 +568,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Ohnivá show <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad Antona Bernolaka</span>
-                <span class="cat-badge cat-badge--stredovek">Fire show</span>
+                <span class="program-item__venue">Sad Antona Bernolaka</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Žongléri s ohňom, požiarne kolotoče a ohnivé meče. Impozantná show pri zotmievaní.</div>
             </div>
@@ -581,8 +581,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">⭐ Kráľovský fakľový sprievod k Severnej veži <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Sad A. Bernolaka → Radnica → Severná veža</span>
-                <span class="cat-badge cat-badge--stredovek">Historický sprievod</span>
+                <span class="program-item__venue">Sad A. Bernolaka → Radnica → Severná veža</span>
+                <span class="cat-badge cat-badge--stredovek">Stredovek</span>
               </div>
               <div class="program-item__desc">Slávnostný fakľový pochod trnavskej posádky a kráľovských dvoranov zo Sadu Antona Bernolaka k Radnici a ďalej cez Hviezdoslavovu ulicu k Severnej veži. Zakončenie výstrelom z trebuchetu. Trasa: cca 800m, diváci vítaní pozdĺž celej trasy.</div>
             </div>
@@ -595,7 +595,7 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Tanečná škola LIFE IS PERFECT by JOHNNY MĚCOCH <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Trojičné námestie</span>
+                <span class="program-item__venue">Trojičné námestie</span>
                 <span class="cat-badge cat-badge--trojicka">Trojičné nám.</span>
               </div>
               <div class="program-item__desc">Tanečná škola LIFE IS PERFECT predvedie energie plné choreografie svojich študentov pod vedením Johnnyho Měcocha.</div>
@@ -607,7 +607,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Elles Dance Studio <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">Elles Dance Studio – moderné tanečné choreografie v podaní skúsených tanečníkov.</div>
             </div>
           </div>
@@ -617,7 +617,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Rusalka – Tanečné a pohybové centrum <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">Tanečné centrum Rusalka – výber z repertoáru súčasného tanca, baletu a pohybového divadla.</div>
             </div>
           </div>
@@ -627,7 +627,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">STYLEUNITS profesionálne tanečné štúdio <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">Profesionálne tanečné štúdio STYLEUNITS – hip-hop, funk a urban dance v top kvalite.</div>
             </div>
           </div>
@@ -637,7 +637,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Peter Leto <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">Peter Leto s gitarou a kapelou prinesie letné hity a nové pesničky. Výborný rozohriatok pred veľkými koncertmi.</div>
             </div>
           </div>
@@ -647,7 +647,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">⭐ HEX <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">Legendárna slovenská rocková kapela HEX – hitové albumy, rocková energia a fenomenálny spevák Peter Cmorik. Vstup voľný.</div>
             </div>
           </div>
@@ -657,7 +657,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Bukasový Masív <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">Bukasový Masív uzatvára sobotný program – elektronická hudba, bass a energia do neskorých hodín.</div>
             </div>
           </div>
@@ -668,7 +668,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Sirka Cuvée Ensemble a DFS Trnavček <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Námestie SNP – Ľudová veselica</span><span class="cat-badge cat-badge--veselica">Ľudová veselica</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Námestie SNP – Ľudová veselica</span><span class="cat-badge cat-badge--veselica">Ľudová veselica</span></div>
               <div class="program-item__desc">Spoločné vystúpenie Sirka Cuvée Ensemble a Detského folklórneho súboru Trnavček. Spojenie dospelých umelcov a detí v slávnostnom ľudovom programe.</div>
             </div>
           </div>
@@ -678,7 +678,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Ľudová hudba Leoša Farkašaa <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Námestie SNP – Ľudová veselica</span><span class="cat-badge cat-badge--veselica">Ľudová veselica</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Námestie SNP – Ľudová veselica</span><span class="cat-badge cat-badge--veselica">Ľudová veselica</span></div>
               <div class="program-item__desc">Ľudová hudba Leoša Farkašaa – tradičné moravské ľudové piesne a tance, ktoré si oblúbia celé generácie.</div>
             </div>
           </div>
@@ -688,7 +688,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Muzika Heskovci <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Námestie SNP – Ľudová veselica</span><span class="cat-badge cat-badge--veselica">Ľudová veselica</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Námestie SNP – Ľudová veselica</span><span class="cat-badge cat-badge--veselica">Ľudová veselica</span></div>
               <div class="program-item__desc">Muzika Heskovci – tanečná ľudová hudba, ktorá rozroztancuje aj tých najodolnejších. Program pokračuje do 23:00.</div>
             </div>
           </div>
@@ -700,8 +700,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Západoslovenské múzeum: Workshop pre deti – Archeologické vykopávky <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Západoslovenské múzeum</span>
-                <span class="cat-badge cat-badge--ostatne">Workshop</span>
+                <span class="program-item__venue">Západoslovenské múzeum</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Deti sú na chvíľu archeológmi – kopú, preosievajú a objavujú predmety z replík stredovekých vrstiev. Zaujímavé pre deti 6–14 rokov. Registrácia na mieste.</div>
             </div>
@@ -712,8 +712,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Osvetové stredisko: Workshop – Ľudový tanec pre začiatočníkov <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Osvetové stredisko Trnava</span>
-                <span class="cat-badge cat-badge--ostatne">Workshop</span>
+                <span class="program-item__venue">Osvetové stredisko Trnava</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Naučte sa základy ľudového tanca z Malých Karpát s profesionálnymi inštruktormi. Vhodné pre všetkých bez predchádzajúcich skúseností.</div>
             </div>
@@ -724,8 +724,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Krajská knižnica: Workshop – Iluminované rukopisy pre deti <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Krajská knižnica Trnava</span>
-                <span class="cat-badge cat-badge--ostatne">Workshop</span>
+                <span class="program-item__venue">Krajská knižnica Trnava</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Deti si vytvoria vlastnú iluminovanú iniciálu alebo miniatúru v štýle stredovekých rukopisov. Materiál zabezpečený. Vstup voľný.</div>
             </div>
@@ -736,8 +736,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Západoslovenské múzeum: Prednáška – Ján Luxemburský a Trnava roku 1327 <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Západoslovenské múzeum</span>
-                <span class="cat-badge cat-badge--ostatne">Prednáška</span>
+                <span class="program-item__venue">Západoslovenské múzeum</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Odborná prednáška historika o historickom stretnutí Jána Luxemburského a Karola Róberta z Anjou v Trnave roku 1327 a jeho dôsledkoch pre mesto.</div>
             </div>
@@ -748,8 +748,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Krajská knižnica: Komentovaná prehliadka – Dejiny jarmočného práva <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Krajská knižnica Trnava</span>
-                <span class="cat-badge cat-badge--ostatne">Kultúra</span>
+                <span class="program-item__venue">Krajská knižnica Trnava</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Prehliadka historických dokumentov viazaných na jarmočné právo Trnavy – originály a dobové reprodukcie listín z archívu knižnice.</div>
             </div>
@@ -760,8 +760,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Osvetové stredisko: Diskusia – Tradičná kultúra a moderný festival <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Osvetové stredisko Trnava</span>
-                <span class="cat-badge cat-badge--ostatne">Diskusia</span>
+                <span class="program-item__venue">Osvetové stredisko Trnava</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Panelová diskusia odborníkov na tému zachovania tradičnej kultúry v kontexte moderných festivalov. Moderuje kultúrna redaktorka RTVS.</div>
             </div>
@@ -781,7 +781,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Stredovek – Otvorenie promenády <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Sad Antona Bernolaka</span><span class="cat-badge cat-badge--stredovek">Stredovek pod hradbami</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Sad Antona Bernolaka</span><span class="cat-badge cat-badge--stredovek">Stredovek</span></div>
               <div class="program-item__desc">Posledný deň stredovekej promenády. Prevádzka 10:00–19:00. Takmer celý program zopakovaný vrátane turnajov a workshopov.</div>
             </div>
           </div>
@@ -791,7 +791,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Lovecký turnaj na koňoch <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Sad Antona Bernolaka</span><span class="cat-badge cat-badge--stredovek">Rytiersky turnaj</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Sad Antona Bernolaka</span><span class="cat-badge cat-badge--stredovek">Stredovek</span></div>
               <div class="program-item__desc">Nedeľný lovecký turnaj na koňoch – rytieri súťažia o titul najlepšieho jazdca stredovekej Tyrny.</div>
             </div>
           </div>
@@ -801,7 +801,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Historická bitka – Obrana Tyrny <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Sad Antona Bernolaka – celý areál</span><span class="cat-badge cat-badge--stredovek">Skupinové divadlo</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Sad Antona Bernolaka – celý areál</span><span class="cat-badge cat-badge--stredovek">Stredovek</span></div>
               <div class="program-item__desc">Nedeľná historická bitka – obrana mestečka Tyrna pred útočníkmi. Záverečná epická show stredovekého víkendu.</div>
             </div>
           </div>
@@ -811,7 +811,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">⭐ Rytiersky turnaj na koňoch – záverečný <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Sad Antona Bernolaka</span><span class="cat-badge cat-badge--stredovek">Hlavné podujatie</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Sad Antona Bernolaka</span><span class="cat-badge cat-badge--stredovek">Stredovek</span></div>
               <div class="program-item__desc">Záverečný veľký rytiersky turnaj celého víkendu. Odovzdávanie cien, slávnostný ceremoniál a lúčenie s rytiermi Tyrny do budúceho roku.</div>
             </div>
           </div>
@@ -821,7 +821,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Zatvorenie promenády + záverečný ceremoniál <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Sad Antona Bernolaka</span><span class="cat-badge cat-badge--stredovek">Záver</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Sad Antona Bernolaka</span><span class="cat-badge cat-badge--stredovek">Stredovek</span></div>
               <div class="program-item__desc">Slávnostné zatvorenie stredovekej promenády. Záverečný ceremoniál, príhovor kráľov a lúčenie s návštevníkmi.</div>
             </div>
           </div>
@@ -832,7 +832,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Street Beats Crew <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">Street Beats Crew – beatbox, break dance a urban tanec v podaní mladých talentov zo Slovenska.</div>
             </div>
           </div>
@@ -842,7 +842,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Cimbálová hudba Kroco <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">Cimbálová hudba Kroco – tradičná ľudová hudba v nedeľnom poobedňajšom slnku.</div>
             </div>
           </div>
@@ -852,7 +852,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">BeatRoot <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">BeatRoot – originálny hudobný projekt kombinujúci elektroniku, jazz a world music. Nezvyčajný zvukový zážitok.</div>
             </div>
           </div>
@@ -862,7 +862,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Allan Mikušek <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">Allan Mikušek – country a americana v podaní jedného z najlepších slovenských countrových interpretov.</div>
             </div>
           </div>
@@ -872,7 +872,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">⭐ Zuzana Smatanová – záverečný koncert <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Trojičné námestie</span><span class="cat-badge cat-badge--trojicka">Trojičné nám.</span></div>
               <div class="program-item__desc">Zuzana Smatanová uzatvára celý Trnavský jarmok 2026 slávnostným záverečným koncertom. Hitové piesne, silný záver a dovidenia na budúci rok! Vstup voľný.</div>
             </div>
           </div>
@@ -883,7 +883,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Kapela Huncúti <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Námestie SNP – Ľudová veselica</span><span class="cat-badge cat-badge--veselica">Ľudová veselica</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Námestie SNP – Ľudová veselica</span><span class="cat-badge cat-badge--veselica">Ľudová veselica</span></div>
               <div class="program-item__desc">Kapela Huncúti – ľudová hudba s humorom a nadhľadom. Zábava pre celú rodinu.</div>
             </div>
           </div>
@@ -893,7 +893,7 @@
             <div class="program-item__line"></div>
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Kapela Kuštárovci <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta"><span class="program-item__venue">📍 Námestie SNP – Ľudová veselica</span><span class="cat-badge cat-badge--veselica">Ľudová veselica</span></div>
+              <div class="program-item__meta"><span class="program-item__venue">Námestie SNP – Ľudová veselica</span><span class="cat-badge cat-badge--veselica">Ľudová veselica</span></div>
               <div class="program-item__desc">Kapela Kuštárovci uzatvára Ľudovú veselicu a celý Trnavský jarmok 2026. Tanečná muzika do neskorého poobedia. Program do 19:00.</div>
             </div>
           </div>
@@ -905,8 +905,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Západoslovenské múzeum: Komentovaná prehliadka – Stredoveká Trnava <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Západoslovenské múzeum</span>
-                <span class="cat-badge cat-badge--ostatne">Múzeum</span>
+                <span class="program-item__venue">Západoslovenské múzeum</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Záverečná komentovaná prehliadka venovaná stredovekej Trnave. Sprievodcovia priblížia každodenný život v meste v 14. storočí. Vstup zadarmo.</div>
             </div>
@@ -917,8 +917,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Krajská knižnica: Literárne dopoludnie – Básnici trnavskej školy <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Krajská knižnica Trnava</span>
-                <span class="cat-badge cat-badge--ostatne">Kultúra</span>
+                <span class="program-item__venue">Krajská knižnica Trnava</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Záverečné podujatie knižnice – literárne stretnutie venované básnikám a básnikom trnavskej školy. Čítanie, diskusia a ukážky z tvorby. Vstup voľný.</div>
             </div>
@@ -929,8 +929,8 @@
             <div class="program-item__content">
               <div class="program-item__title" tabindex="0">Osvetové stredisko: Záverečný kultúrny program <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
               <div class="program-item__meta">
-                <span class="program-item__venue">📍 Osvetové stredisko Trnava</span>
-                <span class="cat-badge cat-badge--ostatne">Kultúra</span>
+                <span class="program-item__venue">Osvetové stredisko Trnava</span>
+                <span class="cat-badge cat-badge--ostatne">Ostatné</span>
               </div>
               <div class="program-item__desc">Záverečný kultúrny program Osvetového strediska – výber z najlepšieho z celého víkendu. Hudba, tanec, poézia. Voľný vstup, vhodné pre celú rodinu.</div>
             </div>

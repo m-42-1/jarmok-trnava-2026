@@ -280,11 +280,18 @@
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border);
-  padding: var(--sp-4) var(--sp-5);
+  padding: var(--sp-3) var(--sp-4);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+  align-items: flex-start;
+}
+.filter-bar > div {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-4);
-  margin-bottom: var(--sp-6);
+  gap: var(--sp-2);
 }
 .filter-tabs {
   display: flex;
@@ -292,15 +299,16 @@
   flex-wrap: wrap;
 }
 .filter-tab {
-  padding: 0.45em 1.1em;
+  padding: 0.35em 0.9em;
   border-radius: var(--radius-pill);
   border: 2px solid var(--border);
   background: var(--white);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   font-weight: var(--weight-medium);
   color: var(--text-muted);
   cursor: pointer;
   transition: all var(--transition);
+  white-space: nowrap;
 }
 .filter-tab:hover {
   border-color: var(--blue);
@@ -311,18 +319,16 @@
   border-color: var(--blue);
   color: var(--white);
 }
-.filter-tab--yellow.active {
-  background: var(--yellow);
-  border-color: var(--yellow);
-  color: var(--dark);
-}
 .filter-pills {
   display: flex;
   gap: var(--sp-2);
   flex-wrap: wrap;
 }
 .filter-pill {
-  padding: 0.3em 0.9em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.3em 0.75em;
   border-radius: var(--radius-pill);
   border: 2px solid var(--border);
   background: var(--white);
@@ -331,17 +337,27 @@
   color: var(--text-muted);
   cursor: pointer;
   transition: all var(--transition);
+  white-space: nowrap;
 }
-.filter-pill:hover { border-color: currentColor; }
-.filter-pill[data-cat="stredovek"].active { background: var(--cat-stredovek); border-color: var(--cat-stredovek); color: var(--white); }
-.filter-pill[data-cat="veselica"].active  { background: var(--cat-veselica);  border-color: var(--cat-veselica);  color: var(--white); }
-.filter-pill[data-cat="trojicka"].active  { background: var(--cat-trojicka);  border-color: var(--cat-trojicka);  color: var(--white); }
-.filter-pill[data-cat="rozpravka"].active { background: var(--cat-rozpravka); border-color: var(--cat-rozpravka); color: var(--white); }
-.filter-pill[data-cat="remesla"].active   { background: var(--cat-remesla);   border-color: var(--cat-remesla);   color: var(--white); }
-.filter-pill[data-cat="kolotoc"].active   { background: var(--cat-kolotoc);   border-color: var(--cat-kolotoc);   color: var(--white); }
-.filter-pill[data-cat="amfiteater"].active{ background: #e65100;              border-color: #e65100;              color: var(--white); }
-.filter-pill[data-cat="all"].active,
-.filter-pill[data-cat="ostatne"].active   { background: var(--blue);          border-color: var(--blue);          color: var(--white); }
+.filter-pill:hover { border-color: var(--yellow); color: var(--dark); }
+/* Monochromatic yellow for all active pills */
+.filter-pill.active {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--dark);
+}
+/* X indicator for active pills */
+.pill-x {
+  display: none;
+  font-size: 1.1em;
+  line-height: 1;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-left: 1px;
+}
+.filter-pill.active .pill-x {
+  display: inline;
+}
 
 /* Search input */
 .search-wrap {
@@ -1038,6 +1054,13 @@
   color: var(--white);
   padding: var(--sp-16) 0 var(--sp-12);
 }
+/* Override base.css h1-h6 { color: var(--text-primary) } for dark hero sections */
+.page-hero h1,
+.page-hero h2,
+.page-hero h3,
+.page-hero h4 {
+  color: var(--white);
+}
 .page-hero--stredovek { background: linear-gradient(135deg, #3d0a5c 0%, var(--purple) 100%); }
 .page-hero--veselica  { background: linear-gradient(135deg, var(--navy) 0%, #4a6ad4 100%); }
 .page-hero--trojicka  { background: linear-gradient(135deg, #006b9e 0%, var(--sky) 100%); }
@@ -1156,3 +1179,18 @@
   max-width: 400px;
 }
 .error-page__actions { display: flex; gap: var(--sp-4); justify-content: center; flex-wrap: wrap; }
+
+/* ---- MOBILE PADDING FIXES (avoid boxes-in-boxes being too narrow) ---- */
+@media (max-width: 480px) {
+  .info-card        { padding: var(--sp-4) var(--sp-3); }
+  .callout-box      { padding: var(--sp-4) var(--sp-3); }
+  .doc-card         { padding: var(--sp-3); }
+  .milestone        { padding: var(--sp-4) var(--sp-3); }
+  .milestone-grid   { grid-template-columns: 1fr; }
+  .vendor-table     { font-size: var(--text-xs); }
+  .filter-bar       { padding: var(--sp-3); gap: var(--sp-2); }
+  .filter-bar > div { gap: var(--sp-1); }
+  .cennik-table     { font-size: var(--text-xs); }
+  .cennik-table td,
+  .cennik-table th  { padding: var(--sp-2) var(--sp-2); }
+}
