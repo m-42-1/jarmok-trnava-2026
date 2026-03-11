@@ -124,17 +124,17 @@
 
   /* --- Layout --- */
   --container: 1200px;
-  --header-h1: 58px;
+  --header-h1: 68px;
   --header-h2: 48px;
   --header-h3: 40px;
-  --header-total: 146px;
+  --header-total: 156px;
 }
 
 @media (max-width: 768px) {
   :root {
-    --header-h1: 52px;
+    --header-h1: 62px;
     --header-h2: 0px;
     --header-h3: 0px;
-    --header-total: 52px;
+    --header-total: 62px;
   }
 }

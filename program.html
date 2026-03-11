@@ -24,12 +24,11 @@
     .program-page-hero h1::after { background: var(--yellow); }
     .program-sticky-filters {
       position: sticky;
-      top: calc(var(--header-total) - 1px);
+      top: calc(var(--header-total) - 2px);
       z-index: 100;
       background: var(--white);
       box-shadow: 0 2px 12px rgba(0,0,0,.08);
       padding: var(--sp-3) 0;
-      border-top: 1px solid var(--border);
     }
     .program-partners {
       background: var(--gray-50);
@@ -65,9 +64,8 @@
   <div class="program-sticky-filters">
     <div class="container">
       <div class="filter-bar" style="margin-bottom:0">
-        <!-- Day filter -->
-        <div>
-          <div style="font-size:var(--text-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--sp-2)">Deň</div>
+        <!-- Row 1: Day tabs -->
+        <div class="filter-bar__days">
           <div class="filter-tabs" role="group" aria-label="Filtrovať podľa dňa">
             <button class="filter-tab active" data-day="all">Všetky dni</button>
             <button class="filter-tab" data-day="stvrtok">Štvrtok 11.9</button>
@@ -76,28 +74,22 @@
             <button class="filter-tab" data-day="nedela">Nedeľa 14.9</button>
           </div>
         </div>
-        <!-- Category filter -->
-        <div>
-          <div style="font-size:var(--text-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--sp-2)">Kategória</div>
+        <!-- Row 2: Category pills + search -->
+        <div class="filter-bar__bottom">
           <div class="filter-pills" role="group" aria-label="Filtrovať podľa kategórie">
             <button class="filter-pill active" data-cat="trojicka"><span>Trojičné nám.</span><span class="pill-x" aria-hidden="true">×</span></button>
             <button class="filter-pill active" data-cat="stredovek"><span>Stredovek</span><span class="pill-x" aria-hidden="true">×</span></button>
             <button class="filter-pill active" data-cat="veselica"><span>Ľudová veselica</span><span class="pill-x" aria-hidden="true">×</span></button>
             <button class="filter-pill active" data-cat="rozpravka"><span>Rozprávkový svet</span><span class="pill-x" aria-hidden="true">×</span></button>
-            <button class="filter-pill active" data-cat="amfiteater"><span>Amfiteáter</span><span class="pill-x" aria-hidden="true">×</span></button>
             <button class="filter-pill" data-cat="ostatne"><span>Ostatné</span><span class="pill-x" aria-hidden="true">×</span></button>
           </div>
-        </div>
-        <!-- Search -->
-        <div>
           <div class="search-wrap">
             <span class="search-wrap__icon" aria-hidden="true">⌕</span>
             <input type="search" id="program-search" class="search-input"
-                   placeholder="Hľadajte v programe... (napr. „Hex", „rytiersky")"
+                   placeholder="Hľadajte v programe..."
                    aria-label="Vyhľadávanie v programe">
             <button id="search-clear" class="search-clear" aria-label="Vymazať vyhľadávanie">✕</button>
           </div>
-          <div id="filter-counter" class="filter-counter" style="margin-top:var(--sp-2)" aria-live="polite"></div>
         </div>
       </div>
     </div>
@@ -319,32 +311,6 @@
             </div>
           </div>
 
-          <!-- Amfiteáter piatok -->
-          <div class="program-item" data-day="piatok" data-category="amfiteater">
-            <div class="program-item__time">19:30</div>
-            <div class="program-item__line"></div>
-            <div class="program-item__content">
-              <div class="program-item__title" tabindex="0">Korben Dallas – Rozlúčka s letom <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta">
-                <span class="program-item__venue">Mestský amfiteáter</span>
-                <span class="cat-badge cat-badge--amfiteater">Amfiteáter · platené</span>
-              </div>
-              <div class="program-item__desc">Vynikajúca kapela Korben Dallas otvára piatkový dvojkoncert „Rozlúčka s letom". Ska, reggae a energia, ktorá nedá sedieť. Lístky: Maxiticket.sk alebo TIC Mestská veža.</div>
-            </div>
-          </div>
-
-          <div class="program-item" data-day="piatok" data-category="amfiteater">
-            <div class="program-item__time">21:00</div>
-            <div class="program-item__line"></div>
-            <div class="program-item__content">
-              <div class="program-item__title" tabindex="0">Richard Müller – Rozlúčka s letom <span class="program-item__expand-icon" aria-hidden="true">▾</span></div>
-              <div class="program-item__meta">
-                <span class="program-item__venue">Mestský amfiteáter</span>
-                <span class="cat-badge cat-badge--amfiteater">Amfiteáter · platené</span>
-              </div>
-              <div class="program-item__desc">Živá legenda slovenskej hudobnej scény Richard Müller uzatvára piatkový amfiteátrový program. Hitové piesne, vynikajúca interpretácia. Lístky: Maxiticket.sk.</div>
-            </div>
-          </div>
 
           <!-- Partner events – Piatok -->
           <div class="program-item" data-day="piatok" data-category="ostatne">
@@ -1018,7 +984,7 @@
       <section style="margin-top:var(--sp-12)" aria-labelledby="map-heading">
         <h2 id="map-heading" class="section__title" style="margin-bottom:var(--sp-6)">Mapa jarmoku</h2>
         <figure class="map-placeholder">
-          <img src="https://picsum.photos/1200/500?random=50" alt="Mapa Trnavského jarmoku 2026 – zóny podujatí v meste Trnava">
+          <img src="mapa-ttj-2025.png" alt="Mapa Trnavského jarmoku 2026 – zóny podujatí v meste Trnava" style="max-width:100%;height:auto;display:block;">
           <figcaption style="padding:var(--sp-3) var(--sp-4);font-size:var(--text-sm);color:var(--text-muted);background:var(--gray-50)">
             Mapa je orientačná. Presné umiestnenie stánkov a pódia môže byť upravené.
             <a href="mapa.html" style="margin-left:var(--sp-2)">→ Podrobná mapa</a>

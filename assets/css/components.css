@@ -246,6 +246,71 @@
   object-fit: cover;
 }
 
+/* ---- NEWS CARD (homepage novinky) ---- */
+.news-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.news-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+.news-card__img-wrap {
+  aspect-ratio: 16/9;
+  background: #f0f2f5;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.news-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.news-card__body {
+  padding: var(--sp-4) var(--sp-5) var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  flex: 1;
+}
+.news-card__badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.news-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  line-height: var(--leading-tight);
+  margin: 0;
+}
+.news-card__text {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: var(--leading-body);
+  flex: 1;
+  margin: 0;
+}
+.news-card__time {
+  font-size: var(--text-xs);
+  color: var(--blue-light);
+  font-weight: var(--weight-medium);
+  margin-top: var(--sp-1);
+}
+
 /* ---- CATEGORY BADGE ---- */
 .cat-badge {
   display: inline-flex;
@@ -271,9 +336,6 @@
 .cat-badge--kolotoc   { background: var(--cat-kolotoc-bg);   color: var(--cat-kolotoc); }
 [data-category="ostatne"] .cat-badge,
 .cat-badge--ostatne   { background: var(--cat-ostatne-bg);   color: var(--cat-ostatne); }
-[data-category="amfiteater"] .cat-badge,
-.cat-badge--amfiteater{ background: #fff3e0;                 color: #e65100; }
-
 /* ---- FILTER BAR ---- */
 .filter-bar {
   background: var(--white);
@@ -282,16 +344,32 @@
   border: 1px solid var(--border);
   padding: var(--sp-3) var(--sp-4);
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: var(--sp-3);
   margin-bottom: var(--sp-6);
-  align-items: flex-start;
 }
-.filter-bar > div {
+/* Row 1: day tabs */
+.filter-bar__days {
   display: flex;
-  flex-direction: column;
-  gap: var(--sp-2);
+  align-items: center;
+}
+/* Row 2: pills left + search right */
+.filter-bar__bottom {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+.filter-bar__bottom .search-wrap {
+  margin-left: auto;
+  min-width: 220px;
+}
+@media (max-width: 640px) {
+  .filter-bar__bottom .search-wrap {
+    margin-left: 0;
+    width: 100%;
+    min-width: 0;
+  }
 }
 .filter-tabs {
   display: flex;
@@ -397,12 +475,8 @@
 }
 .search-clear.visible { display: block; }
 
-/* Filter counter */
-.filter-counter {
-  font-size: var(--text-xs);
-  color: var(--text-muted);
-  font-style: italic;
-}
+/* Filter counter (hidden – removed from UI) */
+.filter-counter { display: none; }
 
 /* ---- PROGRAM TIMELINE ---- */
 .program-timeline { }
@@ -1052,7 +1126,7 @@
 .page-hero {
   background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
   color: var(--white);
-  padding: var(--sp-16) 0 var(--sp-12);
+  padding: var(--sp-20) 0 var(--sp-16);
 }
 /* Override base.css h1-h6 { color: var(--text-primary) } for dark hero sections */
 .page-hero h1,
@@ -1189,7 +1263,7 @@
   .milestone-grid   { grid-template-columns: 1fr; }
   .vendor-table     { font-size: var(--text-xs); }
   .filter-bar       { padding: var(--sp-3); gap: var(--sp-2); }
-  .filter-bar > div { gap: var(--sp-1); }
+  .filter-bar__bottom { gap: var(--sp-2); }
   .cennik-table     { font-size: var(--text-xs); }
   .cennik-table td,
   .cennik-table th  { padding: var(--sp-2) var(--sp-2); }

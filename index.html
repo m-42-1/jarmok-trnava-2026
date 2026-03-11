@@ -73,9 +73,6 @@
         <li class="main-nav__item">
           <a href="novinky.html" class="main-nav__link">Novinky</a>
         </li>
-        <li class="main-nav__item">
-          <a href="program.html" class="main-nav__link main-nav__link--btn">Program</a>
-        </li>
         <li class="main-nav__item" data-submenu="sub-podujatia">
           <a href="podujatia.html" class="main-nav__link" aria-haspopup="true" aria-expanded="false">
             Podujatia <span class="main-nav__chevron" aria-hidden="true">▾</span>
@@ -94,6 +91,9 @@
         </li>
         <li class="main-nav__item">
           <a href="predajcovia.html" class="main-nav__link">Zóna predajcov</a>
+        </li>
+        <li class="main-nav__item" style="margin-left:auto">
+          <a href="program.html" class="main-nav__link main-nav__link--btn">Program</a>
         </li>
       </ul>
     </div>
@@ -197,7 +197,6 @@
     <div class="hero__overlay"></div>
     <div class="container">
       <div class="hero__content">
-        <span class="hero__eyebrow">Tradičný mestský jarmok · Trnava</span>
         <h1 class="hero__title">Trnavský<br>jarmok 2026</h1>
         <p class="hero__subtitle">Štyri dni remeselníkov, rytierov, hudby a jarmočnej zábavy</p>
         <div class="hero__date">
@@ -223,33 +222,40 @@
         <a href="novinky.html" class="section__link">Všetky novinky →</a>
       </div>
       <div class="grid grid--3 fade-in">
-        <!-- Flash 1 -->
-        <article class="flash-card flash-card--alert" data-ts="1757548800">
-          <div class="flash-card__content">
-            <span class="flash-card__badge badge--alert">UPOZORNENIE</span>
-            <h3 class="flash-card__title">Richard Müller a Korben Dallas – posledné lístky</h3>
-            <p class="flash-card__text">Piatkový dvojkoncert v amfiteátri je takmer vypredaný. Zostatok lístkov v TIC Mestská veža alebo online cez Maxiticket.</p>
-            <time class="flash-card__time">Dnes · 09:30</time>
+        <!-- Novinky 1 -->
+        <article class="news-card">
+          <div class="news-card__img-wrap">
+            <img src="assets/img/foto/TTj25.Sprievod.013.jpg" class="news-card__img" loading="lazy" alt="Sprievod na otvorení Trnavského jarmoku">
           </div>
-
-        </article>
-        <!-- Flash 2 -->
-        <article class="flash-card flash-card--tip" data-ts="1757462400">
-          <div class="flash-card__content">
-            <span class="flash-card__badge badge--tip">TIP</span>
-            <h3 class="flash-card__title">5 vecí, ktoré musíte ochutnať na jarmoku</h3>
-            <p class="flash-card__text">Burčák od Malých Karpát, domáce niťovky, ručne robené korbáče, trnavské rožky a pečená kukurica. Nezabudnite na plátené tašky!</p>
-            <time class="flash-card__time">Včera · 14:00</time>
+          <div class="news-card__body">
+            <span class="news-card__badge badge--info">INFO</span>
+            <h3 class="news-card__title">Otvorenie jarmoku – sprievod v piatok o 18:00</h3>
+            <p class="news-card__text">Slávnostný pochod historickým centrom mesta otvára Trnavský jarmok 2026. Rytieri, kráľovský dvor a stredoveké kostýmy sa vydajú z Trojičného námestia cez Hviezdoslavovu ulicu až k Severnej bráne. Vstup voľný pre všetkých návštevníkov – príďte s rodinou!</p>
+            <time class="news-card__time">11. 9. · 10:00</time>
           </div>
-
         </article>
-        <!-- Flash 3 -->
-        <article class="flash-card flash-card--info" data-ts="1757376000">
-          <div class="flash-card__content">
-            <span class="flash-card__badge badge--info">INFO</span>
-            <h3 class="flash-card__title">Kráľovský fakľový sprievod – Sobota 19:30</h3>
-            <p class="flash-card__text">Stretnutie Jána Luxemburského a Karola Róberta z Anjou! Sprievod vyrazí zo Sadu Bernolaka k Severnej veži a zakončí ho výstrel z trebuchetu.</p>
-            <time class="flash-card__time">11. 9. · 10:00</time>
+        <!-- Novinky 2 -->
+        <article class="news-card">
+          <div class="news-card__img-wrap">
+            <img src="assets/img/foto/buskeri a postavy.jpg" class="news-card__img" loading="lazy" alt="Buskeri a historické postavy na jarmoku">
+          </div>
+          <div class="news-card__body">
+            <span class="news-card__badge badge--tip">TIP</span>
+            <h3 class="news-card__title">5 vecí, ktoré musíte ochutnať na jarmoku</h3>
+            <p class="news-card__text">Burčák od Malých Karpát, domáce niťovky, ručne robené korbáče, trnavské rožky a pečená kukurica. Každý rok sa predajcovia predbiehajú v originalite – nenechajte sa zahanbiť prázdnym žalúdkom. Nezabudnite na plátené tašky!</p>
+            <time class="news-card__time">Včera · 14:00</time>
+          </div>
+        </article>
+        <!-- Novinky 3 -->
+        <article class="news-card">
+          <div class="news-card__img-wrap">
+            <img src="assets/img/foto/TTj25.Sprievod.030.jpg" class="news-card__img" loading="lazy" alt="Kráľovský fakľový sprievod Trnavský jarmok">
+          </div>
+          <div class="news-card__body">
+            <span class="news-card__badge badge--info">INFO</span>
+            <h3 class="news-card__title">Kráľovský fakľový sprievod – Sobota 19:30</h3>
+            <p class="news-card__text">Stretnutie Jána Luxemburského a Karola Róberta z Anjou oživí historický moment z roku 1327! Sprievod vyrazí zo Sadu Bernolaka k Severnej veži a zakončí ho výstrel z trebuchetu. Jeden z vrcholov celého jarmoku – príďte skoro.</p>
+            <time class="news-card__time">11. 9. · 10:00</time>
           </div>
         </article>
       </div>

@@ -7,7 +7,7 @@
 
   const state = {
     day: 'all',
-    categories: new Set(['trojicka', 'stredovek', 'veselica', 'rozpravka', 'amfiteater']),
+    categories: new Set(['trojicka', 'stredovek', 'veselica', 'rozpravka']),
     search: ''
   };
 
