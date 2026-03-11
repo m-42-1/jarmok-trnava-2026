@@ -47,8 +47,8 @@
 .section__title::after {
   content: '';
   display: block;
-  width: 3rem;
-  height: 3px;
+  width: 4rem;
+  height: 6px;
   background: var(--yellow);
   margin-top: var(--sp-2);
   border-radius: var(--radius-pill);

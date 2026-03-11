@@ -18,11 +18,7 @@ const HEADER_HTML = `
   <div class="header-row1">
     <div class="container">
       <a href="index.html" class="site-logo" aria-label="Trnavský jarmok – domov">
-        <div class="site-logo__mark" aria-hidden="true">TJ</div>
-        <div class="site-logo__text">
-          <span class="site-logo__name">Trnavský jarmok</span>
-          <span class="site-logo__sub">Tradičný mestský jarmok</span>
-        </div>
+        <img src="assets/img/logo-jarmok-cele.png" alt="Trnavský jarmok" class="site-logo__img" style="height:48px;width:auto;display:block;">
       </a>
       <div class="header-date"><span aria-hidden="true">📅</span> 11.–14. septembra 2026</div>
       <div class="header-right">
@@ -42,17 +38,17 @@ const HEADER_HTML = `
   <nav class="header-row2" aria-label="Hlavná navigácia">
     <div class="container">
       <ul class="main-nav" role="list">
-        <li class="main-nav__item"><a href="flesky.html" class="main-nav__link">Flešky</a></li>
-        <li class="main-nav__item"><a href="program.html" class="main-nav__link main-nav__link--btn">Program</a></li>
+        <li class="main-nav__item"><a href="novinky.html" class="main-nav__link">Novinky</a></li>
         <li class="main-nav__item" data-submenu="sub-podujatia">
           <a href="podujatia.html" class="main-nav__link" aria-haspopup="true">Podujatia <span class="main-nav__chevron" aria-hidden="true">▾</span></a>
         </li>
         <li class="main-nav__item"><a href="mapa.html" class="main-nav__link">Mapa</a></li>
-        <li class="main-nav__item" data-submenu="sub-info">
-          <a href="prakticke-info.html" class="main-nav__link" aria-haspopup="true">Praktické info <span class="main-nav__chevron" aria-hidden="true">▾</span></a>
+        <li class="main-nav__item">
+          <a href="prakticke-info.html" class="main-nav__link">Praktické info</a>
         </li>
         <li class="main-nav__item"><a href="partneri.html" class="main-nav__link">Partneri</a></li>
         <li class="main-nav__item"><a href="predajcovia.html" class="main-nav__link">Zóna predajcov</a></li>
+        <li class="main-nav__item" style="margin-left:auto"><a href="program.html" class="main-nav__link main-nav__link--btn">Program</a></li>
       </ul>
     </div>
   </nav>
@@ -71,29 +67,19 @@ const HEADER_HTML = `
         <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
         <li class="submenu-bar__item"><a href="podujatia-remesla.html" class="submenu-bar__link">🔨 Zaži remeslá</a></li>
       </ul>
-      <ul id="sub-info" class="submenu-bar" role="list" hidden>
-        <li class="submenu-bar__item"><a href="prakticke-info.html#parkovanie" class="submenu-bar__link">🅿️ Parkovanie</a></li>
-        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
-        <li class="submenu-bar__item"><a href="prakticke-info.html#vjazdy" class="submenu-bar__link">🚗 Vjazdy</a></li>
-        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
-        <li class="submenu-bar__item"><a href="prakticke-info.html#faq" class="submenu-bar__link">❓ FAQ</a></li>
-        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
-        <li class="submenu-bar__item"><a href="prakticke-info.html#gastro" class="submenu-bar__link">🍷 Gastro</a></li>
-      </ul>
     </div>
   </div>
 </header>
 
 <nav id="mobile-nav" class="mobile-nav" aria-label="Mobilná navigácia" aria-modal="true" role="dialog">
   <div class="mobile-nav__header">
-    <a href="index.html" class="site-logo">
-      <div class="site-logo__mark" aria-hidden="true">TJ</div>
-      <div class="site-logo__text"><span class="site-logo__name" style="color:white">Trnavský jarmok</span></div>
+    <a href="index.html" class="site-logo" aria-label="Trnavský jarmok – domov">
+      <img src="assets/img/logo-jarmok-cele.png" alt="Trnavský jarmok" style="height:44px;width:auto;display:block;filter:brightness(10);">
     </a>
     <button class="mobile-nav__close" id="mobile-nav-close" aria-label="Zatvoriť menu">✕</button>
   </div>
   <ul class="mobile-nav__menu" role="list">
-    <li class="mobile-nav__item"><a href="flesky.html" class="mobile-nav__link">Flešky</a></li>
+    <li class="mobile-nav__item"><a href="novinky.html" class="mobile-nav__link">Novinky</a></li>
     <li class="mobile-nav__item"><a href="program.html" class="mobile-nav__link mobile-nav__link--btn">Program</a></li>
     <li class="mobile-nav__item">
       <div style="display:flex;align-items:center;justify-content:space-between">
@@ -110,18 +96,7 @@ const HEADER_HTML = `
       </ul>
     </li>
     <li class="mobile-nav__item"><a href="mapa.html" class="mobile-nav__link">Mapa</a></li>
-    <li class="mobile-nav__item">
-      <div style="display:flex;align-items:center;justify-content:space-between">
-        <a href="prakticke-info.html" class="mobile-nav__link" style="flex:1">Praktické info</a>
-        <button class="mobile-nav__toggle" aria-label="Rozbaliť">▾</button>
-      </div>
-      <ul class="mobile-nav__sub" role="list">
-        <li><a href="prakticke-info.html#parkovanie" class="mobile-nav__sub-link">🅿️ Parkovanie</a></li>
-        <li><a href="prakticke-info.html#vjazdy" class="mobile-nav__sub-link">🚗 Vjazdy</a></li>
-        <li><a href="prakticke-info.html#faq" class="mobile-nav__sub-link">❓ FAQ</a></li>
-        <li><a href="prakticke-info.html#gastro" class="mobile-nav__sub-link">🍷 Gastro</a></li>
-      </ul>
-    </li>
+    <li class="mobile-nav__item"><a href="prakticke-info.html" class="mobile-nav__link">Praktické info</a></li>
     <li class="mobile-nav__item"><a href="partneri.html" class="mobile-nav__link">Partneri</a></li>
     <li class="mobile-nav__item"><a href="predajcovia.html" class="mobile-nav__link">Zóna predajcov</a></li>
   </ul>
@@ -140,9 +115,8 @@ const FOOTER_HTML = `
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="footer-logo">
-          <div class="footer-logo__mark">TJ</div>
-          <span class="footer-logo__name">Trnavský jarmok</span>
+        <a href="index.html" class="footer-logo" aria-label="Trnavský jarmok – domov">
+          <img src="assets/img/logo-jarmok-cele.png" alt="Trnavský jarmok" style="height:52px;width:auto;display:block;filter:brightness(10);">
         </a>
         <p class="footer-tagline">Tradičný mestský jarmok v Trnave.<br>11. – 14. septembra 2026.</p>
         <p class="footer-org">Organizátor: Mesto Trnava<br>Hlavná 1, 917 01 Trnava</p>
@@ -155,7 +129,7 @@ const FOOTER_HTML = `
       <div>
         <h3 class="footer-col__title">Navigácia</h3>
         <nav class="footer-nav">
-          <a href="flesky.html">Flešky a novinky</a>
+          <a href="novinky.html">Novinky</a>
           <a href="program.html">Program</a>
           <a href="podujatia.html">Jarmočné podujatia</a>
           <a href="mapa.html">Mapa</a>

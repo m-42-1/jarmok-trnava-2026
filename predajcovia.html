@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Predajcovia | Trnavský jarmok 2026</title>
-  <meta name="description" content="Informácie pre predajcov a vystavovateľov na Trnavskom jarmoku 2026 – podmienky, cenník stánkov a prihlásenie.">
+  <title>Zóna predajcov | Trnavský jarmok 2026</title>
+  <meta name="description" content="Informácie pre predajcov a vystavovateľov na Trnavskom jarmoku 2026 – podmienky, cenník stánkov, termíny a prihlásenie.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,251 +17,429 @@
   <style>
     .vendor-hero {
       background: linear-gradient(135deg, #162040 0%, var(--blue) 100%);
-      padding: var(--sp-14) 0 var(--sp-10);
+      padding: var(--sp-16) 0 var(--sp-12);
       text-align: center;
       color: var(--white);
     }
-    .vendor-hero__title { font-family: var(--font-display); font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; margin-bottom: var(--sp-3); }
-    .vendor-hero__sub { font-size: var(--text-lg); opacity: 0.8; }
-
-    .conditions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6); margin-bottom: var(--sp-10); }
-    @media (max-width: 640px) { .conditions-grid { grid-template-columns: 1fr; } }
-    .condition-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: var(--sp-6);
-      border-top: 4px solid var(--blue);
+    .vendor-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: var(--sp-3);
+      color: var(--white);
     }
-    .condition-card__icon { font-size: 2rem; margin-bottom: var(--sp-3); }
-    .condition-card__title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--sp-3); }
-    .condition-card__list { list-style: none; }
-    .condition-card__list li { display: flex; align-items: flex-start; gap: var(--sp-2); font-size: var(--text-sm); color: var(--text-muted); padding: var(--sp-2) 0; border-bottom: 1px solid var(--border); }
-    .condition-card__list li:last-child { border-bottom: none; }
-    .condition-card__list .check { color: var(--blue); font-weight: 700; flex-shrink: 0; }
+    .vendor-hero__sub { font-size: var(--text-lg); opacity: 0.85; color: var(--white); }
 
-    /* Price table */
-    .price-table { width: 100%; border-collapse: collapse; }
-    .price-table th { background: var(--blue); color: var(--white); padding: var(--sp-4); text-align: left; font-size: var(--text-sm); }
-    .price-table td { padding: var(--sp-4); font-size: var(--text-sm); border-bottom: 1px solid var(--border); }
-    .price-table tr:nth-child(even) td { background: var(--surface-alt); }
-    .price-table .price { font-weight: 700; color: var(--blue); }
-    .price-table .zone-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-full); margin-left: var(--sp-2); }
-    .zone-a { background: #fef9c3; color: #854d0e; }
-    .zone-b { background: #dbeafe; color: #1e40af; }
-    .zone-c { background: #dcfce7; color: #166534; }
+    /* Timeline milestones */
+    .milestones {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-10);
+    }
+    @media (max-width: 640px) { .milestones { grid-template-columns: 1fr; } }
+    .milestone {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .milestone::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--blue);
+    }
+    .milestone:nth-child(2)::before { background: var(--yellow); }
+    .milestone:nth-child(3)::before { background: #e53e3e; }
+    .milestone__date {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      color: var(--blue);
+      margin-bottom: var(--sp-1);
+    }
+    .milestone:nth-child(2) .milestone__date { color: #b8860b; }
+    .milestone:nth-child(3) .milestone__date { color: #e53e3e; }
+    .milestone__label {
+      font-weight: 700;
+      font-size: var(--text-md);
+      margin-bottom: var(--sp-2);
+    }
+    .milestone__desc { font-size: var(--text-sm); color: var(--text-muted); }
 
-    /* Application form placeholder */
-    .apply-form-placeholder {
-      background: var(--surface-alt);
-      border: 2px dashed var(--border);
+    /* Info box */
+    .info-box {
+      background: #f0f8ff;
+      border: 1px solid #bee3f8;
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6) var(--sp-8);
+      margin-bottom: var(--sp-8);
+    }
+    .info-box__title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      margin-bottom: var(--sp-4);
+      color: var(--blue);
+    }
+    .info-box ul { list-style: disc; padding-left: var(--sp-6); }
+    .info-box ul li { margin-bottom: var(--sp-2); font-size: var(--text-sm); color: var(--text); }
+
+    /* Hours table */
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      margin-bottom: var(--sp-8);
+    }
+    .hours-table th {
+      background: var(--blue);
+      color: var(--white);
+      padding: var(--sp-3) var(--sp-4);
+      text-align: left;
+      font-weight: 600;
+    }
+    .hours-table td {
+      padding: var(--sp-3) var(--sp-4);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .hours-table tr:nth-child(even) td { background: var(--bg-alt); }
+    .hours-table tr:last-child td { border-bottom: none; }
+
+    /* Register box */
+    .register-box {
+      background: linear-gradient(135deg, var(--blue), #162040);
       border-radius: var(--radius-xl);
       padding: var(--sp-10);
+      color: var(--white);
       text-align: center;
+      margin-bottom: var(--sp-8);
     }
-    .apply-form-placeholder__icon { font-size: 3rem; margin-bottom: var(--sp-4); }
-    .apply-form-placeholder__title { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--sp-3); }
-    .apply-form-placeholder__text { color: var(--text-muted); margin-bottom: var(--sp-6); max-width: 500px; margin-left: auto; margin-right: auto; }
+    .register-box__title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      margin-bottom: var(--sp-3);
+      color: var(--white);
+    }
+    .register-box__sub { opacity: 0.85; margin-bottom: var(--sp-6); color: var(--white); }
+    .register-box__deadline {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      background: rgba(255,255,255,0.15);
+      border-radius: var(--radius-full);
+      padding: var(--sp-2) var(--sp-5);
+      font-weight: 700;
+      margin-bottom: var(--sp-6);
+      color: var(--white);
+    }
+    .register-btns { display: flex; gap: var(--sp-4); justify-content: center; flex-wrap: wrap; }
+
+    /* Price table */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      margin-bottom: var(--sp-8);
+      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .price-table th {
+      background: var(--blue);
+      color: var(--white);
+      padding: var(--sp-4) var(--sp-5);
+      text-align: left;
+      font-weight: 600;
+    }
+    .price-table td {
+      padding: var(--sp-4) var(--sp-5);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .price-table tr:nth-child(even) td { background: var(--bg-alt); }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table .price-col { font-weight: 700; color: var(--blue); white-space: nowrap; }
 
     /* Documents */
-    .doc-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
-    @media (max-width: 640px) { .doc-list { grid-template-columns: 1fr; } }
+    .doc-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-8);
+    }
     .doc-item {
       display: flex;
       align-items: center;
-      gap: var(--sp-3);
-      padding: var(--sp-4);
+      gap: var(--sp-4);
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
+      padding: var(--sp-4) var(--sp-5);
       text-decoration: none;
-      color: var(--text);
-      font-size: var(--text-sm);
-      transition: all var(--transition);
+      color: var(--dark);
+      transition: border-color var(--transition), box-shadow var(--transition);
     }
-    .doc-item:hover { border-color: var(--blue); box-shadow: var(--shadow-sm); }
-    .doc-item__icon { font-size: 1.8rem; flex-shrink: 0; }
-    .doc-item__title { font-weight: 600; }
-    .doc-item__sub { font-size: var(--text-xs); color: var(--text-muted); }
+    .doc-item:hover { border-color: var(--blue); box-shadow: var(--shadow-blue); color: var(--dark); }
+    .doc-item__icon { font-size: 2em; flex-shrink: 0; }
+    .doc-item__name { font-weight: 600; font-size: var(--text-sm); margin-bottom: 2px; }
+    .doc-item__meta { font-size: var(--text-xs); color: var(--text-muted); }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-8);
+    }
+    .contact-card__title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      margin-bottom: var(--sp-5);
+      color: var(--blue);
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-3);
+      font-size: var(--text-sm);
+    }
+    .contact-row__icon { font-size: 1.2em; flex-shrink: 0; width: 24px; }
+    .contact-row a { color: var(--blue); font-weight: 600; }
   </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Preskočiť na obsah</a>
-<div class="alert-bar" id="alert-bar" hidden data-alert-active="false" data-alert-text="">
-  <div class="container"><span class="alert-bar__text"></span><button class="alert-bar__close" id="alert-bar-close" aria-label="Zatvoriť upozornenie">✕</button></div>
-</div>
+
 <main id="main-content">
+
+  <!-- Hero -->
   <section class="vendor-hero">
     <div class="container">
       <p class="section-label" style="color:rgba(255,255,255,0.7);margin-bottom:var(--sp-3);">Trnavský jarmok 2026</p>
       <h1 class="vendor-hero__title">Zóna predajcov</h1>
-      <p class="vendor-hero__sub">Informácie pre záujemcov o predaj a vystavovanie na jarmoku</p>
+      <p class="vendor-hero__sub">Informácie pre predajcov, remeselníkov a gastro prevádzkovateľov</p>
     </div>
   </section>
+
   <section class="section">
-    <div class="container">
+    <div class="container container--narrow">
 
-      <div class="section__header">
-        <h2 class="section__title">Podmienky účasti</h2>
-      </div>
-      <div class="conditions-grid fade-in">
-        <div class="condition-card">
-          <div class="condition-card__icon">✅</div>
-          <h3 class="condition-card__title">Čo je povolené</h3>
-          <ul class="condition-card__list">
-            <li><span class="check">✓</span> Ručne vyrobené výrobky</li>
-            <li><span class="check">✓</span> Tradičné remeslá a umelecká výroba</li>
-            <li><span class="check">✓</span> Regionálne potraviny a nápoje (so súhlasom)</li>
-            <li><span class="check">✓</span> Vintage a historické predmety</li>
-            <li><span class="check">✓</span> Umelecká tvorba a ilustrácie</li>
-            <li><span class="check">✓</span> Prírodná kozmetika a wellness</li>
-            <li><span class="check">✓</span> Detské hračky (certifikované)</li>
-          </ul>
+      <!-- 1. Termíny -->
+      <h2 class="section__title" style="margin-bottom:var(--sp-6);">Kľúčové termíny</h2>
+      <div class="milestones fade-in">
+        <div class="milestone">
+          <div class="milestone__date">31.3.</div>
+          <div class="milestone__label">Prihláška kolotočárov</div>
+          <div class="milestone__desc">Uzávierka prihlášok pre prevádzkovateľov lunaparku a kolotočov</div>
         </div>
-        <div class="condition-card" style="border-top-color:#e53e3e;">
-          <div class="condition-card__icon">❌</div>
-          <h3 class="condition-card__title">Čo nie je povolené</h3>
-          <ul class="condition-card__list">
-            <li><span class="check" style="color:#e53e3e;">✗</span> Tovary z hromadnej výroby (Čína, AliExpress)</li>
-            <li><span class="check" style="color:#e53e3e;">✗</span> Falzifikáty a napodobeniny</li>
-            <li><span class="check" style="color:#e53e3e;">✗</span> Alkohol bez príslušného povolenia</li>
-            <li><span class="check" style="color:#e53e3e;">✗</span> Tabakové výrobky</li>
-            <li><span class="check" style="color:#e53e3e;">✗</span> Výrobky bez CE certifikátu (ak je povinný)</li>
-            <li><span class="check" style="color:#e53e3e;">✗</span> Živé zvieratá</li>
-            <li><span class="check" style="color:#e53e3e;">✗</span> Predaj bez registračnej pokladne (ak je povinná)</li>
-          </ul>
+        <div class="milestone">
+          <div class="milestone__date">15.5.</div>
+          <div class="milestone__label">Prihláška predajcov</div>
+          <div class="milestone__desc">Uzávierka prihlášok pre remeselníkov a gastro predajcov</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone__date">31.7.</div>
+          <div class="milestone__label">Úhrada poplatkov</div>
+          <div class="milestone__desc">Termín platby za pridelené predajné miesto</div>
         </div>
       </div>
 
-      <!-- Price table -->
-      <div class="section__header">
-        <h2 class="section__title">Cenník stánkov</h2>
+      <!-- 2. Základné informácie -->
+      <h2 class="section__title" style="margin-bottom:var(--sp-6);">Základné informácie</h2>
+      <div class="info-box fade-in">
+        <div class="info-box__title">📋 Podmienky účasti</div>
+        <ul>
+          <li>Štandardná veľkosť stánku: <strong>3 × 3 m</strong> (individuálne odchýlky po dohode)</li>
+          <li>Predajné hodiny: <strong>9:00 – 18:00</strong> (gastro až do 22:00 počas víkendových večerov)</li>
+          <li>Platobný terminál povinný pre všetkých predajcov (bezhotovostná platba)</li>
+          <li>Gastro: povinný kompostovateľný riad – bez jednorazového plastového riadu</li>
+          <li>Prihlášky musia obsahovať fotografie predávaného tovaru alebo jedál</li>
+          <li>Predajca zodpovedá za čistotu a poriadok v okolí svojho stánku</li>
+        </ul>
       </div>
-      <div style="overflow-x:auto;" class="fade-in">
-        <table class="price-table">
-          <thead>
-            <tr>
-              <th>Typ stánku</th>
-              <th>Rozmer</th>
-              <th>Lokalita</th>
-              <th>Cena (4 dni)</th>
-              <th>Poznámka</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Remeselný stánok MINI</td>
-              <td>2 × 2 m</td>
-              <td>Hviezdoslavova ul. <span class="zone-badge zone-b">Zóna B</span></td>
-              <td class="price">180 €</td>
-              <td>Stolík + 2 stoličky zahrnuté</td>
-            </tr>
-            <tr>
-              <td>Remeselný stánok ŠTANDARD</td>
-              <td>3 × 2 m</td>
-              <td>Hviezdoslavova ul. <span class="zone-badge zone-b">Zóna B</span></td>
-              <td class="price">280 €</td>
-              <td>Stan a vybavenie vlastné</td>
-            </tr>
-            <tr>
-              <td>Prémiový stánok – Trojičné</td>
-              <td>3 × 3 m</td>
-              <td>Trojičné nám. <span class="zone-badge zone-a">Zóna A</span></td>
-              <td class="price">480 €</td>
-              <td>Elektrická prípojka zahrnutá</td>
-            </tr>
-            <tr>
-              <td>Food stánok</td>
-              <td>3 × 4 m</td>
-              <td>Gastrozóna <span class="zone-badge zone-b">Zóna B</span></td>
-              <td class="price">560 €</td>
-              <td>Voda, kanalizácia, 16A prípojka</td>
-            </tr>
-            <tr>
-              <td>Tvorivý trh – Kreatívne centrum</td>
-              <td>2 × 1 m (stôl)</td>
-              <td>Kreatívne centrum <span class="zone-badge zone-c">Zóna C</span></td>
-              <td class="price">90 €</td>
-              <td>Len Sobota–Nedeľa, vnútorný priestor</td>
-            </tr>
-            <tr>
-              <td>Food truck</td>
-              <td>Vlastné vozidlo</td>
-              <td>Určené parkovisko <span class="zone-badge zone-b">Zóna B</span></td>
-              <td class="price">420 €</td>
-              <td>Elektrická prípojka 32A, voda</td>
-            </tr>
-            <tr>
-              <td>Stredoveký stánok (tematický)</td>
-              <td>3 × 3 m</td>
-              <td>Sad Bernolaka <span class="zone-badge zone-a">Zóna A</span></td>
-              <td class="price">320 €</td>
-              <td>Len pre stánky v dobovej tematike</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size:var(--text-sm);color:var(--text-muted);margin-top:var(--sp-3);">* Ceny sú bez DPH. Záloha 50% pri podpise zmluvy. Zvyšok pri nástupe. Storno podmienky sú uvedené v zmluve.</p>
 
-      <!-- Application form placeholder -->
-      <div class="section__header" style="margin-top:var(--sp-10);">
-        <h2 class="section__title">Prihláška</h2>
-      </div>
-      <div class="apply-form-placeholder fade-in">
-        <div class="apply-form-placeholder__icon">📝</div>
-        <h3 class="apply-form-placeholder__title">Online prihláška</h3>
-        <p class="apply-form-placeholder__text">Online prihláška bude k dispozícii od 1. apríla 2026. Momentálne môžete predbežne kontaktovať organizátora emailom alebo telefonicky.</p>
-        <div style="display:flex;gap:var(--sp-4);justify-content:center;flex-wrap:wrap;">
-          <a href="mailto:predajcovia@jarmok.trnava.sk" class="btn btn--primary">📧 predajcovia@jarmok.trnava.sk</a>
-          <a href="tel:+421330000000" class="btn btn--ghost">📞 +421 33 000 0000</a>
+      <!-- 3. Predajné hodiny -->
+      <h2 class="section__title" style="margin-bottom:var(--sp-6);">Predajné hodiny</h2>
+      <table class="hours-table fade-in">
+        <thead>
+          <tr>
+            <th>Deň</th>
+            <th>Tovar a remeslá</th>
+            <th>Gastro a nápoje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Štvrtok 11.9.</strong></td>
+            <td>10:00 – 20:00</td>
+            <td>10:00 – 22:00</td>
+          </tr>
+          <tr>
+            <td><strong>Piatok 12.9.</strong></td>
+            <td>9:00 – 20:00</td>
+            <td>9:00 – 23:00</td>
+          </tr>
+          <tr>
+            <td><strong>Sobota 13.9.</strong></td>
+            <td>9:00 – 20:00</td>
+            <td>9:00 – 23:00</td>
+          </tr>
+          <tr>
+            <td><strong>Nedeľa 14.9.</strong></td>
+            <td>9:00 – 19:00</td>
+            <td>9:00 – 21:00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 4. Prihlasovanie -->
+      <div class="register-box fade-in">
+        <h2 class="register-box__title">Prihlásenie na jarmok</h2>
+        <p class="register-box__sub">Záväzná prihláška sa posiela emailom na adresu organizátora spolu s fotografiami tovaru / jedálneho lístka</p>
+        <div class="register-box__deadline">📅 Uzávierka prihlášok: 15.5.2026</div>
+        <p class="register-box__sub" style="margin-bottom:var(--sp-4);">Email: <strong>trhy@trnava.sk</strong></p>
+        <div class="register-btns">
+          <a href="#" class="btn btn--yellow" onclick="alert('Dokument bude k dispozícii pred spustením prihlásení.');return false;">
+            📄 Prihláška (PDF)
+          </a>
+          <a href="#" class="btn btn--ghost-white" onclick="alert('Dokument bude k dispozícii pred spustením prihlásení.');return false;">
+            📝 Prihláška (DOCX)
+          </a>
         </div>
       </div>
 
-      <!-- Documents -->
-      <div class="section__header" style="margin-top:var(--sp-10);">
-        <h2 class="section__title">Dokumenty na stiahnutie</h2>
+      <!-- 5. Cenník -->
+      <h2 class="section__title" style="margin-bottom:var(--sp-6);">Cenník predajných miest</h2>
+      <table class="price-table fade-in">
+        <thead>
+          <tr>
+            <th>Typ predajného miesta</th>
+            <th>Popis</th>
+            <th class="price-col">Cena (4 dni)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Remeslo s ukážkou</strong></td>
+            <td>Remeselník, ktorý priamo pred zákazníkmi vyrába a predáva vlastné výrobky</td>
+            <td class="price-col">100 €</td>
+          </tr>
+          <tr>
+            <td><strong>Remeselný predaj</strong></td>
+            <td>Predaj ručne vyrábaného tovaru bez ukážky výroby</td>
+            <td class="price-col">250 €</td>
+          </tr>
+          <tr>
+            <td><strong>Tovar – malý stánok</strong></td>
+            <td>Predaj tovaru, suvenírov, oblečenia, kníh a pod. (do 6 m²)</td>
+            <td class="price-col">400 €</td>
+          </tr>
+          <tr>
+            <td><strong>Tovar – veľký stánok</strong></td>
+            <td>Predaj tovaru vo väčšom stánku alebo s rozšírenou plochou (nad 6 m²)</td>
+            <td class="price-col">650 €</td>
+          </tr>
+          <tr>
+            <td><strong>Gastro – občerstvenie</strong></td>
+            <td>Predaj jedál a nápojov v menšom rozsahu (nápoje, rýchle jedlá)</td>
+            <td class="price-col">700 €</td>
+          </tr>
+          <tr>
+            <td><strong>Gastro – reštaurácia</strong></td>
+            <td>Kompletná gastro prevádzka s posedením a šírším menu</td>
+            <td class="price-col">1 100 €</td>
+          </tr>
+          <tr>
+            <td><strong>Gastro – plnohodnotná</strong></td>
+            <td>Plnohodnotná gastro prevádzka, veľkokapacitná, vrátane baru</td>
+            <td class="price-col">1 500 €</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 6. Dokumenty -->
+      <h2 class="section__title" style="margin-bottom:var(--sp-6);">Dokumenty na stiahnutie</h2>
+      <div class="doc-list fade-in">
+        <a href="#" class="doc-item" onclick="alert('Dokument bude dostupný od apríla 2026.');return false;">
+          <span class="doc-item__icon">📄</span>
+          <div>
+            <div class="doc-item__name">Prihláška predajcu (PDF)</div>
+            <div class="doc-item__meta">Formulár · PDF · cca 180 kB</div>
+          </div>
+        </a>
+        <a href="#" class="doc-item" onclick="alert('Dokument bude dostupný od apríla 2026.');return false;">
+          <span class="doc-item__icon">📝</span>
+          <div>
+            <div class="doc-item__name">Prihláška predajcu (DOCX)</div>
+            <div class="doc-item__meta">Editovateľný formulár · Word · cca 85 kB</div>
+          </div>
+        </a>
+        <a href="#" class="doc-item" onclick="alert('Dokument bude dostupný od apríla 2026.');return false;">
+          <span class="doc-item__icon">📋</span>
+          <div>
+            <div class="doc-item__name">Všeobecné podmienky účasti</div>
+            <div class="doc-item__meta">Zmluva · PDF · cca 240 kB</div>
+          </div>
+        </a>
+        <a href="#" class="doc-item" onclick="alert('Dokument bude dostupný od apríla 2026.');return false;">
+          <span class="doc-item__icon">🗺️</span>
+          <div>
+            <div class="doc-item__name">Mapa predajných miest</div>
+            <div class="doc-item__meta">Prehľadová mapa · PDF · cca 1,2 MB</div>
+          </div>
+        </a>
+        <a href="#" class="doc-item" onclick="alert('Dokument bude dostupný od apríla 2026.');return false;">
+          <span class="doc-item__icon">📊</span>
+          <div>
+            <div class="doc-item__name">Cenník a platobné podmienky</div>
+            <div class="doc-item__meta">Aktuálny cenník · PDF · cca 120 kB</div>
+          </div>
+        </a>
+        <a href="#" class="doc-item" onclick="alert('Dokument bude dostupný od apríla 2026.');return false;">
+          <span class="doc-item__icon">♻️</span>
+          <div>
+            <div class="doc-item__name">Ekologické požiadavky pre gastro</div>
+            <div class="doc-item__meta">Kompostovateľný riad, pravidlá · PDF · cca 95 kB</div>
+          </div>
+        </a>
       </div>
-      <ul class="doc-list fade-in">
-        <li>
-          <a href="#" class="doc-item" onclick="return false;">
-            <span class="doc-item__icon">📄</span>
-            <div>
-              <div class="doc-item__title">Podmienky účasti 2026</div>
-              <div class="doc-item__sub">PDF, 1.2 MB – bude dostupné v marci 2026</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="doc-item" onclick="return false;">
-            <span class="doc-item__icon">📋</span>
-            <div>
-              <div class="doc-item__title">Vzorová zmluva</div>
-              <div class="doc-item__sub">PDF, 0.8 MB – bude dostupné v marci 2026</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="doc-item" onclick="return false;">
-            <span class="doc-item__icon">🗺️</span>
-            <div>
-              <div class="doc-item__title">Mapa stánkov – plán rozmiestnenia</div>
-              <div class="doc-item__sub">PDF, 3.5 MB – bude dostupné v júli 2026</div>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="doc-item" onclick="return false;">
-            <span class="doc-item__icon">📜</span>
-            <div>
-              <div class="doc-item__title">Trhový poriadok mesta Trnava</div>
-              <div class="doc-item__sub">PDF, 0.5 MB</div>
-            </div>
-          </a>
-        </li>
-      </ul>
+
+      <!-- 7. Kontakt -->
+      <h2 class="section__title" style="margin-bottom:var(--sp-6);">Kontakt</h2>
+      <div class="contact-card fade-in">
+        <div class="contact-card__title">Odbor mestských služieb</div>
+        <div class="contact-row">
+          <span class="contact-row__icon">🏢</span>
+          <span>Trhová 3, 917 01 Trnava</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row__icon">📧</span>
+          <a href="mailto:trhy@trnava.sk">trhy@trnava.sk</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row__icon">📞</span>
+          <a href="tel:+421333236107">033 3236 107</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row__icon">🕐</span>
+          <span>Úradné hodiny: Po–Pia 8:00–15:30</span>
+        </div>
+      </div>
+
     </div>
   </section>
+
 </main>
+
 <script src="assets/js/header-footer.js"></script>
 <script src="assets/js/core.js"></script>
 </body>

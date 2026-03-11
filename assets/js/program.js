@@ -1,5 +1,5 @@
 /* ============================================================
-   PROGRAM.JS – Day filter, Category filter, Search, Timeline
+   PROGRAM.JS – Day filter, Category multi-select, Search, Timeline
    ============================================================ */
 
 (function () {
@@ -7,17 +7,17 @@
 
   const state = {
     day: 'all',
-    category: 'all',
+    categories: new Set(['trojicka', 'stredovek', 'veselica', 'rozpravka', 'amfiteater']),
     search: ''
   };
 
   // Elements
-  const dayTabs   = document.querySelectorAll('.filter-tab[data-day]');
-  const catPills  = document.querySelectorAll('.filter-pill[data-cat]');
+  const dayTabs     = document.querySelectorAll('.filter-tab[data-day]');
+  const catPills    = document.querySelectorAll('.filter-pill[data-cat]');
   const searchInput = document.getElementById('program-search');
-  const clearBtn  = document.getElementById('search-clear');
-  const counter   = document.getElementById('filter-counter');
-  const items     = document.querySelectorAll('.program-item');
+  const clearBtn    = document.getElementById('search-clear');
+  const counter     = document.getElementById('filter-counter');
+  const items       = document.querySelectorAll('.program-item');
   const dayHeadings = document.querySelectorAll('.program-day');
 
   if (!items.length) return;
@@ -28,7 +28,8 @@
 
     items.forEach(item => {
       const dayMatch = state.day === 'all' || item.dataset.day === state.day;
-      const catMatch = state.category === 'all' || item.dataset.category === state.category;
+      // If no categories selected → show all; otherwise match set
+      const catMatch = state.categories.size === 0 || state.categories.has(item.dataset.category);
       const searchMatch = state.search === '' ||
         item.textContent.toLowerCase().includes(state.search.toLowerCase());
 
@@ -60,12 +61,20 @@
     });
   });
 
-  /* ---- Category pills ---- */
+  /* ---- Category pills – multi-select toggle ---- */
   catPills.forEach(pill => {
     pill.addEventListener('click', () => {
-      catPills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      state.category = pill.dataset.cat;
+      const cat = pill.dataset.cat;
+      if (state.categories.has(cat)) {
+        // Prevent deactivating the last category (keep at least 1)
+        if (state.categories.size > 1) {
+          state.categories.delete(cat);
+          pill.classList.remove('active');
+        }
+      } else {
+        state.categories.add(cat);
+        pill.classList.add('active');
+      }
       applyFilters();
     });
   });
