@@ -8,6 +8,7 @@ const HEADER_HTML = `
 <a href="#main-content" class="skip-link">Preskočiť na obsah</a>
 
 <div id="alert-bar" class="alert-bar"
+     data-alert-active=""
      data-alert-text="⚠ Upozornenie: V dôsledku búrky je program na Trojičnom námestí dočasne prerušený."
      hidden role="alert">
   <span class="alert-bar__text" id="alert-text"></span>
@@ -25,7 +26,11 @@ const HEADER_HTML = `
         <div class="lang-switcher">
           <a href="index.html" lang="sk" aria-current="page">SK</a>
           <span aria-hidden="true">|</span>
-          <a href="index-en.html" lang="en">EN</a>
+          <a href="#" lang="en" title="Anglická verzia – pripravuje sa">EN</a>
+        </div>
+        <div class="header-social" aria-label="Sociálne siete">
+          <a href="#" aria-label="Facebook">&#xfb;</a>
+          <a href="#" aria-label="Instagram">&#x1f4f8;</a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="mobile-nav">
           <span class="hamburger__line"></span>
@@ -43,8 +48,8 @@ const HEADER_HTML = `
           <a href="podujatia.html" class="main-nav__link" aria-haspopup="true">Podujatia <span class="main-nav__chevron" aria-hidden="true">▾</span></a>
         </li>
         <li class="main-nav__item"><a href="mapa.html" class="main-nav__link">Mapa</a></li>
-        <li class="main-nav__item">
-          <a href="prakticke-info.html" class="main-nav__link">Praktické info</a>
+        <li class="main-nav__item" data-submenu="sub-info">
+          <a href="prakticke-info.html" class="main-nav__link" aria-haspopup="true" aria-expanded="false">Praktické info <span class="main-nav__chevron" aria-hidden="true">▾</span></a>
         </li>
         <li class="main-nav__item"><a href="partneri.html" class="main-nav__link">Partneri</a></li>
         <li class="main-nav__item"><a href="predajcovia.html" class="main-nav__link">Zóna predajcov</a></li>
@@ -66,6 +71,15 @@ const HEADER_HTML = `
         <li class="submenu-bar__item"><a href="podujatia-trojicka.html" class="submenu-bar__link">Koncerty na Trojičke</a></li>
         <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
         <li class="submenu-bar__item"><a href="podujatia-remesla.html" class="submenu-bar__link">Zaži remeslá</a></li>
+      </ul>
+      <ul id="sub-info" class="submenu-bar" role="list" hidden>
+        <li class="submenu-bar__item"><a href="prakticke-info.html#parkovanie" class="submenu-bar__link">Parkovanie</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="prakticke-info.html#vjazdy" class="submenu-bar__link">Vjazdy</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="prakticke-info.html#faq" class="submenu-bar__link">FAQ</a></li>
+        <li class="submenu-bar__item"><span class="submenu-bar__sep">|</span></li>
+        <li class="submenu-bar__item"><a href="prakticke-info.html#gastro" class="submenu-bar__link">Gastro</a></li>
       </ul>
     </div>
   </div>
@@ -96,7 +110,18 @@ const HEADER_HTML = `
       </ul>
     </li>
     <li class="mobile-nav__item"><a href="mapa.html" class="mobile-nav__link">Mapa</a></li>
-    <li class="mobile-nav__item"><a href="prakticke-info.html" class="mobile-nav__link">Praktické info</a></li>
+    <li class="mobile-nav__item">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <a href="prakticke-info.html" class="mobile-nav__link" style="flex:1">Praktické info</a>
+        <button class="mobile-nav__toggle" aria-label="Rozbaliť info">▾</button>
+      </div>
+      <ul class="mobile-nav__sub" role="list">
+        <li><a href="prakticke-info.html#parkovanie" class="mobile-nav__sub-link">Parkovanie</a></li>
+        <li><a href="prakticke-info.html#vjazdy" class="mobile-nav__sub-link">Vjazdy</a></li>
+        <li><a href="prakticke-info.html#faq" class="mobile-nav__sub-link">FAQ</a></li>
+        <li><a href="prakticke-info.html#gastro" class="mobile-nav__sub-link">Gastro</a></li>
+      </ul>
+    </li>
     <li class="mobile-nav__item"><a href="partneri.html" class="mobile-nav__link">Partneri</a></li>
     <li class="mobile-nav__item"><a href="predajcovia.html" class="mobile-nav__link">Zóna predajcov</a></li>
   </ul>
@@ -104,7 +129,7 @@ const HEADER_HTML = `
     <div class="mobile-nav__date">11.–14. septembra 2026, Trnava</div>
     <div class="mobile-nav__lang">
       <a href="index.html" lang="sk" aria-current="page">SK</a>
-      <a href="index-en.html" lang="en">EN</a>
+      <a href="#" lang="en" title="Anglická verzia – pripravuje sa">EN</a>
     </div>
   </div>
 </nav>

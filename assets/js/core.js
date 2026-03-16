@@ -250,7 +250,7 @@
           // Demo notification
           new Notification('Trnavský jarmok 2026', {
             body: 'Dostávate novinky zo Jarmoku! Teraz: Stredoveký sprievod o 19:30 zo Sadu Bernolaka.',
-            icon: 'assets/img/icon-192.png'
+            icon: 'assets/img/logo-jarmok-symbol.png'
           });
           // Update badge
           updatePushBadge(0);
