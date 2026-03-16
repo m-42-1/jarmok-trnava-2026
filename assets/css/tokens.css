@@ -60,6 +60,7 @@
   --bg-header:     var(--dark);
   --bg-submenu:    var(--navy);
   --bg-footer:     var(--dark);
+  --text:          var(--dark);
   --text-primary:  var(--dark);
   --text-muted:    var(--gray-600);
   --text-inverse:  var(--white);
@@ -100,6 +101,7 @@
   --sp-8:  2rem;
   --sp-10: 2.5rem;
   --sp-12: 3rem;
+  --sp-14: 3.5rem;
   --sp-16: 4rem;
   --sp-20: 5rem;
   --sp-24: 6rem;
