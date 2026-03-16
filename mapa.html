@@ -94,9 +94,18 @@
     .zones-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); margin-top: var(--sp-8); }
     @media (max-width: 768px) { .zones-grid { grid-template-columns: 1fr; } }
     .zone-card { padding: var(--sp-6); border-radius: var(--radius-xl); border-left: 5px solid var(--zone-color, var(--blue)); background: var(--white); box-shadow: var(--shadow-sm); }
-    .zone-card__title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; color: var(--text); margin-bottom: var(--sp-2); }
+    a.zone-card { display: block; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease, border-left-width 0.2s ease; }
+    a.zone-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-left-width: 7px; }
+    a.zone-card:hover .zone-card__title { color: var(--zone-color, var(--blue)); }
+    a.zone-card:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+    .zone-card__title { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; color: var(--text); margin-bottom: var(--sp-2); transition: color 0.2s ease; }
     .zone-card__address { font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--sp-3); display: flex; align-items: center; gap: var(--sp-2); }
     .zone-card__desc { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.6; }
+    .zone-card__cta { display: inline-flex; align-items: center; gap: var(--sp-1); font-size: var(--text-xs); font-weight: 700; color: var(--zone-color, var(--blue)); margin-top: var(--sp-4); letter-spacing: 0.01em; }
+    a.legend-item { text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+    a.legend-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    a.legend-item:hover .legend-item__title { color: var(--item-color, var(--blue)); }
+    a.legend-item:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
   </style>
 </head>
 <body>
@@ -123,54 +132,54 @@
       <!-- Legend -->
       <h2 class="section__title" style="margin-top:var(--sp-10);">Legenda</h2>
       <div class="map-legend fade-in">
-        <div class="legend-item" style="--item-color: #99248F;">
+        <a href="podujatia-stredovek.html" class="legend-item" style="--item-color: #99248F;">
           <div class="legend-item__dot">🏰</div>
           <div>
             <div class="legend-item__title">Stredoveká zóna</div>
             <div class="legend-item__loc">Sad Antona Bernolaka</div>
             <div class="legend-item__hours">Sob–Ned 10:00–20:00</div>
           </div>
-        </div>
-        <div class="legend-item" style="--item-color: #02AFEF;">
+        </a>
+        <a href="podujatia-trojicka.html" class="legend-item" style="--item-color: #02AFEF;">
           <div class="legend-item__dot">🎵</div>
           <div>
             <div class="legend-item__title">Hlavné pódium</div>
             <div class="legend-item__loc">Trojičné námestie</div>
             <div class="legend-item__hours">Denne 14:30–22:00</div>
           </div>
-        </div>
-        <div class="legend-item" style="--item-color: #243E8F;">
+        </a>
+        <a href="podujatia-veselica.html" class="legend-item" style="--item-color: #243E8F;">
           <div class="legend-item__dot">🎻</div>
           <div>
             <div class="legend-item__title">Ľudová veselica</div>
             <div class="legend-item__loc">Námestie SNP</div>
             <div class="legend-item__hours">Pia–Ned 14:00–22:00</div>
           </div>
-        </div>
-        <div class="legend-item" style="--item-color: #ED028D;">
+        </a>
+        <a href="podujatia-rozpravka.html" class="legend-item" style="--item-color: #ED028D;">
           <div class="legend-item__dot">🧚</div>
           <div>
             <div class="legend-item__title">Rozprávkový svet</div>
             <div class="legend-item__loc">Ružový park</div>
             <div class="legend-item__hours">Denne 10:00–18:00</div>
           </div>
-        </div>
-        <div class="legend-item" style="--item-color: #0083B7;">
+        </a>
+        <a href="podujatia-remesla.html" class="legend-item" style="--item-color: #0083B7;">
           <div class="legend-item__dot">🏺</div>
           <div>
             <div class="legend-item__title">Remeselný trh</div>
             <div class="legend-item__loc">Pešia zóna, Hviezdoslavova</div>
             <div class="legend-item__hours">Štv–Ned 9:00–20:00</div>
           </div>
-        </div>
-        <div class="legend-item" style="--item-color: #5EB5D7;">
+        </a>
+        <a href="podujatia-kolotoc.html" class="legend-item" style="--item-color: #5EB5D7;">
           <div class="legend-item__dot">🎡</div>
           <div>
             <div class="legend-item__title">Kolotoče</div>
             <div class="legend-item__loc">Centrum mesta</div>
             <div class="legend-item__hours">Denne 10:00–22:00</div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -182,36 +191,42 @@
         <h2 class="section__title">Zóny jarmoku</h2>
       </div>
       <div class="zones-grid fade-in">
-        <div class="zone-card" style="--zone-color: #99248F;">
+        <a href="podujatia-stredovek.html" class="zone-card" style="--zone-color: #99248F;">
           <h3 class="zone-card__title">🏰 Stredoveká promenáda</h3>
           <div class="zone-card__address"><span>📍</span> Sad Antona Bernolaka</div>
           <p class="zone-card__desc">Historický park vedľa Divadla Jána Palárika sa premení na stredoveký tábor. Vstup cez Bernolákovu bránu alebo z Kapitulskej ulice. Dve stovky akteárov v dobových kostýmoch oživia históriu mesta.</p>
-        </div>
-        <div class="zone-card" style="--zone-color: #02AFEF;">
+          <span class="zone-card__cta">Zistiť viac →</span>
+        </a>
+        <a href="podujatia-trojicka.html" class="zone-card" style="--zone-color: #02AFEF;">
           <h3 class="zone-card__title">🎵 Trojičné námestie</h3>
           <div class="zone-card__address"><span>📍</span> Trojičné nám., Trnava</div>
           <p class="zone-card__desc">Najväčšia a najživšia časť jarmoku. Dominantou je Stĺp Najsvätejšej Trojice – kultúrna pamiatka UNESCO. Veľké pódium, gastrozóna, výstava a promenáda.</p>
-        </div>
-        <div class="zone-card" style="--zone-color: #243E8F;">
+          <span class="zone-card__cta">Zistiť viac →</span>
+        </a>
+        <a href="podujatia-veselica.html" class="zone-card" style="--zone-color: #243E8F;">
           <h3 class="zone-card__title">🎻 Ľudová veselica</h3>
           <div class="zone-card__address"><span>📍</span> Námestie SNP</div>
           <p class="zone-card__desc">Námestie SNP – tradičné centrum trnavského obchodu – sa pri jarmoku stáva pódiom folklórnych súborov a ľudových kapiel. Tancovačky do noci, autentická atmosféra.</p>
-        </div>
-        <div class="zone-card" style="--zone-color: #ED028D;">
+          <span class="zone-card__cta">Zistiť viac →</span>
+        </a>
+        <a href="podujatia-rozpravka.html" class="zone-card" style="--zone-color: #ED028D;">
           <h3 class="zone-card__title">🧚 Rozprávkový svet</h3>
           <div class="zone-card__address"><span>📍</span> Ružový park</div>
           <p class="zone-card__desc">Prekrásny park pri renesančnej fontáne sa premení na kráľovstvo rozprávok. Bezpečná zóna pre rodiny s deťmi, tvorivé dielničky, rozprávkové postavy a zázemie pre najmenších.</p>
-        </div>
-        <div class="zone-card" style="--zone-color: #0083B7;">
+          <span class="zone-card__cta">Zistiť viac →</span>
+        </a>
+        <a href="podujatia-remesla.html" class="zone-card" style="--zone-color: #0083B7;">
           <h3 class="zone-card__title">🏺 Remeselná ulica</h3>
           <div class="zone-card__address"><span>📍</span> Hviezdoslavova ul. + Kreatívne centrum</div>
           <p class="zone-card__desc">Hlavná pešia ulica Trnavy sa stáva výkladnou skriňou tradičných remesiel. Remeselníci predávajú i predvádzajú svoju prácu priamo pred vami. Nájdete tu aj moderný Tvorivý trh.</p>
-        </div>
-        <div class="zone-card" style="--zone-color: #5EB5D7;">
+          <span class="zone-card__cta">Zistiť viac →</span>
+        </a>
+        <a href="podujatia-kolotoc.html" class="zone-card" style="--zone-color: #5EB5D7;">
           <h3 class="zone-card__title">🎡 Zábavná zóna</h3>
           <div class="zone-card__address"><span>📍</span> Centrum mesta, okolie Radnice</div>
           <p class="zone-card__desc">Kolotoče, atrakcie a strelnice sú rozmiestnené po celom centre. Veľké koleso pri Radnici ponúka najkrajší výhľad na mesto a okolie. Otvorené denne do 22:00.</p>
-        </div>
+          <span class="zone-card__cta">Zistiť viac →</span>
+        </a>
       </div>
     </div>
   </section>
